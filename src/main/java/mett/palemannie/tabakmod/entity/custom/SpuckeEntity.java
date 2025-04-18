@@ -30,20 +30,20 @@ public class SpuckeEntity extends ThrowableItemProjectile {
         super.tick();
         if (this.isInWaterOrBubble()) {
             this.discard();
-        } else if (this.level.getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
+        } else if (this.level().getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
             this.discard();
         }
 
         if (this.tickCount % 7 == 0) {
-            level.addParticle(ParticleTypes.SPIT, this.getX(), this.getY() + 0.2, this.getZ(), 0d, 0d, 0d);
+            level().addParticle(ParticleTypes.SPIT, this.getX(), this.getY() + 0.2, this.getZ(), 0d, 0d, 0d);
         }
-        level.addParticle(ParticleTypes.SPLASH, this.getX(), this.getY() + 0.2, this.getZ(), 0d, 0d, 0d);
+        level().addParticle(ParticleTypes.SPLASH, this.getX(), this.getY() + 0.2, this.getZ(), 0d, 0d, 0d);
     }
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        if (!this.level.isClientSide) {
-            this.level.broadcastEntityEvent(this, (byte)3);
+        if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
         super.onHitBlock(pResult);
@@ -54,8 +54,8 @@ public class SpuckeEntity extends ThrowableItemProjectile {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
         entity.hurt(this.damageSources().thrown(this, this.getOwner()), 1f);
-        if (!this.level.isClientSide) {
-            this.level.broadcastEntityEvent(this, (byte) 3);
+        if (!this.level().isClientSide) {
+            this.level().broadcastEntityEvent(this, (byte) 3);
             this.discard();
         }
     }

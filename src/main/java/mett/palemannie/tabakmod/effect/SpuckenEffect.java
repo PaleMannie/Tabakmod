@@ -22,7 +22,7 @@ public class SpuckenEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
-        if(pLivingEntity.level.isClientSide()) {
+        if(pLivingEntity.level().isClientSide()) {
             counter--;
             counter2--;
             if ((counter % basis == 0)) {

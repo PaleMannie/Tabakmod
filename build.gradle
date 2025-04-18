@@ -1,83 +1,49 @@
 plugins {
     id 'eclipse'
+    id 'idea'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '5.1.+'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'net.minecraftforge.gradle' version '[6.0,6.2)'
 }
 
-version = 'v2.02_1.19.4'
-group = 'mett.palemannie.tabakmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'supertabakmod'
+version = mod_version
+group = mod_group_id
+
+base {
+    archivesName = mod_id
+}
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
 println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
-    mappings channel: 'parchment', version: '2023.06.26-1.19.4'
+    mappings channel: mapping_channel, version: mapping_version
+    copyIdeResources = true
+    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
 
     runs {
+        configureEach {
+            workingDirectory project.file('run')
+            property 'forge.logging.markers', 'REGISTRIES'
+            property 'forge.logging.console.level', 'debug'
+            mods {
+                "${mod_id}" {
+                    source sourceSets.main
+                }
+            }
+        }
         client {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'tabakmod'
-
-            mods {
-                tabakmod {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
-
         server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'tabakmod'
-
-            mods {
-                tabakmod {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
+            args '--nogui'
         }
-
         gameTestServer {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            property 'forge.enabledGameTestNamespaces', 'tabakmod'
-
-            mods {
-                tabakmod {
-                    source sourceSets.main
-                }
-            }
+            property 'forge.enabledGameTestNamespaces', mod_id
         }
-
         data {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-            args '--mod', 'tabakmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
-
-            mods {
-                tabakmod {
-                    source sourceSets.main
-                }
-            }
+            workingDirectory project.file('run-data')
+            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
         }
     }
 }
@@ -85,32 +51,47 @@ minecraft {
 sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
-
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.4-45.1.16'
+    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
 }
 
-jar {
-    manifest {
-        attributes([
-                "Specification-Title"     : "tabakmod",
-                "Specification-Vendor"    : "tabakmodsareus",
-                "Specification-Version"   : "1", // We are version 1 of ourselves
-                "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "tabakmodsareus",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
-        ])
+tasks.named('processResources', ProcessResources).configure {
+    var replaceProperties = [
+            minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
+            forge_version: forge_version, forge_version_range: forge_version_range,
+            loader_version_range: loader_version_range,
+            mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
+            mod_authors: mod_authors, mod_description: mod_description,
+    ]
+    inputs.properties replaceProperties
+
+    filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
+        expand replaceProperties + [project: project]
     }
 }
 
-jar.finalizedBy('reobfJar')
+tasks.named('jar', Jar).configure {
+    manifest {
+        attributes([
+                'Specification-Title'     : mod_id,
+                'Specification-Vendor'    : mod_authors,
+                'Specification-Version'   : '1', // We are version 1 of ourselves
+                'Implementation-Title'    : project.name,
+                'Implementation-Version'  : project.jar.archiveVersion,
+                'Implementation-Vendor'   : mod_authors,
+                'Implementation-Timestamp': new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+        ])
+    }
+
+    finalizedBy 'reobfJar'
+}
 
 publishing {
     publications {
-        mavenJava(MavenPublication) {
+        register('mavenJava', MavenPublication) {
             artifact jar
         }
     }

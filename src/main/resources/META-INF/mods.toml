@@ -1,26 +1,25 @@
 modLoader="javafml" #mandatory
-loaderVersion="[45,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
-license="Alle Rechte vorbehalten"
+loaderVersion="${loader_version_range}" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="${mod_license}"
 [[mods]] #mandatory
-modId="tabakmod" #mandatory
-version="2.02" #mandatory
-displayName="Super Tabakmod" #mandatory
+modId="${mod_id}" #mandatory
+version="${mod_version}" #mandatory
+displayName="${mod_name}" #mandatory
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
 logoFile="tabakmod.png" #optional
-credits="Ich, weil ich cool bin" #optional
-authors="Quake 1 Ranger Man" #optional
-
-description='''
-Feinste Marlborower Tabakwaren.
-'''
-[[dependencies.tabakmod]] #optional
-    modId="forge" #mandatory
-    mandatory=true #mandatory
-    versionRange="[45,)" #mandatory
-    ordering="NONE"
-    side="BOTH"
-[[dependencies.tabakmod]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.19.4,1.20)"
-    ordering="NONE"
-    side="BOTH"
+credits="Ich weil ich cool bin" #optional
+authors="${mod_authors}" #optional
+description='''${mod_description}'''
+[[dependencies.${mod_id}]] #optional
+modId="forge" #mandatory
+mandatory=true #mandatory
+versionRange="${forge_version_range}" #mandatory
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="minecraft"
+mandatory=true
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"

@@ -19,7 +19,7 @@ import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -27,6 +27,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
 
 @Mod(TabakMod.MODID)
 public class TabakMod {
@@ -48,21 +49,22 @@ public class TabakMod {
         ModPaintings.register(modEventBus);
         ModEffects.register(modEventBus);
         ModEntities.register(modEventBus);
+        ModCreativeModeTabs.register(modEventBus);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         event.enqueueWork( ()-> {
             ModMessages.register();
-            ModVillagers.registerPOIs();
         });
         event.enqueueWork( ()-> {
-            ComposterBlock.COMPOSTABLES.put(ModItems.TABAKBLATT.get(),0.3f);
-            ComposterBlock.COMPOSTABLES.put(ModItems.TABAKSAMEN.get(),0.2f);
+            ComposterBlock.add(0.3f, ModItems.TABAKBLATT.get());
+            ComposterBlock.add(0.2f, ModItems.TABAKSAMEN.get());
+
         });
     }
 
-    private void addCreative(CreativeModeTabEvent.BuildContents event) {
-        if(event.getTab() == ModCreativeModeTabs.TABAK_TAB) {
+    private void addCreative(BuildCreativeModeTabContentsEvent event) {
+        if(event.getTab() == ModCreativeModeTabs.TABAK_TAB.get()) {
 
             event.accept(ModItems.TABAKSAMEN);
             event.accept(ModItems.TABAKBLATT);

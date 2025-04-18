@@ -14,7 +14,7 @@ public class ServerAbspieler {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static void handliereSpucken(ServerPlayer player){
 
-        ServerLevel sevel = player.getLevel();
+        ServerLevel sevel = player.serverLevel();
         RandomSource rdm = RandomSource.create();
 
         //Entität
@@ -27,7 +27,7 @@ public class ServerAbspieler {
         sevel.addFreshEntity(spucke);
 
         //Ton
-        Level lvl = player.level;
+        Level lvl = player.level();
 
         double posX = player.getX();
         double posY = player.getY();

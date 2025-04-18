@@ -2,22 +2,24 @@ package mett.palemannie.tabakmod.item;
 
 import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.block.ModBlocks;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.event.CreativeModeTabEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
-@Mod.EventBusSubscriber(modid = TabakMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCreativeModeTabs {
-    public static CreativeModeTab TABAK_TAB;
 
-    @SubscribeEvent
-    public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event){
-        TABAK_TAB = event.registerCreativeModeTab(new ResourceLocation(TabakMod.MODID, "tabak_tab"),
-                builder -> builder.icon(() -> new ItemStack(ModBlocks.TABAKBLAETTER_GETROCKNET.get()))
-                        .title(Component.translatable("creativemodetab.tabak_tab")));
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TAB = DeferredRegister
+            .create(Registries.CREATIVE_MODE_TAB, TabakMod.MODID);
+    public static void register(IEventBus eventBus){
+        CREATIVE_MODE_TAB.register(eventBus);
     }
+
+    public static RegistryObject<CreativeModeTab> TABAK_TAB = CREATIVE_MODE_TAB.register("tabak_tab",
+            () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModBlocks.TABAKBLAETTER_GETROCKNET.get()))
+                    .title(Component.translatable("creativemodetab.tabak_tab")).build());
+
 }

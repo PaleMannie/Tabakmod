@@ -18,21 +18,25 @@ import java.lang.reflect.InvocationTargetException;
 
 public class ModVillagers {
     public static final DeferredRegister<PoiType> POI_TYPES = DeferredRegister.create(ForgeRegistries.POI_TYPES, TabakMod.MODID);
+
     public static final DeferredRegister<VillagerProfession> VILLAGER_PROFESSIONS = DeferredRegister.create(ForgeRegistries.VILLAGER_PROFESSIONS, TabakMod.MODID);
+
     public static final RegistryObject<PoiType> ASCHENBECHER_POI = POI_TYPES.register("aschenbecher_poi",
             () -> new PoiType(ImmutableSet.copyOf(ModBlocks.ASCHENBECHER_GROSS.get().getStateDefinition().getPossibleStates()), 1, 1));
+
     public static final RegistryObject<VillagerProfession> TABAKHAENDLER = VILLAGER_PROFESSIONS.register("tabakhaendler",
             () -> new VillagerProfession("tabakhaendler", x -> x.get() == ASCHENBECHER_POI.get(), x -> x.get() == ASCHENBECHER_POI.get(),
                     ImmutableSet.of(), ImmutableSet.of(), ModSounds.PFEIFE_LADEN.get()));
+
     public static void register(IEventBus eventBus) {
         POI_TYPES.register(eventBus);
         VILLAGER_PROFESSIONS.register(eventBus);
     }
-    public static void registerPOIs(){
+    /*public static void registerPOIs(){
         try {
             ObfuscationReflectionHelper.findMethod(PoiType.class, "registerBlockStates", PoiType.class).invoke(null, ASCHENBECHER_POI.get());
         } catch (InvocationTargetException | IllegalAccessException exception){
             exception.printStackTrace();
         }
-    }
+    }*/
 }
