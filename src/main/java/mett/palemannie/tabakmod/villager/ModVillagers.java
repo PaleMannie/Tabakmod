@@ -32,11 +32,4 @@ public class ModVillagers {
         POI_TYPES.register(eventBus);
         VILLAGER_PROFESSIONS.register(eventBus);
     }
-    /*public static void registerPOIs(){
-        try {
-            ObfuscationReflectionHelper.findMethod(PoiType.class, "registerBlockStates", PoiType.class).invoke(null, ASCHENBECHER_POI.get());
-        } catch (InvocationTargetException | IllegalAccessException exception){
-            exception.printStackTrace();
-        }
-    }*/
 }

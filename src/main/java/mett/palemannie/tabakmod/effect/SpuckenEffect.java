@@ -38,7 +38,6 @@ public class SpuckenEffect extends MobEffect {
         super.applyEffectTick(pLivingEntity, pAmplifier);
     }
 
-    @Override
     public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
         return true;
     }

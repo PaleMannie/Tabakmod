@@ -3,39 +3,31 @@ package mett.palemannie.tabakmod.networking;
 import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.networking.packets.SpuckenC2SPacket;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.network.NetworkDirection;
-import net.minecraftforge.network.NetworkRegistry;
-import net.minecraftforge.network.PacketDistributor;
-import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.*;
 
 public class ModMessages {
-    private static SimpleChannel INSTANCE;
     private static int PacketID = 0;
     private static int id(){
         return PacketID++;
     }
+    final static int version = 1;
+
+    private static final SimpleChannel INSTANCE = ChannelBuilder.named(new ResourceLocation(TabakMod.MODID, "messages"))
+            .networkProtocolVersion(version)
+            .clientAcceptedVersions(((status, version1) -> true))
+            .serverAcceptedVersions(((status, version1) -> true))
+            .simpleChannel();
 
     public static void register(){
-        SimpleChannel net = NetworkRegistry.ChannelBuilder.named(new ResourceLocation(TabakMod.MODID, "messages"))
-                .networkProtocolVersion(()-> "1.0").clientAcceptedVersions(s -> true).serverAcceptedVersions(s -> true)
-                .simpleChannel();
-
-        INSTANCE = net;
-
-        net.messageBuilder(SpuckenC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
+        INSTANCE.messageBuilder(SpuckenC2SPacket.class, id(), NetworkDirection.PLAY_TO_SERVER)
                 .decoder(SpuckenC2SPacket::new)
-                .encoder(SpuckenC2SPacket::toBytes)
+                .encoder(SpuckenC2SPacket::encode)
                 .consumerMainThread(SpuckenC2SPacket::handle)
                 .add();
-
     }
 
-    public static <MSG> void sendToServer(MSG message){
-        INSTANCE.sendToServer(message);
+    public static void sendToServer(Object message){
+        INSTANCE.send(message, PacketDistributor.SERVER.noArg());
     }
 
-    public static <MSG> void sendToPlayer(MSG message, ServerPlayer player){
-        INSTANCE.send(PacketDistributor.PLAYER.with(()->player), message);
-    }
 }
