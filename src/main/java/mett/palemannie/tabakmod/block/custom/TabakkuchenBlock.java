@@ -82,7 +82,7 @@ public class TabakkuchenBlock extends Block {
                 pLevel.removeBlock(pPos, false);
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_DESTROY, pPos);
             }
-            pPlayer.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.get(), 400, 0));
+            pPlayer.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), 400, 0));
             pPlayer.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0));
             pPlayer.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 150, 0));
             return InteractionResult.SUCCESS;

@@ -21,7 +21,7 @@ public class SpuckenEffect extends MobEffect {
     void resetCounter2(int c) { c = counter2 = basis2; }
 
     @Override
-    public void applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
         if(pLivingEntity.level().isClientSide()) {
             counter--;
             counter2--;
@@ -35,13 +35,12 @@ public class SpuckenEffect extends MobEffect {
                 resetCounter2(counter2);
             }
         }
-        super.applyEffectTick(pLivingEntity, pAmplifier);
-    }
-
-    public boolean isDurationEffectTick(int pDuration, int pAmplifier) {
+        //super.applyEffectTick(pLivingEntity, pAmplifier);
         return true;
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Override
+    public boolean shouldApplyEffectTickThisTick(int p_297908_, int p_301085_) { return true; }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 }

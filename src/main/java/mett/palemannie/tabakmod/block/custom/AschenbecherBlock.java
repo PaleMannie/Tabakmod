@@ -38,7 +38,6 @@ public class AschenbecherBlock extends Block {
         pBuilder.add(WELCHEZIG);
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    @Override
     public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 

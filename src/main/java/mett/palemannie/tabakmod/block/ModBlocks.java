@@ -58,16 +58,16 @@ public class ModBlocks {
                     .mapColor(DyeColor.byId(3280129))));
 
     public static final RegistryObject<Block> TABAKPFLANZE = BLOCKS.register("tabakpflanze",
-            () -> new TabakPflanzenBlock(BlockBehaviour.Properties.copy(Blocks.SWEET_BERRY_BUSH)));
+            () -> new TabakPflanzenBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.SWEET_BERRY_BUSH)));
     public static final RegistryObject<Block> ASCHENBECHER = registerBlock("aschenbecher_neu",
-            () -> new AschenbecherBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).sound(SoundType.STONE).instabreak().noOcclusion()));
+            () -> new AschenbecherBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT).sound(SoundType.STONE).instabreak().noOcclusion()));
     public static final RegistryObject<Block> ASCHENBECHER_GROSS = registerBlock("aschenbecher_gross",
-            () -> new AschenbecherGrossBlock(BlockBehaviour.Properties.copy(Blocks.FLOWER_POT).sound(SoundType.STONE).instabreak().noOcclusion()));
+            () -> new AschenbecherGrossBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.FLOWER_POT).sound(SoundType.STONE).instabreak().noOcclusion()));
 
     public static final RegistryObject<Block> TABAKKUCHEN = registerBlock("tabakkuchen",
-            () -> new TabakkuchenBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).strength(0.5f).noOcclusion().sound(SoundType.SLIME_BLOCK)));
+            () -> new TabakkuchenBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).strength(0.5f).noOcclusion().sound(SoundType.SLIME_BLOCK)));
     public static final RegistryObject<Block> TABAKKUCHEN_ZIG = registerBlock("tabakkuchen_zig",
-            () -> new TabakkuchenZigBlock(BlockBehaviour.Properties.copy(Blocks.CAKE).strength(0.5f).noOcclusion().sound(SoundType.SLIME_BLOCK)));
+            () -> new TabakkuchenZigBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CAKE).strength(0.5f).noOcclusion().sound(SoundType.SLIME_BLOCK)));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     private static <T extends Block> RegistryObject<Item> registerBlockItem(String name, RegistryObject<T> block) {
