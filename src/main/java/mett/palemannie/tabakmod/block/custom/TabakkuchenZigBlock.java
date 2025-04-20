@@ -1,15 +1,19 @@
 package mett.palemannie.tabakmod.block.custom;
 
+import com.mojang.serialization.MapCodec;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -19,11 +23,13 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CandleCakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -46,7 +52,7 @@ public class TabakkuchenZigBlock extends Block {
     protected static final VoxelShape ZIGFORM = Block.box(7.5D, 6.0D, 7.5D, 8.5D, 11.0D, 8.5D);
     protected static final VoxelShape SHAPE = Shapes.or(KUCHENFORM, ZIGFORM);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    /*public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack itemstack = pPlayer.getItemInHand(pHand);
         boolean flag = pState.getValue(LIT);
         if ((itemstack.is(Items.FLINT_AND_STEEL) || itemstack.is(Items.FIRE_CHARGE)) && !flag) {
@@ -64,8 +70,49 @@ public class TabakkuchenZigBlock extends Block {
             pPlayer.getFoodData().eat(1, 0.1f);
         }
         return InteractionResult.SUCCESS;
+    }*/
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        boolean islit = pState.getValue(LIT);
+        //Anzünden der Zigarette
+        if((pStack.is(Items.FLINT_AND_STEEL)||pStack.is(Items.FIRE_CHARGE)) && !islit){
+            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
+            if(pStack.is(Items.FLINT_AND_STEEL)){ pLevel.playSound(null, pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS,1f,1f);}
+            if(pStack.is(Items.FIRE_CHARGE)) { pLevel.playSound(null, pPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS,1f,1f);}
+        }
+        //Löschen der Zigarette (außer Zündquellen)
+        if( !(pStack.is(Items.FLINT_AND_STEEL) || pStack.is(Items.FIRE_CHARGE)) && islit){
+            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
+            pLevel.playSound(null, pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,1f,1f);
+        }
+        //Herausnehmen der Zigarette
+        if( !(pStack.is(Items.FLINT_AND_STEEL) || pStack.is(Items.FIRE_CHARGE)) && !islit){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKKUCHEN.get().defaultBlockState().setValue(BISSE, 0));
+            popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
+            pPlayer.getFoodData().eat(1, 0.1f);
+        }
+
+
+        return ItemInteractionResult.SUCCESS;
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        boolean islit = pState.getValue(LIT);
+        if(!islit){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKKUCHEN.get().defaultBlockState().setValue(BISSE, 0));
+            popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
+            pPlayer.getFoodData().eat(1, 0.1f);
+        } else {
+            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
+            pLevel.playSound(null, pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,1f,1f);
+        }
+
+        return InteractionResult.SUCCESS;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
         return SHAPE;
     }
@@ -85,14 +132,13 @@ public class TabakkuchenZigBlock extends Block {
     public boolean hasAnalogOutputSignal(BlockState pState) {
         return true;
     }
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
-        return false;
-    }
 
-    public ItemStack getCloneItemStack(BlockGetter pLevel, BlockPos pPos, BlockState pState) {
+    @Override
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return new ItemStack(ModBlocks.TABAKKUCHEN.get());
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void raucheAmbiente(Level level, BlockPos pos, RandomSource rnd){
         float chance = 0.33f;
         double rx=rnd.nextGaussian()/100;

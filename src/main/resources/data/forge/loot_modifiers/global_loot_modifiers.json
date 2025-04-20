@@ -1,6 +1,7 @@
 {
-  "replace": false,
   "entries": [
-    "tabakmod:tabaksamen_aus_gras"
-  ]
+    "tabakmod:tabaksamen_aus_kurzem_gras",
+    "tabakmod:tabaksamen_aus_langem_gras"
+  ],
+  "replace": false
 }

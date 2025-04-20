@@ -80,16 +80,16 @@ public class PfeifenItem extends Item {
                 if (chance >= random.nextFloat()) {
                     paffe(pLevel, pPlayer);
                 }
-                pStack.hurtAndBreak(1, pPlayer, p -> {
-                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
-                    ItemStack itemstack = new ItemStack(ModItems.PFEIFE_LEER.get());
-                    p.addItem(itemstack);
-                });
+
+                pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
+
                 if (pStack.getDamageValue() >= pStack.getMaxDamage() - 1) {
+                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     exhaliere(pLevel, pPlayer);
                     RandomSource rdm = RandomSource.create();
                     float r = (float) rdm.nextInt(8, 12) / 10;
                     pPlayer.playSound(ModSounds.FERTIG_GERAUCHT.get(), 1f, r);
+                    pPlayer.addItem(new ItemStack(ModItems.PFEIFE_LEER.get()));
                 }
             }
         } else releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);

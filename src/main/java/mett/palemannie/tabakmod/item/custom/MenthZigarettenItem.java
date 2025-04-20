@@ -79,16 +79,16 @@ public class MenthZigarettenItem extends Item {
             super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
             if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack) - 15)) {
                 paffe(pLevel, pPlayer);
-                pStack.hurtAndBreak(1, pPlayer, p -> {
-                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
-                    ItemStack itemstack = new ItemStack(ModItems.ZIGARETTENSTUMMEL.get());
-                    p.drop(itemstack, true);
-                });
+
+                pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
+
                 if (pStack.getDamageValue() >= pStack.getMaxDamage() - 1) {
+                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     RandomSource rdm = RandomSource.create();
                     float r = (float) rdm.nextInt(8, 12) / 10;
                     pPlayer.playSound(ModSounds.FERTIG_GERAUCHT.get(), 1f, r);
                     exhaliere(pLevel, pPlayer);
+                    pPlayer.drop(new ItemStack(ModItems.ZIGARETTENSTUMMEL.get()), false);
                 }
             }
         } else releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);

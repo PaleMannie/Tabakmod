@@ -22,6 +22,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 
 public class DschointItem extends Item {
     public DschointItem(Properties pProperties) { super(pProperties); }
@@ -83,16 +85,14 @@ public class DschointItem extends Item {
                 if (pRemainingUseDuration % 4 == 0) {
                     paffe(pLevel, pPlayer);
                 }
-                pStack.hurtAndBreak(1, pPlayer, p -> {
-                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
-                    ItemStack itemstack = new ItemStack(ModItems.KAKERLAKE.get());
-                    p.drop(itemstack, true);
-                });
+                pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 if (pStack.getDamageValue() >= pStack.getMaxDamage() - 1) {
+                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     RandomSource rdm = RandomSource.create();
                     float r = (float) rdm.nextInt(9, 11) / 10;
                     pPlayer.playSound(ModSounds.DSCHOINT.get(), 1f, r);
                     exhaliere(pLevel, pPlayer);
+                    pPlayer.drop(new ItemStack(ModItems.KAKERLAKE.get()), false);
                 }
             }
         } else releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);

@@ -1,9 +1,11 @@
 package mett.palemannie.tabakmod.item.custom;
 
 import mett.palemannie.tabakmod.effect.ModEffects;
+import net.minecraft.core.Holder;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +26,7 @@ public class KautabakItem extends Item implements IForgeMobEffect {
         player.playSound(SoundEvents.SLIME_JUMP, 3f, 1f);
         player.getFoodData().eat(2, 2);
 
-        player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.get(), zeit, 0));
+        player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), zeit, 0));
         player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 150, 0));
         player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, zeit, 0));
     }

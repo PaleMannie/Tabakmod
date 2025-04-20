@@ -4,6 +4,7 @@ import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -24,7 +25,7 @@ public class ZigSchachtelItem extends Item {
         ItemStack zig_menthol = new ItemStack(ModItems.ZIGARETTE_MENTHOL.get());
         ItemStack zig_scheise = new ItemStack(ModItems.ZIGARETTE_SCHEISE.get());
 
-        stack.hurtAndBreak(1,pPlayer, p ->{
+        stack.hurtAndBreak(1,pPlayer, EquipmentSlot.MAINHAND); /*p ->{
             if(this == ModItems.ZIGARETTENSCHACHTEL.get()){
                 ItemStack z = new ItemStack(ModItems.ZIGARETTENSCHACHTEL_LEER.get());
                 p.setItemInHand(pUsedHand,z);
@@ -38,9 +39,13 @@ public class ZigSchachtelItem extends Item {
                 p.setItemInHand(pUsedHand,x);
             }
             p.stopUsingItem();
-        });
+        });*/
+
         if(stack.getDamageValue() >= stack.getMaxDamage()-1){
             pPlayer.playSound(SoundEvents.BOOK_PAGE_TURN);
+            if(this == ModItems.ZIGARETTENSCHACHTEL.get()){ pPlayer.setItemInHand(pUsedHand, new ItemStack(ModItems.ZIGARETTENSCHACHTEL_LEER.get())); }
+            if(this == ModItems.ZIGARETTENSCHACHTEL_GROSS.get()){ pPlayer.setItemInHand(pUsedHand, new ItemStack(ModItems.ZIGARETTENSCHACHTEL_GROSS_LEER.get())); }
+            if(this == ModItems.ZIGARETTENSCHACHTEL_MENTHOL.get()){ pPlayer.setItemInHand(pUsedHand, new ItemStack(ModItems.ZIGARETTENSCHACHTEL_MENTHOL_LEER.get())); }
             pPlayer.stopUsingItem();
         }
         pPlayer.playSound(SoundEvents.CHAIN_PLACE);

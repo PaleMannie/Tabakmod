@@ -1,0 +1,14 @@
+{
+  "type": "tabakmod:add_item",
+  "conditions": [
+    {
+      "condition": "block_state_property",
+      "block": "minecraft:tall_grass"
+    },
+    {
+      "chance": 0.001,
+      "condition": "minecraft:random_chance"
+    }
+  ],
+  "item": "tabakmod:tabaksamen"
+}

@@ -79,16 +79,16 @@ public class ZigarrenItem extends Item {
             super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
             if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack) - 24)) {
                 paffe(pLevel, pPlayer);
-                pStack.hurtAndBreak(1, pPlayer, p -> {
-                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
-                    ItemStack itemstack = new ItemStack(ModItems.ZIGARRENSTUMMEL.get());
-                    p.drop(itemstack, true);
-                });
+
+                pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
+
                 if (pStack.getDamageValue() >= pStack.getMaxDamage() - 1) {
+                    gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     exhaliere(pLevel, pPlayer);
                     RandomSource rdm = RandomSource.create();
                     float r = (float) rdm.nextInt(8, 12) / 10;
                     pPlayer.playSound(ModSounds.FERTIG_GERAUCHT.get(), 1f, r);
+                    pPlayer.drop(new ItemStack(ModItems.ZIGARRENSTUMMEL.get()), false);
                 }
             }
         } else releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);

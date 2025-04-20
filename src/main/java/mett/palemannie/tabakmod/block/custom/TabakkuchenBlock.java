@@ -1,5 +1,6 @@
 package mett.palemannie.tabakmod.block.custom;
 
+import com.mojang.serialization.MapCodec;
 import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.effect.ModEffects;
 import mett.palemannie.tabakmod.item.ModItems;
@@ -9,9 +10,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -19,8 +22,10 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CakeBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.pathfinder.PathComputationType;
@@ -33,16 +38,22 @@ import static mett.palemannie.tabakmod.block.custom.TabakkuchenZigBlock.LIT;
 public class TabakkuchenBlock extends Block {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public static final MapCodec<TabakkuchenBlock> CODEC = simpleCodec(TabakkuchenBlock::new);
+
     public TabakkuchenBlock(Properties pProperties) {
         super(pProperties);
     }
     public static final int MAX_BISSE = 13;
-    public static final IntegerProperty BISSE = IntegerProperty.create("bisse", 0, MAX_BISSE);
+    public static final IntegerProperty BISSE = /*BlockStateProperties.BITES; */ IntegerProperty.create("bisse", 0, MAX_BISSE);
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BISSE);
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
+    public MapCodec<TabakkuchenBlock> codec() {
+        return CODEC;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /*public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
         ItemStack stack = pPlayer.getItemInHand(pHand);
 
         if(!pLevel.isClientSide && stack.is(ModItems.ZIGARETTE.get()) && (pHand == InteractionHand.MAIN_HAND || pHand == InteractionHand.OFF_HAND) && pState.getValue(BISSE) == 0){
@@ -65,6 +76,35 @@ public class TabakkuchenBlock extends Block {
         }
 
         return eat(pLevel, pPos, pState, pPlayer, pHand);
+    }*/
+
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
+        Item itemStack = pStack.getItem();
+        if(itemStack.equals(ModItems.ZIGARETTE.get()) && pState.getValue(BISSE) == 0){
+            if(!pPlayer.isCreative()){
+                pStack.shrink(1);
+            }
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKKUCHEN_ZIG.get().defaultBlockState().setValue(LIT, false));
+            pLevel.playSound(null, pPos, ModSounds.PFEIFE_LADEN.get(), SoundSource.BLOCKS, 2f, 1f);
+            return ItemInteractionResult.SUCCESS;
+
+        }
+        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+    }
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if (pLevel.isClientSide) {
+            if (eat(pLevel, pPos, pState, pPlayer, pPlayer.getUsedItemHand()).consumesAction()) {
+                return InteractionResult.SUCCESS;
+            }
+
+            if (pPlayer.getItemInHand(InteractionHand.MAIN_HAND).isEmpty()) {
+                return InteractionResult.CONSUME;
+            }
+        }
+        return eat(pLevel, pPos, pState, pPlayer, pPlayer.getUsedItemHand());
     }
 
     protected static InteractionResult eat(LevelAccessor pLevel, BlockPos pPos, BlockState pState, Player pPlayer, InteractionHand pHand) {
@@ -90,14 +130,17 @@ public class TabakkuchenBlock extends Block {
         }
         return InteractionResult.SUCCESS;
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         return pLevel.getBlockState(pPos.below()).isSolid();
     }
     public boolean hasAnalogOutputSignal(BlockState pState) {
         return true;
     }
-    public boolean isPathfindable(BlockState pState, BlockGetter pLevel, BlockPos pPos, PathComputationType pType) {
+
+    @Override
+    protected boolean isPathfindable(BlockState p_60475_, PathComputationType p_60478_) {
         return false;
     }
 
