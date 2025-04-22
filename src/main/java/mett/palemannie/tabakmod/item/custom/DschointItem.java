@@ -132,7 +132,6 @@ public class DschointItem extends Item {
 ////////////////////////////////////////////////////SONSTIGE METHODEN////////////////////////////////////////////////////////////////////
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }
-    @Override
     public int getUseDuration(ItemStack pStack) { return 100; }
     public UseAnim getUseAnimation(ItemStack pStack) { return UseAnim.BOW; }
     @Override

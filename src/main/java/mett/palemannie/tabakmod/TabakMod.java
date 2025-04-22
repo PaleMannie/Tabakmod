@@ -8,7 +8,6 @@ import mett.palemannie.tabakmod.item.ModCreativeModeTabs;
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.loot.ModLootModifiers;
 import mett.palemannie.tabakmod.networking.ModMessages;
-import mett.palemannie.tabakmod.paintings.ModPaintings;
 import mett.palemannie.tabakmod.sound.ModSounds;
 import mett.palemannie.tabakmod.util.ModItemProperties;
 import mett.palemannie.tabakmod.villager.ModVillagers;
@@ -46,7 +45,6 @@ public class TabakMod {
         ModLootModifiers.register(modEventBus);
         ModVillagers.register(modEventBus);
         ModSounds.register(modEventBus);
-        ModPaintings.register(modEventBus);
         ModEffects.register(modEventBus);
         ModEntities.register(modEventBus);
         ModCreativeModeTabs.register(modEventBus);

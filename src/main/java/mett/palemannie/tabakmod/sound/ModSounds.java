@@ -21,9 +21,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> SCHEISEZIG = registerSoundEvent("scheisezig");
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     private static RegistryObject<SoundEvent> registerSoundEvent(String name) {
-        ResourceLocation id = new ResourceLocation(TabakMod.MODID, name);
-        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(id));
+        return SOUND_EVENTS.register(name, () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, name)));
     }
 
     public static void register(IEventBus eventBus) {

@@ -79,7 +79,6 @@ public class KautabakItem extends Item implements IForgeMobEffect {
         return true;
     }
 
-    @Override
     public int getUseDuration(ItemStack pStack) {
         return 50;
     }

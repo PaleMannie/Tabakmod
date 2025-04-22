@@ -97,7 +97,6 @@ public class KakerlakenItem extends Item {
         return true;
     }
 
-    @Override
     public int getUseDuration(ItemStack pStack) {
         return 20;
     }

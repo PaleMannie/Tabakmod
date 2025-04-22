@@ -1,5 +1,6 @@
 package mett.palemannie.tabakmod.util;
 
+import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.resources.ResourceLocation;
@@ -15,7 +16,7 @@ public class ModItemProperties {
         bringTabakproduktZumGluehenBeimZiehen(ModItems.ZIGARETTE_SCHEISE.get());
     }
     private static void bringTabakproduktZumGluehenBeimZiehen(Item item) {
-        ItemProperties.register(item, new ResourceLocation("am_ziehen"), (itemStack, level, entity, i) -> {
+        ItemProperties.register(item, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"am_ziehen"), (itemStack, level, entity, i) -> {
             return entity != null && entity.isUsingItem() && entity.getUseItem() == itemStack ? 1.0F : 0.0F;
         });
     }

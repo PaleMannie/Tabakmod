@@ -7,6 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -65,12 +66,14 @@ public class ZigarrenItem extends Item {
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
+        ItemStack pStack = pPlayer.getItemInHand(pUsedHand);
         if(!pPlayer.isUnderWater()) {
             RandomSource rdm = RandomSource.create();
             float r = (float) rdm.nextInt(8, 12) / 10;
             pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
-            return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
-        } else return ItemStack.EMPTY.use(pLevel, pPlayer, pUsedHand);
+            pPlayer.startUsingItem(pUsedHand);
+            return InteractionResultHolder.success(pStack);//ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
+        } else return InteractionResultHolder.fail(pStack);
     }
 
     @Override
@@ -133,13 +136,10 @@ public class ZigarrenItem extends Item {
     public int getEntityLifespan(ItemStack itemStack, Level level) {
         return 72000;
     }
-    @Override
     public int getUseDuration(ItemStack pStack) {
         return 102;
     }
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.BOW;
-    }
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack pStack) { return UseAnim.BOW; }
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override

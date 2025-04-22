@@ -132,7 +132,6 @@ public class PfeifenItem extends Item {
     public int getEntityLifespan(ItemStack itemStack, Level level) {
     return 72000;
     }
-    @Override
     public int getUseDuration(ItemStack pStack) {
         return 102;
     }

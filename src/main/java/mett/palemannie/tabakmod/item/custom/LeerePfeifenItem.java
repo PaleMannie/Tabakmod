@@ -70,7 +70,6 @@ public class LeerePfeifenItem extends Item {
 //////////////////////////////////////////////SONSTIGE METHODEN/////////////////////////////////////////////////////////
     @Override
     public UseAnim getUseAnimation(ItemStack pStack) { return UseAnim.BRUSH; }
-    @Override
     public int getUseDuration(ItemStack pStack) { return 77; }
 
     @Override
