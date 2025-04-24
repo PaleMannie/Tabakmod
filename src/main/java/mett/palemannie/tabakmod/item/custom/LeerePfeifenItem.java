@@ -5,12 +5,14 @@ import mett.palemannie.tabakmod.sound.ModSounds;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.level.Level;
 
 public class LeerePfeifenItem extends Item {
@@ -19,10 +21,9 @@ public class LeerePfeifenItem extends Item {
     }
 ////////////////////////////////////////////EIGENE METHODEN/////////////////////////////////////////////////////////////
 
-////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
-        ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
+    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         ItemStack derPassendeTabak = new ItemStack(ModItems.MITTLERER_TABAK_BEHANDELT.get());
         boolean istTabakImInventar = pPlayer.getInventory().contains(derPassendeTabak);
         if(istTabakImInventar || pPlayer.isCreative()){
@@ -31,9 +32,9 @@ public class LeerePfeifenItem extends Item {
             float r = (float)rdm.nextInt(8,12)/10;
             pPlayer.playSound(SoundEvents.COMPOSTER_READY, 0.5f,r);
 
-            return InteractionResultHolder.consume(itemstack);
+            return InteractionResult.CONSUME;
         } else {
-        return InteractionResultHolder.fail(itemstack); }
+        return InteractionResult.FAIL; }
     }
 
     @Override
@@ -64,13 +65,14 @@ public class LeerePfeifenItem extends Item {
     }
 
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+    public boolean releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         super.releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
+        return false;
     }
 //////////////////////////////////////////////SONSTIGE METHODEN/////////////////////////////////////////////////////////
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) { return UseAnim.BRUSH; }
-    public int getUseDuration(ItemStack pStack) { return 77; }
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) { return ItemUseAnimation.BRUSH; }
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) { return 77; }
 
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }

@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -16,8 +16,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -48,8 +48,8 @@ public class PfeifenItem extends Item {
         }
     }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,getUseDuration(stack)-gepaffteZeit+28,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(24*(getUseDuration(stack)-gepaffteZeit))/10,0));
+        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,getUseDuration(stack, player)-gepaffteZeit+28,0));
+        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(24*(getUseDuration(stack, player)-gepaffteZeit))/10,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,2,0));
     }
 
@@ -60,9 +60,9 @@ public class PfeifenItem extends Item {
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,3,0));
         player.addEffect(new MobEffectInstance(MobEffects.HARM,1,1));
     }
-////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
+    public InteractionResult use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if(!pPlayer.isUnderWater()) {
             RandomSource rdm = RandomSource.create();
             float r = (float) rdm.nextInt(8, 12) / 10;
@@ -76,7 +76,7 @@ public class PfeifenItem extends Item {
             super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
             RandomSource random = RandomSource.create();
             float chance = 2f/3f;
-            if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack) - 10)) {
+            if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - 10)) {
                 if (chance >= random.nextFloat()) {
                     paffe(pLevel, pPlayer);
                 }
@@ -95,9 +95,9 @@ public class PfeifenItem extends Item {
         } else releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);
     }
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+    public boolean releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         super.releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
-        if(pLivingEntity instanceof Player pPlayer && (pTimeCharged <= getUseDuration(pStack) - 10)){
+        if(pLivingEntity instanceof Player pPlayer && (pTimeCharged <= getUseDuration(pStack, pLivingEntity) - 10)){
                 gibRauchStandardEffekte(pPlayer, pStack, pTimeCharged);
                 exhaliere(pLevel,pPlayer);
             RandomSource rdm = RandomSource.create();
@@ -105,6 +105,7 @@ public class PfeifenItem extends Item {
             pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.FERTIG_GERAUCHT.get(), SoundSource.PLAYERS, 1f, r);
         }
         this.stopUsing(pLivingEntity);
+        return false;
     }
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
@@ -123,7 +124,7 @@ public class PfeifenItem extends Item {
     private void stopUsing(LivingEntity pUser) {
         if(pUser instanceof Player player){
             player.stopUsingItem();
-            player.getCooldowns().addCooldown(this,2);
+            player.getCooldowns().addCooldown(ModItems.PFEIFE.getId(),2);
         }
     }
 
@@ -132,11 +133,11 @@ public class PfeifenItem extends Item {
     public int getEntityLifespan(ItemStack itemStack, Level level) {
     return 72000;
     }
-    public int getUseDuration(ItemStack pStack) {
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
         return 102;
     }
-    public UseAnim getUseAnimation(ItemStack pStack) {
-        return UseAnim.BOW;
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) {
+        return ItemUseAnimation.BOW;
     }
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }

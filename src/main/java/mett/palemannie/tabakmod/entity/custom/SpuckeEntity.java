@@ -8,6 +8,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.phys.BlockHitResult;
@@ -18,11 +19,19 @@ public class SpuckeEntity extends ThrowableItemProjectile {
     public SpuckeEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
-    public SpuckeEntity(Level pLevel) {
-        super(ModEntities.SPUCKE.get(), pLevel);
+    public SpuckeEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
+        this(livingEntity.getX(), livingEntity.getEyeY() - 0.10000000149011612, livingEntity.getZ(), pLevel, stack);
+        this.setOwner(livingEntity);
     }
-    public SpuckeEntity(Level pLevel, LivingEntity pLivingEntity) {
-        super(ModEntities.SPUCKE.get(), pLivingEntity, pLevel);
+
+    public SpuckeEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
+        super(ModEntities.SPUCKE.get(), x, y, z, pLevel, stack);
+        this.setItem(stack);
+
+    }
+
+    public SpuckeEntity( Level pLevel, LivingEntity pLivingEntity) {
+        super(ModEntities.SPUCKE.get(), pLevel);
     }
 
     @Override
@@ -53,7 +62,7 @@ public class SpuckeEntity extends ThrowableItemProjectile {
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        entity.hurt(this.damageSources().thrown(this, this.getOwner()), 1f);
+        entity.hurt(damageSources().thrown(this, this.getOwner()), 1f);
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte) 3);
             this.discard();

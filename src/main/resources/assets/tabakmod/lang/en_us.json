@@ -35,22 +35,22 @@
   "item.tabakmod.tabakblatt": "Tobacco Leaf",
   "item.tabakmod.deckblatt": "Wrapper Leaf",
 
-  "block.tabakmod.tabakpflanze": "Tobacco Plant",
-  "block.tabakmod.tabakblaetter_getrocknet": "Dried Tobacco Leaves",
-  "block.tabakmod.tabakblaetter_fast_getrocknet": "Nearly dried Tobacco Leaves",
-  "block.tabakmod.tabakblaetter_halb_getrocknet": "Half dried Tobacco Leaves",
-  "block.tabakmod.tabakblaetter_teil_getrocknet": "Lightly dried Tobacco Leaves",
-  "block.tabakmod.tabakblaetter": "Tobacco Leaves",
+  "item.tabakmod.tabakpflanze": "Tobacco Plant",
+  "item.tabakmod.tabakblaetter_getrocknet": "Dried Tobacco Leaves",
+  "item.tabakmod.tabakblaetter_fast_getrocknet": "Nearly dried Tobacco Leaves",
+  "item.tabakmod.tabakblaetter_halb_getrocknet": "Half dried Tobacco Leaves",
+  "item.tabakmod.tabakblaetter_teil_getrocknet": "Lightly dried Tobacco Leaves",
+  "item.tabakmod.tabakblaetter": "Tobacco Leaves",
 
-  "block.tabakmod.getrockneter_tabakballen": "Dried Tobacco Bale",
-  "block.tabakmod.heller_tabakballen": "Bright Tobacco Bale",
-  "block.tabakmod.mittlerer_tabakballen": "Medium Tobacco Bale",
-  "block.tabakmod.dunkler_tabakballen": "Dark Tobacco Bale",
+  "item.tabakmod.getrockneter_tabakballen": "Dried Tobacco Bale",
+  "item.tabakmod.heller_tabakballen": "Bright Tobacco Bale",
+  "item.tabakmod.mittlerer_tabakballen": "Medium Tobacco Bale",
+  "item.tabakmod.dunkler_tabakballen": "Dark Tobacco Bale",
 
-  "block.tabakmod.aschenbecher_neu": "Ash Tray",
-  "block.tabakmod.aschenbecher_gross": "Big Ash Tray",
+  "item.tabakmod.aschenbecher_neu": "Ash Tray",
+  "item.tabakmod.aschenbecher_gross": "Big Ash Tray",
 
-  "block.tabakmod.tabakkuchen": "Tobacco Cake",
+  "item.tabakmod.tabakkuchen": "Tobacco Cake",
 
   "entity.minecraft.villager.tabakmod.tabakhaendler": "Tobacco Merchant",
 
@@ -117,7 +117,6 @@
   "advancements.tabakmod.zig.desc": "It is called a cigarette",
   "advancements.tabakmod.mehr": "The sensation is wonderful",
   "advancements.tabakmod.mehr.desc": "We need some more",
-
 
   "creativemodetab.tabak_tab": "Super Tobacco Mod"
 }

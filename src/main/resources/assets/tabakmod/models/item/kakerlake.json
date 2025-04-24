@@ -8,8 +8,13 @@
     "gui": {
       "parent": "tabakmod:item/kakerlake_2d"
     },
-
+    "ground": {
+      "parent": "tabakmod:item/kakerlake_2d"
+    },
     "fixed": {
+      "parent": "tabakmod:item/kakerlake_2d"
+    },
+    "particle": {
       "parent": "tabakmod:item/kakerlake_2d"
     }
   }

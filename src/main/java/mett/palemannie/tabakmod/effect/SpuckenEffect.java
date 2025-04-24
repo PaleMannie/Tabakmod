@@ -2,6 +2,7 @@ package mett.palemannie.tabakmod.effect;
 
 import mett.palemannie.tabakmod.networking.ModMessages;
 import mett.palemannie.tabakmod.networking.packets.SpuckenC2SPacket;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.LivingEntity;
@@ -21,7 +22,7 @@ public class SpuckenEffect extends MobEffect {
     void resetCounter2(int c) { c = counter2 = basis2; }
 
     @Override
-    public boolean applyEffectTick(LivingEntity pLivingEntity, int pAmplifier) {
+    public boolean applyEffectTick(ServerLevel sLevel, LivingEntity pLivingEntity, int pAmplifier) {
         if(pLivingEntity.level().isClientSide()) {
             counter--;
             counter2--;
@@ -35,7 +36,7 @@ public class SpuckenEffect extends MobEffect {
                 resetCounter2(counter2);
             }
         }
-        //super.applyEffectTick(pLivingEntity, pAmplifier);
+        //super.applyEffectTick(sLevel, pLivingEntity, pAmplifier);
         return true;
     }
 

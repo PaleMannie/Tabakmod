@@ -35,22 +35,22 @@
   "item.tabakmod.tabakblatt": "Tabakblatt",
   "item.tabakmod.deckblatt": "Deckblatt",
 
-  "block.tabakmod.tabakpflanze": "Tabakpflanze",
-  "block.tabakmod.tabakblaetter_getrocknet": "Getrocknete Tabakblätter",
-  "block.tabakmod.tabakblaetter_fast_getrocknet": "Fast getrocknete Tabakblätter",
-  "block.tabakmod.tabakblaetter_halb_getrocknet": "Halb getrocknete Tabakblätter",
-  "block.tabakmod.tabakblaetter_teil_getrocknet": "Leicht getrocknete Tabakblätter",
-  "block.tabakmod.tabakblaetter": "Tabakblätter",
+  "item.tabakmod.tabakpflanze": "Tabakpflanze",
+  "item.tabakmod.tabakblaetter_getrocknet": "Getrocknete Tabakblätter",
+  "item.tabakmod.tabakblaetter_fast_getrocknet": "Fast getrocknete Tabakblätter",
+  "item.tabakmod.tabakblaetter_halb_getrocknet": "Halb getrocknete Tabakblätter",
+  "item.tabakmod.tabakblaetter_teil_getrocknet": "Leicht getrocknete Tabakblätter",
+  "item.tabakmod.tabakblaetter": "Tabakblätter",
 
-  "block.tabakmod.getrockneter_tabakballen": "Getrockneter Tabakballen",
-  "block.tabakmod.heller_tabakballen": "Heller Tabakballen",
-  "block.tabakmod.mittlerer_tabakballen": "Mittlerer Tabakballen",
-  "block.tabakmod.dunkler_tabakballen": "Dunkler Tabakballen",
+  "item.tabakmod.getrockneter_tabakballen": "Getrockneter Tabakballen",
+  "item.tabakmod.heller_tabakballen": "Heller Tabakballen",
+  "item.tabakmod.mittlerer_tabakballen": "Mittlerer Tabakballen",
+  "item.tabakmod.dunkler_tabakballen": "Dunkler Tabakballen",
 
-  "block.tabakmod.aschenbecher_neu": "Aschenbecher",
-  "block.tabakmod.aschenbecher_gross": "Großer Aschenbecher",
+  "item.tabakmod.aschenbecher_neu": "Aschenbecher",
+  "item.tabakmod.aschenbecher_gross": "Großer Aschenbecher",
 
-  "block.tabakmod.tabakkuchen": "Tabakkuchen",
+  "item.tabakmod.tabakkuchen": "Tabakkuchen",
 
   "entity.minecraft.villager.tabakmod.tabakhaendler": "Tabakhändler",
 

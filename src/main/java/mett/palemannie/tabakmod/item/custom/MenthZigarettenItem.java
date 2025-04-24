@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -16,8 +16,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
@@ -50,8 +50,8 @@ public class MenthZigarettenItem extends Item {
             }
         }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,(getUseDuration(stack)-gepaffteZeit),0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(getUseDuration(stack)-gepaffteZeit)*3,0));
+        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,(getUseDuration(stack, player)-gepaffteZeit),0));
+        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(getUseDuration(stack, player)-gepaffteZeit)*3,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,1,0));
     }
 
@@ -62,9 +62,9 @@ public class MenthZigarettenItem extends Item {
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,2,0));
         player.addEffect(new MobEffectInstance(MobEffects.HARM,1,0));
     }
-////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
+    public InteractionResult use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
         if(!pPlayer.isUnderWater()) {
             RandomSource rdm = RandomSource.create();
             float r = (float) rdm.nextInt(8, 12) / 10;
@@ -77,7 +77,7 @@ public class MenthZigarettenItem extends Item {
     public void onUseTick(Level pLevel, LivingEntity pLivingEntity, ItemStack pStack, int pRemainingUseDuration) {
         if(!pLivingEntity.isUnderWater()) {
             super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
-            if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack) - 15)) {
+            if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - 15)) {
                 paffe(pLevel, pPlayer);
 
                 pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
@@ -95,9 +95,9 @@ public class MenthZigarettenItem extends Item {
     }
 
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+    public boolean releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         super.releaseUsing(pStack, pLevel, pLivingEntity, pTimeCharged);
-        if(pLivingEntity instanceof Player pPlayer && (pTimeCharged <= getUseDuration(pStack) - 15)) {
+        if(pLivingEntity instanceof Player pPlayer && (pTimeCharged <= getUseDuration(pStack, pLivingEntity) - 15)) {
             gibRauchStandardEffekte(pPlayer, pStack, pTimeCharged);
             exhaliere(pLevel, pPlayer);
             RandomSource rdm = RandomSource.create();
@@ -105,6 +105,7 @@ public class MenthZigarettenItem extends Item {
             pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.FERTIG_GERAUCHT.get(), SoundSource.PLAYERS, 1f, r);
         }
         this.stopUsing(pLivingEntity);
+        return false;
     }
 
     @Override
@@ -121,14 +122,14 @@ public class MenthZigarettenItem extends Item {
     private void stopUsing(LivingEntity pUser) {
         if(pUser instanceof Player player){
             player.stopUsingItem();
-            player.getCooldowns().addCooldown(this,2);
+            player.getCooldowns().addCooldown(ModItems.ZIGARETTE_MENTHOL.getId(),2);
         }
     }
 ////////////////////////////////////////////////////SONSTIGE METHODEN////////////////////////////////////////////////////////////////////
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }
-    public int getUseDuration(ItemStack pStack) { return 102; }
-    public UseAnim getUseAnimation(ItemStack pStack) { return UseAnim.BOW; }
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) { return 102; }
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) { return ItemUseAnimation.BOW; }
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override

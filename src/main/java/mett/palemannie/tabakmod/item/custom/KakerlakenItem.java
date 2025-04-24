@@ -1,12 +1,14 @@
 package mett.palemannie.tabakmod.item.custom;
 
+import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResultHolder;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -15,10 +17,11 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ItemUtils;
-import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.client.event.sound.SoundEvent;
 
 public class KakerlakenItem extends Item {
     public KakerlakenItem(Properties pProperties) {
@@ -50,15 +53,22 @@ public class KakerlakenItem extends Item {
             slevel.sendParticles(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE, MausPos.x, MausPos.y-0.2d, MausPos.z, 100, 0.15d, 0d, 0.15d,0.05d);
         }
     }
-////////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////
+/// /////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////
     @Override
-    public InteractionResultHolder<ItemStack> use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
         return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
     }
 
     @Override
-    public void releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
+    public boolean releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity, int pTimeCharged) {
         this.stopUsing(pLivingEntity);
+        return false;
+    }
+
+    @Override
+    public void onUseTick(Level pLevel, LivingEntity pEntity, ItemStack pStack, int pRemainingTime) {
+        pLevel.addParticle(ParticleTypes.EXPLOSION, pEntity.getEyePosition().x + pEntity.getViewVector(1f).x/3, pEntity.getEyePosition().y-0.2f + pEntity.getViewVector(1f).y/3, pEntity.getEyePosition().z + pEntity.getViewVector(1f).z/3, 0f,0f,0f);
+        if(pRemainingTime % 4 == 0 && pRemainingTime < this.getUseDuration(pStack, pEntity)-5) pLevel.playSound(null, pEntity.getX(), pEntity.getY(), pEntity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 1f, 1f);
     }
 
     @Override
@@ -75,13 +85,13 @@ public class KakerlakenItem extends Item {
     }
     private void stopUsing(LivingEntity pUser) {
         if (pUser instanceof Player player) {
-            player.getCooldowns().addCooldown(this, 2);
+            player.getCooldowns().addCooldown(ModItems.KAKERLAKE.getId(), 2);
         }
     }
 ////////////////////////////////////////////////////SONSTIGE METHODEN///////////////////////////////////////////////////
     @Override
-    public UseAnim getUseAnimation(ItemStack pStack) {
-    return UseAnim.EAT;
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) {
+    return ItemUseAnimation.EAT;
 }
 
     @Override
@@ -97,7 +107,7 @@ public class KakerlakenItem extends Item {
         return true;
     }
 
-    public int getUseDuration(ItemStack pStack) {
-        return 20;
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
+        return 19;
     }
 }
