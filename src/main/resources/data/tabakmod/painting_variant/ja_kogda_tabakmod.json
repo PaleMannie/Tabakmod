@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:ja_kogda_tabakmod",
   "height": 3,
-  "width": 3
+  "width": 3,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.ja_kogda_tabakmod.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.ja_kogda_tabakmod.title"
+  }
 }

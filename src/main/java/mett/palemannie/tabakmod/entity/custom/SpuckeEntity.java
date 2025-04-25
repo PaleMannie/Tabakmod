@@ -20,7 +20,7 @@ public class SpuckeEntity extends ThrowableItemProjectile {
         super(pEntityType, pLevel);
     }
     public SpuckeEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
-        this(livingEntity.getX(), livingEntity.getEyeY() - 0.10000000149011612, livingEntity.getZ(), pLevel, stack);
+        this(livingEntity.getX(), livingEntity.getEyeY() - 0.2, livingEntity.getZ(), pLevel, stack);
         this.setOwner(livingEntity);
     }
 

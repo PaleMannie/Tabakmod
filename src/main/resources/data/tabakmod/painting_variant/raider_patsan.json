@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:raider_patsan",
   "height": 2,
-  "width": 2
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.raider_patsan.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.raider_patsan.title"
+  }
 }

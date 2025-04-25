@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:film_film_film",
   "height": 3,
-  "width": 2
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.film_film_film.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.film_film_film.title"
+  }
 }

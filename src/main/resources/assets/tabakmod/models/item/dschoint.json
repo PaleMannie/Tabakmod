@@ -3,14 +3,6 @@
   "textures": {
     "layer0": "tabakmod:item/dschoint"
   },
-  "overrides": [
-    {
-      "predicate": {
-        "minecraft:am_ziehen": 1
-      },
-      "model": "tabakmod:item/dschoint_rauchen"
-    }
-  ],
   "display": {
     "thirdperson_righthand": {
       "rotation": [-45, -90, 0],

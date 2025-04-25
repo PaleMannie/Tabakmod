@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:god_bil_1943",
   "height": 3,
-  "width": 4
+  "width": 4,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.god_bil_1943.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.god_bil_1943.title"
+  }
 }

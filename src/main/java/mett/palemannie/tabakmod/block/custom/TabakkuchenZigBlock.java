@@ -129,7 +129,7 @@ public class TabakkuchenZigBlock extends Block {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    protected ItemStack getCloneItemStack(LevelReader p_376835_, BlockPos p_375399_, BlockState p_375675_, boolean p_376021_) {
         return new ItemStack(ModBlocks.TABAKKUCHEN.get());
     }
 
@@ -149,5 +149,4 @@ public class TabakkuchenZigBlock extends Block {
             raucheAmbiente(pLevel, pPos, pRandom);
         }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

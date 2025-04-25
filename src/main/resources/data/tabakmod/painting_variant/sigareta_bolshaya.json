@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:sigareta_bolshaya",
   "height": 5,
-  "width": 1
+  "width": 1,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.sigareta_bolshaya.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.sigareta_bolshaya.title"
+  }
 }

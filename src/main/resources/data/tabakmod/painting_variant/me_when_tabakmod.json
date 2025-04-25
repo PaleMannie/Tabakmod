@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:me_when_tabakmod",
   "height": 6,
-  "width": 6
+  "width": 6,
+  "author": {
+    "color": "dark_red",
+    "translate": "painting.tabakmod.me_when_tabakmod.author"
+  },
+  "title": {
+    "color": "gold",
+    "translate": "painting.tabakmod.me_when_tabakmod.title"
+  }
 }

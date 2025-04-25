@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:ogromnaya_sigarra",
   "height": 1,
-  "width": 5
+  "width": 5,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.ogromnaya_sigarra.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.ogromnaya_sigarra.title"
+  }
 }

@@ -1,6 +1,5 @@
 package mett.palemannie.tabakmod.loot;
 
-import com.mojang.serialization.Codec;
 import com.mojang.serialization.MapCodec;
 import mett.palemannie.tabakmod.TabakMod;
 import net.minecraftforge.common.loot.IGlobalLootModifier;

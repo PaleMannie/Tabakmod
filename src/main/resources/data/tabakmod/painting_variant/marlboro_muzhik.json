@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:marlboro_muzhik",
   "height": 1,
-  "width": 1
+  "width": 1,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.marlboro_muzhik.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.marlboro_muzhik.title"
+  }
 }

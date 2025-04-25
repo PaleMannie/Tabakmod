@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:piatsot_sigaretov",
   "height": 1,
-  "width": 3
+  "width": 3,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.piatsot_sigaretov.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.piatsot_sigaretov.title"
+  }
 }

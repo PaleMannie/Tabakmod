@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:geroi_marlborowa",
   "height": 1,
-  "width": 1
+  "width": 1,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.geroi_marlborowa.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.geroi_marlborowa.title"
+  }
 }

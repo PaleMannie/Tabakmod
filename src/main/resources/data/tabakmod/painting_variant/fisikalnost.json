@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:fisikalnost",
   "height": 4,
-  "width": 3
+  "width": 3,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.fisikalnost.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.fisikalnost.title"
+  }
 }

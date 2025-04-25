@@ -1,0 +1,28 @@
+{
+  "model": {
+    "type": "minecraft:condition",
+    "on_false": {
+      "type": "minecraft:model",
+      "model": "tabakmod:item/dschoint"
+    },
+    "on_true": {
+      "type": "minecraft:range_dispatch",
+      "entries": [
+        {
+          "model": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint_rauchen"
+          },
+          "threshold": 0.0
+        }
+      ],
+      "fallback": {
+        "type": "minecraft:model",
+        "model": "tabakmod:item/dschoint"
+      },
+      "property": "minecraft:use_duration",
+      "scale": 1.0
+    },
+    "property": "minecraft:using_item"
+  }
+}

@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:idu_kuriu4",
   "height": 1,
-  "width": 2
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.idu_kuriu4.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.idu_kuriu4.title"
+  }
 }

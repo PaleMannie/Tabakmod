@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:kurjashchij_robot",
   "height": 3,
-  "width": 2
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.kurjashchij_robot.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.kurjashchij_robot.title"
+  }
 }

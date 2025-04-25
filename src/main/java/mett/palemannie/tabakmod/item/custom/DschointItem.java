@@ -32,7 +32,7 @@ public class DschointItem extends Item {
             level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PAFFEN.get(), SoundSource.PLAYERS, 1f, r);
         Vec3 MausPos = player.getEyePosition();
         Vec3 SchauWinkel = player.getLookAngle();
-        level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true,
+        level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                 MausPos.x, MausPos.y-0.15d, MausPos.z,
                 SchauWinkel.x/10, SchauWinkel.y/10, SchauWinkel.z/10);
     }
@@ -42,7 +42,7 @@ public class DschointItem extends Item {
             level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PAFFEN.get(), SoundSource.PLAYERS, 1f, r);
         Vec3 MausPos = player.getEyePosition();
         Vec3 SchauWinkel = player.getLookAngle();
-        level.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,true,
+        level.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
                 MausPos.x, MausPos.y-0.2d, MausPos.z,
                 SchauWinkel.x/20, SchauWinkel.y/20, SchauWinkel.z/20);
         if (level instanceof ServerLevel slevel) {

@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:eto_jad",
   "height": 2,
-  "width": 2
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.eto_jad.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.eto_jad.title"
+  }
 }

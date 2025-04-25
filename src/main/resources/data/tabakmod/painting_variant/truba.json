@@ -1,5 +1,13 @@
 {
   "asset_id": "tabakmod:truba",
   "height": 3,
-  "width": 4
+  "width": 4,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.truba.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.truba.title"
+  }
 }
