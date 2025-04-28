@@ -50,20 +50,20 @@ public class DschointItem extends Item {
             }
         }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, (getUseDuration(stack, player)-gepaffteZeit)*10,0));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,(getUseDuration(stack, player)-gepaffteZeit)*10,0));
+        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, (getUseDuration(stack, player)-gepaffteZeit)*10,0));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,(getUseDuration(stack, player)-gepaffteZeit)*10,0));
         player.addEffect(new MobEffectInstance(MobEffects.LEVITATION,10+(getUseDuration(stack, player)-gepaffteZeit)/2,0));
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,98+(getUseDuration(stack, player)-gepaffteZeit)*2,0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,98+(getUseDuration(stack, player)-gepaffteZeit)*2,0));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,(getUseDuration(stack, player)-gepaffteZeit)*2,0));
     }
 
     void gibZuLangesZiehenEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN,1020,1));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,1020,0));
+        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE,1020,1));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,1020,0));
         player.addEffect(new MobEffectInstance(MobEffects.LEVITATION,70,0));
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,300,0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,300,0));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,210,0));
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,0));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,0));
     }
 /// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
     @Override

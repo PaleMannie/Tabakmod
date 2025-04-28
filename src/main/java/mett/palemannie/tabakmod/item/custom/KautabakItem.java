@@ -28,8 +28,8 @@ public class KautabakItem extends Item implements IForgeMobEffect {
         player.getFoodData().eat(2, 2);
 
         player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), zeit, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 150, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, zeit, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 150, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, zeit, 0));
     }
 /// /////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////
     @Override

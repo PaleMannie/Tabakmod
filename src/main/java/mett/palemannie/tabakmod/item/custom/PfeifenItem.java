@@ -48,17 +48,17 @@ public class PfeifenItem extends Item {
         }
     }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,getUseDuration(stack, player)-gepaffteZeit+28,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(24*(getUseDuration(stack, player)-gepaffteZeit))/10,0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,getUseDuration(stack, player)-gepaffteZeit+28,0));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,(24*(getUseDuration(stack, player)-gepaffteZeit))/10,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,2,0));
     }
 
     void gibZuLangesZiehenEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,130,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,250,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,250,0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,130,0));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,250,0));
+        player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE,250,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,3,0));
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,1));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,1));
     }
 /// /////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////
     @Override

@@ -35,8 +35,8 @@ public class ScheisZigarettenItem extends Item {
         level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE,
                 MausPos.x, MausPos.y-0.15d, MausPos.z,
                 SchauWinkel.x/10, SchauWinkel.y/10, SchauWinkel.z/10);
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,4,2));
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,0));
+        player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE,4,2));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,0));
     }
     void exhaliere(Level level, Player player){
             RandomSource rdm = RandomSource.create();
@@ -52,14 +52,14 @@ public class ScheisZigarettenItem extends Item {
             }
         }
     void gibRauchStandardEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,0));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,100,3));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,0));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,100,3));
         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,100,0));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,100,0));
     }
 
     void gibZuLangesZiehenEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,2));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,2));
     }
 /// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
     @Override

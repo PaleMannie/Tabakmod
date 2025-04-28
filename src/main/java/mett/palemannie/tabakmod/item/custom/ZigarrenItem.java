@@ -49,17 +49,17 @@ public class ZigarrenItem extends Item {
         }
     }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,getUseDuration(stack, player)-gepaffteZeit+78,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(getUseDuration(stack, player)-gepaffteZeit)*3,1));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,getUseDuration(stack, player)-gepaffteZeit+78,0));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,(getUseDuration(stack, player)-gepaffteZeit)*3,1));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,1,1));
     }
 
     void gibZuLangesZiehenEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION,180,1));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,300,1));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,300,1));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,180,1));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,300,1));
+        player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE,300,1));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,2,1));
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,2));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,2));
     }
 /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

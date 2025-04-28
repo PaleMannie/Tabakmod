@@ -50,17 +50,17 @@ public class MenthZigarettenItem extends Item {
             }
         }
     void gibRauchStandardEffekte(Player player, ItemStack stack, int gepaffteZeit){
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,(getUseDuration(stack, player)-gepaffteZeit),0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,(getUseDuration(stack, player)-gepaffteZeit)*3,0));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,(getUseDuration(stack, player)-gepaffteZeit),0));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,(getUseDuration(stack, player)-gepaffteZeit)*3,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,1,0));
     }
 
     void gibZuLangesZiehenEffekte(Player player){
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN,150,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST,300,0));
-        player.addEffect(new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE,300,0));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,150,0));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH,300,0));
+        player.addEffect(new MobEffectInstance(MobEffects.RESISTANCE,300,0));
         player.addEffect(new MobEffectInstance(MobEffects.SATURATION,2,0));
-        player.addEffect(new MobEffectInstance(MobEffects.HARM,1,0));
+        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,0));
     }
 /// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
     @Override

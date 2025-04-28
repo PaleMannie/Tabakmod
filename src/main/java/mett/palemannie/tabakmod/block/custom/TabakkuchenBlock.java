@@ -48,31 +48,6 @@ public class TabakkuchenBlock extends Block {
     }
 
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack stack = pPlayer.getItemInHand(pHand);
-
-        if(!pLevel.isClientSide && stack.is(ModItems.ZIGARETTE.get()) && (pHand == InteractionHand.MAIN_HAND || pHand == InteractionHand.OFF_HAND) && pState.getValue(BISSE) == 0){
-            if(!pPlayer.isCreative()){
-                stack.shrink(1);
-            }
-            pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKKUCHEN_ZIG.get().defaultBlockState().setValue(LIT, false));
-            pLevel.playSound(null, pPos, ModSounds.PFEIFE_LADEN.get(), SoundSource.BLOCKS, 2f, 1f);
-            return InteractionResult.FAIL;
-
-        }
-        if (pLevel.isClientSide) {
-            if (eat(pLevel, pPos, pState, pPlayer, pHand).consumesAction()) {
-                return InteractionResult.SUCCESS;
-            }
-
-            if (stack.isEmpty()) {
-                return InteractionResult.CONSUME;
-            }
-        }
-
-        return eat(pLevel, pPos, pState, pPlayer, pHand);
-    }*/
-
     @Override
     protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         Item itemStack = pStack.getItem();
@@ -118,8 +93,8 @@ public class TabakkuchenBlock extends Block {
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_DESTROY, pPos);
             }
             pPlayer.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), 400, 0));
-            pPlayer.addEffect(new MobEffectInstance(MobEffects.DIG_SPEED, 400, 0));
-            pPlayer.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 150, 0));
+            pPlayer.addEffect(new MobEffectInstance(MobEffects.HASTE, 400, 0));
+            pPlayer.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 150, 0));
             return InteractionResult.SUCCESS;
             }
         }

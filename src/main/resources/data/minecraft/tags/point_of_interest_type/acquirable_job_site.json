@@ -1,5 +1,9 @@
 {
-  "values" : [
-    "tabakmod:aschenbecher_poi"
+  "replace": false,
+  "values": [
+    {
+      "id": "tabakmod:aschenbecher_poi",
+      "required": false
+    }
   ]
 }

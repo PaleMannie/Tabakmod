@@ -31,10 +31,10 @@ public class KakerlakenItem extends Item {
     void gibEffekt(Player player){
         player.getFoodData().eat(1, 1);
 
-        player.addEffect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 500, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 500, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, 500, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, 500, 0));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS, 250, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.CONFUSION, 200, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 0));
         player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 50, 0));
     }
 

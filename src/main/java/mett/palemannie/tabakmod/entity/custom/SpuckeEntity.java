@@ -37,7 +37,7 @@ public class SpuckeEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
         super.tick();
-        if (this.isInWaterOrBubble()) {
+        if (this.isInLiquid()) {
             this.discard();
         } else if (this.level().getBlockStates(this.getBoundingBox()).noneMatch(BlockBehaviour.BlockStateBase::isAir)) {
             this.discard();

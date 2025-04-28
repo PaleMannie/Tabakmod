@@ -97,10 +97,6 @@ public class AschenbecherBlock extends Block {
     public boolean canSurvive(BlockState pState, LevelReader pLevel, BlockPos pPos) {
         return !pLevel.isEmptyBlock(pPos.below());
     }
-    /*@Override
-    public BlockState updateShape(BlockState pState, Direction pFacing, BlockState pFacingState, LevelAccessor pLevel, BlockPos pCurrentPos, BlockPos pFacingPos) {
-        return !pState.canSurvive(pLevel, pCurrentPos) ? Blocks.AIR.defaultBlockState() : super.updateShape(pState, pFacing, pFacingState, pLevel, pCurrentPos, pFacingPos);
-    }*/
 
     @Override
     protected BlockState updateShape(BlockState p_51213_, LevelReader p_366089_, ScheduledTickAccess p_363263_, BlockPos p_51217_, Direction p_51214_, BlockPos p_51218_, BlockState p_51215_, RandomSource p_363935_){

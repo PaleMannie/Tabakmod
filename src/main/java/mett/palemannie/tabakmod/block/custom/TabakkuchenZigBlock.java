@@ -23,7 +23,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -46,27 +45,7 @@ public class TabakkuchenZigBlock extends Block {
     protected static final VoxelShape ZIGFORM = Block.box(7.5D, 6.0D, 7.5D, 8.5D, 11.0D, 8.5D);
     protected static final VoxelShape SHAPE = Shapes.or(KUCHENFORM, ZIGFORM);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /*public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack itemstack = pPlayer.getItemInHand(pHand);
-        boolean flag = pState.getValue(LIT);
-        if ((itemstack.is(Items.FLINT_AND_STEEL) || itemstack.is(Items.FIRE_CHARGE)) && !flag) {
-            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
-            if(itemstack.is(Items.FLINT_AND_STEEL)){ pLevel.playSound(null, pPos, SoundEvents.FLINTANDSTEEL_USE, SoundSource.BLOCKS,1f,1f);}
-            if(itemstack.is(Items.FIRE_CHARGE)) { pLevel.playSound(null, pPos, SoundEvents.FIRECHARGE_USE, SoundSource.BLOCKS,1f,1f);}
-        }
-        if( !(itemstack.is(Items.FLINT_AND_STEEL) || itemstack.is(Items.FIRE_CHARGE)) && flag){
-            pLevel.setBlock(pPos, pState.cycle(LIT), 3);
-            pLevel.playSound(null, pPos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS,1f,1f);
-        }
-        if( !(itemstack.is(Items.FLINT_AND_STEEL) || itemstack.is(Items.FIRE_CHARGE)) && !flag){
-            pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKKUCHEN.get().defaultBlockState().setValue(BISSE, 0));
-            popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
-            pPlayer.getFoodData().eat(1, 0.1f);
-        }
-        return InteractionResult.SUCCESS;
-    }*/
-
-    @Override
+@Override
     protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
         boolean islit = pState.getValue(LIT);
         //Anzünden der Zigarette

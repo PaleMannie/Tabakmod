@@ -25,21 +25,7 @@ public class ZigSchachtelItem extends Item {
         ItemStack zig_menthol = new ItemStack(ModItems.ZIGARETTE_MENTHOL.get());
         ItemStack zig_scheise = new ItemStack(ModItems.ZIGARETTE_SCHEISE.get());
 
-        stack.hurtAndBreak(1,pPlayer, EquipmentSlot.MAINHAND); /*p ->{
-            if(this == ModItems.ZIGARETTENSCHACHTEL.get()){
-                ItemStack z = new ItemStack(ModItems.ZIGARETTENSCHACHTEL_LEER.get());
-                p.setItemInHand(pUsedHand,z);
-            }
-            if(this == ModItems.ZIGARETTENSCHACHTEL_GROSS.get()){
-                ItemStack x = new ItemStack(ModItems.ZIGARETTENSCHACHTEL_GROSS_LEER.get());
-                p.setItemInHand(pUsedHand,x);
-            }
-            if(this == ModItems.ZIGARETTENSCHACHTEL_MENTHOL.get()){
-                ItemStack x = new ItemStack(ModItems.ZIGARETTENSCHACHTEL_MENTHOL_LEER.get());
-                p.setItemInHand(pUsedHand,x);
-            }
-            p.stopUsingItem();
-        });*/
+        stack.hurtAndBreak(1,pPlayer, EquipmentSlot.MAINHAND);
 
         if(stack.getDamageValue() >= stack.getMaxDamage()-1){
             pPlayer.playSound(SoundEvents.BOOK_PAGE_TURN);
