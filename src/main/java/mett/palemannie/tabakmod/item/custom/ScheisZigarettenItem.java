@@ -1,11 +1,13 @@
 package mett.palemannie.tabakmod.item.custom;
 
+import com.mojang.blaze3d.platform.IconSet;
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.sound.ModSounds;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -15,15 +17,15 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.ItemUseAnimation;
-import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Set;
 
 
 public class ScheisZigarettenItem extends Item {
@@ -39,9 +41,10 @@ public class ScheisZigarettenItem extends Item {
                 MausPos.x, MausPos.y-0.15d, MausPos.z,
                 SchauWinkel.x/10, SchauWinkel.y/10, SchauWinkel.z/10);
         if(level instanceof ServerLevel sevel){
-        player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHADEN), 4f);
+        player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHEISE_SCHADEN), 4f);
         }
     }
+
     void exhaliere(Level level, Player player){
             RandomSource rdm = RandomSource.create();
             float r = (float)rdm.nextInt(7,13)/10;
@@ -57,7 +60,7 @@ public class ScheisZigarettenItem extends Item {
         }
     void gibRauchStandardEffekte(Player player, Level level){
         if(level instanceof ServerLevel sevel){
-            player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHADEN), 4f);
+            player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHEISE_SCHADEN), 4f);
         }
         player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,100,3));
         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,100,0));
@@ -66,19 +69,66 @@ public class ScheisZigarettenItem extends Item {
 
     void gibZuLangesZiehenEffekte(Player player, Level level){
         if(level instanceof ServerLevel sevel){
-            player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHADEN), 8f);
+            player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.ZIG_SCHEISE_SCHADEN), 8f);
         }
         player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,200,3));
         player.addEffect(new MobEffectInstance(MobEffects.BLINDNESS,200,1));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,200,1));
     }
-/// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////NUTZMETHODEN/////////////////////////////////////////////////////////////
     @Override
     public InteractionResult use(Level pLevel, @NotNull Player pPlayer, @NotNull InteractionHand pUsedHand) {
-        if(!pPlayer.isUnderWater()) {
-            RandomSource rdm = RandomSource.create();
-            float r = (float) rdm.nextInt(8, 12) / 10;
-            pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
+
+        RandomSource rdm = RandomSource.create();
+        float lava = rdm.nextFloat();
+        float r = (float) rdm.nextInt(8, 12) / 10;
+
+        if (!pPlayer.isUnderWater()
+                && (pPlayer.isOnFire()
+                        || pPlayer.isCreative()
+                        || pPlayer.getInventory().hasAnyOf(Set.of(Items.FLINT_AND_STEEL, Items.LAVA_BUCKET, Items.FIRE_CHARGE)))){
+
+            if (pPlayer.isOnFire()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BLAZE_AMBIENT, SoundSource.PLAYERS, 1f, r);
+            if (pPlayer.isCreative()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
+
+            if (!pLevel.isClientSide()) {
+                Inventory inv = pPlayer.getInventory();
+
+                //Prioritätensetzung: 1. Feuerzeug, 2. Lavaeimer, 3. Feuerkugel
+                boolean prio = false;
+                for (int i = 0; i < inv.getContainerSize(); i++) {
+                    ItemStack stack = inv.getItem(i);
+                    if (stack.is(Items.FLINT_AND_STEEL)) {
+                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
+                        stack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
+                        prio = true;
+                        break;
+                    }
+                }
+
+                if (!prio) {
+                    for (int i = 0; i < inv.getContainerSize(); i++) {
+                        ItemStack stack = inv.getItem(i);
+                        if (stack.is(Items.LAVA_BUCKET)) {
+                            if (lava < 0.10f) {
+                                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.PLAYERS, 1f, r);
+                                inv.setItem(i, new ItemStack(Items.BUCKET));
+                            } else pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BUCKET_FILL_LAVA, SoundSource.PLAYERS, 1f, r);
+                            prio = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!prio) {
+                    int slot = inv.findSlotMatchingItem(new ItemStack(Items.FIRE_CHARGE));
+                    if (slot != -1) {
+                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, r);
+                        inv.removeItem(slot, 1);
+                    }
+                }
+            }
+
             return ItemUtils.startUsingInstantly(pLevel, pPlayer, pUsedHand);
         } else return ItemStack.EMPTY.use(pLevel, pPlayer, pUsedHand);
     }
@@ -146,6 +196,7 @@ public class ScheisZigarettenItem extends Item {
             player.getCooldowns().addCooldown(ModItems.ZIGARETTE_SCHEISE.getId(), 2);
         }
     }
+
 ////////////////////////////////////////////////////SONSTIGE METHODEN////////////////////////////////////////////////////////////////////
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }

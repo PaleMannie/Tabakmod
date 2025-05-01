@@ -120,8 +120,18 @@
 
   "death.attack.tabakmod.zig_schaden": "%1$s rauchte seine Lungen weg",
   "death.attack.tabakmod.zig_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
-  "death.attack.tabakmod.spuck_schaden": "%1$s ertrank in der eigenen Spucke",
-  "death.attack.tabakmod.spuck_schaden.player": "%2$s verachtete %1$s sehr",
+  "death.attack.tabakmod.zig_scheise_schaden": "%1$s hat die letzte Zigarette genossen",
+  "death.attack.tabakmod.zig_scheise_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.zigrr_schaden": "%1$s hat einen feinen Geschmack für Tabakprodukte erworben",
+  "death.attack.tabakmod.zigrr_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.zig_menth_schaden": "%1$s brauchte nur eine Zigarette um abzukühlen",
+  "death.attack.tabakmod.zig_menth_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.dschoint_schaden": "%1$s hatte den ersten Zug",
+  "death.attack.tabakmod.dschoint_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.pfeife_schaden": "%1$s ist an einem zu feinen Geschmack erstickt",
+  "death.attack.tabakmod.pfeife_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.spuck_schaden": "%1$s ertrank in seiner eigenen Spucke",
+  "death.attack.tabakmod.spuck_schaden.player": "%2$s verachtete %1$s zutiefst",
 
   "creativemodetab.tabak_tab": "Super Tabakmod"
 }

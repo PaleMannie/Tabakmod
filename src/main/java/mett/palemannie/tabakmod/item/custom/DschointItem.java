@@ -2,6 +2,7 @@ package mett.palemannie.tabakmod.item.custom;
 
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.sound.ModSounds;
+import mett.palemannie.tabakmod.util.ModDamageTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
@@ -57,13 +58,15 @@ public class DschointItem extends Item {
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,(getUseDuration(stack, player)-gepaffteZeit)*2,0));
     }
 
-    void gibZuLangesZiehenEffekte(Player player){
+    void gibZuLangesZiehenEffekte(Player player, Level level){
         player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE,1020,1));
         player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS,1020,0));
         player.addEffect(new MobEffectInstance(MobEffects.LEVITATION,70,0));
         player.addEffect(new MobEffectInstance(MobEffects.NAUSEA,300,0));
         player.addEffect(new MobEffectInstance(MobEffects.DARKNESS,210,0));
-        player.addEffect(new MobEffectInstance(MobEffects.INSTANT_DAMAGE,1,0));
+        if(level instanceof ServerLevel sevel){
+            player.hurtServer(sevel, level.damageSources().source(ModDamageTypes.DSCHOINT_SCHADEN), 2f);
+        }
     }
 /// /////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////////////////////
     @Override
@@ -117,7 +120,7 @@ public class DschointItem extends Item {
          float r = (float)rdm.nextInt(9,11)/10;
             pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.ZU_LANGE_GEZOGEN.get(), SoundSource.PLAYERS, 1f, r);
             pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.DSCHOINT.get(), SoundSource.PLAYERS, 2f, r);
-            gibZuLangesZiehenEffekte((Player)pLivingEntity);
+            gibZuLangesZiehenEffekte((Player)pLivingEntity, pLevel);
             exhaliere(pLevel,(Player)pLivingEntity);
          this.stopUsing(pLivingEntity);
         return pStack;
@@ -131,12 +134,13 @@ public class DschointItem extends Item {
 ////////////////////////////////////////////////////SONSTIGE METHODEN////////////////////////////////////////////////////////////////////
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }
-    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) { return 100; }
+    public int getUseDuration(ItemStack pStack, LivingEntity pEntity) { return 200; }
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack p_41452_) { return ItemUseAnimation.BOW; }
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override
     public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    int ueberzug = 99;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
