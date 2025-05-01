@@ -118,5 +118,10 @@
   "advancements.tabakmod.mehr": "Das fühlt sich ja... wunderbar an",
   "advancements.tabakmod.mehr.desc": "Wir müssen mehr davon haben!",
 
+  "death.attack.tabakmod.zig_schaden": "%1$s rauchte seine Lungen weg",
+  "death.attack.tabakmod.zig_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",
+  "death.attack.tabakmod.spuck_schaden": "%1$s ertrank in der eigenen Spucke",
+  "death.attack.tabakmod.spuck_schaden.player": "%2$s verachtete %1$s sehr",
+
   "creativemodetab.tabak_tab": "Super Tabakmod"
 }

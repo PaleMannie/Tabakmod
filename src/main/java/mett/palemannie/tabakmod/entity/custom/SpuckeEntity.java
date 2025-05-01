@@ -2,6 +2,7 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
+import mett.palemannie.tabakmod.util.ModDamageTypes;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -62,7 +63,7 @@ public class SpuckeEntity extends ThrowableItemProjectile {
     protected void onHitEntity(EntityHitResult pResult) {
         super.onHitEntity(pResult);
         Entity entity = pResult.getEntity();
-        entity.hurt(damageSources().thrown(this, this.getOwner()), 1f);
+        entity.hurt(damageSources().source(ModDamageTypes.SPUCK_SCHADEN, this.getOwner()), 1f);
         if (!this.level().isClientSide) {
             this.level().broadcastEntityEvent(this, (byte) 3);
             this.discard();
