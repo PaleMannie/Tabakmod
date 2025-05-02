@@ -138,8 +138,8 @@ public class ScheisZigarettenItem extends Item {
         if(!pLivingEntity.isUnderWater()) {
             super.onUseTick(pLevel, pLivingEntity, pStack, pRemainingUseDuration);
             if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - 12)) {
-                paffe(pLevel, pPlayer);
 
+                paffe(pLevel, pPlayer);
                 pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
 
                 ///Überziehen tut weh und macht Rauchprodukt schneller kaputt
