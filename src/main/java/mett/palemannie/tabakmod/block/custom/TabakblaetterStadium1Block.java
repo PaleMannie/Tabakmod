@@ -15,6 +15,7 @@ import net.minecraft.world.level.ScheduledTickAccess;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -82,5 +83,10 @@ public class TabakblaetterStadium1Block extends Block {
             pLevel.addParticle(ParticleTypes.CRIT, pPos.getX()+px, pPos.getY()+0.15f, pPos.getZ()+pz, 0, 0.2d, 0);
         }
         super.animateTick(pState, pLevel, pPos, pRandom);
+    }
+
+    @Override
+    public MapColor getMapColor(BlockState state, BlockGetter level, BlockPos pos, MapColor defaultColor) {
+        return super.getMapColor(state, level, pos, MapColor.COLOR_GREEN);
     }
 }

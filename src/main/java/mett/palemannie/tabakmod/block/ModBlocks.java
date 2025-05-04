@@ -33,32 +33,32 @@ public class ModBlocks {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     public static final RegistryObject<Block> TABAKBLAETTER_GETROCKNET = registerBlock("tabakblaetter_getrocknet",
             () -> new TabakblaetterStadium4Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_getrocknet")))
-                    .friction(1f).mapColor(DyeColor.byId(5191959)).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
+                    .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
     public static final RegistryObject<Block> TABAKBLAETTER_FAST_GETROCKNET = registerBlock("tabakblaetter_fast_getrocknet",
             () -> new TabakblaetterStadium3Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_fast_getrocknet")))
-                    .friction(1f).mapColor(DyeColor.byId(6377774)).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
+                    .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
     public static final RegistryObject<Block> TABAKBLAETTER_HALB_GETROCKNET = registerBlock("tabakblaetter_halb_getrocknet",
             () -> new TabakblaetterStadium2Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_halb_getrocknet")))
-                    .friction(1f).mapColor(DyeColor.byId(8349469)).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
+                    .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
     public static final RegistryObject<Block> TABAKBLAETTER_TEIL_GETROCKNET = registerBlock("tabakblaetter_teil_getrocknet",
             () -> new TabakblaetterStadium1Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_teil_getrocknet"))).
-                    friction(1f).mapColor(DyeColor.byId(6054919)).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
+                    friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
     public static final RegistryObject<Block> TABAKBLAETTER = registerBlock("tabakblaetter",
             () -> new TabakblaetterStadium0Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter"))).
-                    friction(1f).mapColor(DyeColor.byId(5800511)).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
+                    friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava()));
 
     public static final RegistryObject<Block> GETROCKNETER_TABAKBALLEN = registerBlock("getrockneter_tabakballen",
             () -> new TabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "getrockneter_tabakballen")))
-                    .strength(0.5F).sound(SoundType.GRASS).mapColor(DyeColor.byId(5191959))));
+                    .strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> HELLER_TABAKBALLEN = registerBlock("heller_tabakballen",
             () -> new HellerTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "heller_tabakballen")))
-                    .strength(0.5F).sound(SoundType.GRASS).mapColor(DyeColor.byId(10508571))));
+                    .strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> MITTLERER_TABAKBALLEN = registerBlock("mittlerer_tabakballen",
             () -> new MittlererTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "mittlerer_tabakballen")))
-                    .strength(0.5F).sound(SoundType.GRASS).mapColor(DyeColor.byId(6368528))));
+                    .strength(0.5F).sound(SoundType.GRASS)));
     public static final RegistryObject<Block> DUNKLER_TABAKBALLEN = registerBlock("dunkler_tabakballen",
             () -> new DunklerTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "dunkler_tabakballen")))
-                    .strength(0.5F).sound(SoundType.GRASS).mapColor(DyeColor.byId(3280129))));
+                    .strength(0.5F).sound(SoundType.GRASS)));
 
     public static final RegistryObject<Block> TABAKPFLANZE = BLOCKS.register("tabakpflanze",
             () -> new TabakPflanzenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakpflanze")))

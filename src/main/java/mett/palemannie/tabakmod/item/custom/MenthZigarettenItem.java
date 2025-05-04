@@ -162,7 +162,7 @@ public class MenthZigarettenItem extends Item {
 
             if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - 15)) {
 
-                if(pRemainingUseDuration % 10 == 0) exhalatZaehler++;
+                if(pRemainingUseDuration % 5 == 0) exhalatZaehler++;
                 pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                 paffe(pLevel, pPlayer);
 

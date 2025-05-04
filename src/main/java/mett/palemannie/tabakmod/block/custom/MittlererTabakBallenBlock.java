@@ -13,6 +13,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 
 public class MittlererTabakBallenBlock extends Block {
     public MittlererTabakBallenBlock(Properties p_49795_) {
@@ -74,5 +75,11 @@ public class MittlererTabakBallenBlock extends Block {
         }
         super.randomTick(state, level, pos, random);
     }
+
+    @Override
+    public MapColor getMapColor(BlockState state, BlockGetter level, BlockPos pos, MapColor defaultColor) {
+        return super.getMapColor(state, level, pos, MapColor.COLOR_BROWN);
+    }
+
     //------------------------------------------------------------------------------------------------------------------
 }

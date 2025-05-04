@@ -7,6 +7,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.MapColor;
 
 public class DunklerTabakBallenBlock extends Block {
     public DunklerTabakBallenBlock(Properties p_49795_) {
@@ -30,7 +31,11 @@ public class DunklerTabakBallenBlock extends Block {
     public void fallOn(Level level, BlockState blockState, BlockPos blockPos, Entity entity, double v) {
         entity.causeFallDamage(v, 0.45f, level.damageSources().fall());
     }
-    //------------------------------------------------------------------------------------------------------------------
+
+    @Override
+    public MapColor getMapColor(BlockState state, BlockGetter level, BlockPos pos, MapColor defaultColor) {
+        return super.getMapColor(state, level, pos, MapColor.TERRACOTTA_BROWN);
+    }
 
     //------------------------------------------------------------------------------------------------------------------
 }

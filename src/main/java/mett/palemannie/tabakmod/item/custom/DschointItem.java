@@ -164,7 +164,7 @@ public class DschointItem extends Item {
 
             if (pLivingEntity instanceof Player pPlayer && (pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - 15)) {
 
-                if(pRemainingUseDuration % 10 == 0) exhalatZaehler++;
+                if(pRemainingUseDuration % 5 == 0) exhalatZaehler++;
                 if(pRemainingUseDuration % 4 == 0) paffe(pLevel, pPlayer);
                 pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
 

@@ -24,58 +24,69 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class AschenbecherBlock extends Block {
+
     public AschenbecherBlock(Properties pProperties) {
         super(pProperties);
     }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static final VoxelShape SHAPE = Block.box(5.5d,0d,5.5d, 10.5d, 1.25d, 10.5d);
+
     @Override
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) { return SHAPE; }
+
     public static final IntegerProperty WELCHEZIG = IntegerProperty.create("welchezig", 0, 2);
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
-        pBuilder.add(WELCHEZIG);
-    }
+
+    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) { pBuilder.add(WELCHEZIG); }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public InteractionResult use(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHit) {
-        ItemStack stack = pPlayer.getItemInHand(pHand);
 
-        if(!pLevel.isClientSide && (pHand == InteractionHand.MAIN_HAND || pHand == InteractionHand.OFF_HAND)){
-            if(stack.is(ModItems.ZIGARETTE.get()) && (pState.getValue(WELCHEZIG) == 0 || pState.getValue(WELCHEZIG) == 2)){
-                pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 1));
+    @Override
+    protected InteractionResult useItemOn(ItemStack pStack, BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, InteractionHand pHand, BlockHitResult pHitResult) {
 
-                if(!pPlayer.isCreative()) {
-                    stack.shrink(1);
-                }
-                if(pState.getValue(WELCHEZIG) == 2){
-                    popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARRE.get()));
-                }
+        if(pStack.is(ModItems.ZIGARETTE.get()) && (pState.getValue(WELCHEZIG) == 0 || pState.getValue(WELCHEZIG) == 2)){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 1));
 
-            return InteractionResult.SUCCESS;
+            if(!pPlayer.isCreative()) {
+                pStack.shrink(1);
             }
-
-            if(stack.is(ModItems.ZIGARRE.get()) && (pState.getValue(WELCHEZIG) == 0 || pState.getValue(WELCHEZIG) == 1)){
-                pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 2));
-                if(!pPlayer.isCreative()) {
-                    stack.shrink(1);
-                }
-                if(pState.getValue(WELCHEZIG) == 1){
-                    popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
-                }
-                return InteractionResult.SUCCESS;
-            }
-
-            if(stack.isEmpty() && pState.getValue(WELCHEZIG) == 1){
-                pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 0));
-                popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
-            }
-            if(stack.isEmpty() && pState.getValue(WELCHEZIG) == 2){
-                pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 0));
+            if(pState.getValue(WELCHEZIG) == 2){
                 popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARRE.get()));
             }
+
+            return InteractionResult.SUCCESS;
         }
-        return InteractionResult.PASS;
+
+        if(pStack.is(ModItems.ZIGARRE.get()) && (pState.getValue(WELCHEZIG) == 0 || pState.getValue(WELCHEZIG) == 1)){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 2));
+            if(!pPlayer.isCreative()) {
+                pStack.shrink(1);
+            }
+            if(pState.getValue(WELCHEZIG) == 1){
+                popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
+            }
+            return InteractionResult.SUCCESS;
+        }
+
+        return super.useItemOn(pStack, pState, pLevel, pPos, pPlayer, pHand, pHitResult);
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @Override
+    protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
+        if(pState.getValue(WELCHEZIG) == 1){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 0));
+            popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARETTE.get()));
+        }
+        if(pState.getValue(WELCHEZIG) == 2){
+            pLevel.setBlockAndUpdate(pPos, ModBlocks.ASCHENBECHER.get().defaultBlockState().setValue(WELCHEZIG, 0));
+            popResource(pLevel, pPos, new ItemStack(ModItems.ZIGARRE.get()));
+        }
+
+        return super.useWithoutItem(pState, pLevel, pPos, pPlayer, pHitResult);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     void raucheAmbiente(Level level, BlockPos pos, RandomSource rnd){
         float chance = 0.33f;
         double rx=rnd.nextGaussian()/100;

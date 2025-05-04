@@ -5,19 +5,19 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tabakmod:zigarre",
-          "conditions": [
-            {
-              "condition": "minecraft:block_state_property",
-              "block": "tabakmod:aschenbecher_neu",
-              "properties": {
-                "welchezig": "2"
-              }
-            },
-            {
-              "condition": "minecraft:survives_explosion"
-            }
-          ]
+          "name": "tabakmod:zigarette"
+        }
+      ],
+      "conditions": [
+        {
+          "condition": "minecraft:block_state_property",
+          "block": "tabakmod:aschenbecher_neu",
+          "properties": {
+            "welchezig": "1"
+          }
+        },
+        {
+          "condition": "minecraft:survives_explosion"
         }
       ]
     },
@@ -26,13 +26,13 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tabakmod:zigarette",
+          "name": "tabakmod:zigarre",
           "conditions": [
             {
               "condition": "minecraft:block_state_property",
               "block": "tabakmod:aschenbecher_neu",
               "properties": {
-                "welchezig": "1"
+                "welchezig": "2"
               }
             },
             {
