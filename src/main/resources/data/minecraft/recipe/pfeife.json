@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:mittlerer_tabak_behandelt"
+    ],
+    [
+      "tabakmod:pfeife_leer"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:pfeife",
+    "count": 1
+  }
+}

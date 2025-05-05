@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "tabakmod:mittlerer_tabak",
+  "result": {
+    "id": "tabakmod:mittlerer_tabak_behandelt"
+  },
+  "experience": 0.5,
+  "cookingtime": 200
+}

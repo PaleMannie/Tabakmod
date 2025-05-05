@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AZ",
+    "S "
+  ],
+  "key": {
+    "A": [
+      "minecraft:bucket"
+    ],
+    "S": [
+      "minecraft:bowl"
+    ],
+    "Z": [
+      "minecraft:stick"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:pfeife_leer",
+    "count": 1
+  }
+}

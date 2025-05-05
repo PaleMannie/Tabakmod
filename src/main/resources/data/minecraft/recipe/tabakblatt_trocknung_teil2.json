@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "tabakmod:tabakblaetter_halb_getrocknet",
+  "result": {
+    "id": "tabakmod:tabakblaetter_getrocknet"
+  },
+  "experience": 0.2,
+  "cookingtime": 800
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "BBB",
+    "TTT"
+  ],
+  "key": {
+    "T": [
+      "tabakmod:deckblatt"
+    ],
+    "B": [
+      "tabakmod:dunkler_tabak_behandelt"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:zigarren",
+    "count": 1
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "GBG",
+    "BPB",
+    "BBB"
+  ],
+  "key": {
+    "P": [
+      "minecraft:paper"
+    ],
+    "B": [
+      "minecraft:bamboo"
+    ],
+    "G": [
+      "minecraft:gold_nugget"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:zigarrenschachtel_leer",
+    "count": 1
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:campfire_cooking",
+  "ingredient": "tabakmod:heller_tabak",
+  "result": {
+    "id": "tabakmod:heller_tabak_behandelt"
+  },
+  "experience": 0.5,
+  "cookingtime": 200
+}

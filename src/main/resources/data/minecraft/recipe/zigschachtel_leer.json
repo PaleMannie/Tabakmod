@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PEP",
+    "PGP",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:paper"
+    ],
+    "E": [
+      "minecraft:iron_nugget"
+    ],
+    "G": [
+      "minecraft:gold_nugget"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:zigarettenschachtel_leer",
+    "count": 1
+  }
+}

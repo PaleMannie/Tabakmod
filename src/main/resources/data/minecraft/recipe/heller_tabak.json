@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:heller_tabakballen"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:heller_tabak",
+    "count": 9
+  }
+}

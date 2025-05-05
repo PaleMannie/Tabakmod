@@ -1,0 +1,29 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TBT",
+    "HKH",
+    "DDD"
+  ],
+  "key": {
+    "T": [
+      "tabakmod:kautabakmische"
+    ],
+    "B": [
+      "tabakmod:tabakblaetter_getrocknet"
+    ],
+    "H": [
+      "tabakmod:heller_tabak_behandelt"
+    ],
+    "K": [
+      "minecraft:cake"
+    ],
+    "D": [
+      "tabakmod:dunkler_tabak_behandelt"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:tabakkuchen",
+    "count": 1
+  }
+}

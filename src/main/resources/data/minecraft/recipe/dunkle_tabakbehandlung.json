@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": "tabakmod:dunkler_tabak",
+  "result": {
+    "id": "tabakmod:dunkler_tabak_behandelt"
+  },
+  "experience": 0.5,
+  "cookingtime": 800
+}

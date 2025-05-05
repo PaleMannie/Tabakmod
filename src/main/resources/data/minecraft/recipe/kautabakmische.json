@@ -1,0 +1,30 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:heller_tabak"
+    ],
+    [
+      "tabakmod:dunkler_tabak"
+    ],
+    [
+      "tabakmod:mittlerer_tabak"
+    ],
+    [
+      "minecraft:honey_bottle"
+    ],
+    [
+      "minecraft:water_bucket"
+    ],
+    [
+      "minecraft:honeycomb"
+    ],
+    [
+      "tabakmod:tabakblaetter_getrocknet"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:kautabakmische",
+    "count": 8
+  }
+}

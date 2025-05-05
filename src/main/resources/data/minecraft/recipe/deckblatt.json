@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:tabakblaetter_getrocknet"
+    ],
+    [
+      "minecraft:paper"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:deckblatt",
+    "count": 2
+  }
+}

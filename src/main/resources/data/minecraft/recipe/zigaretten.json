@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "TTT",
+    "BBH",
+    "TTT"
+  ],
+  "key": {
+    "T": [
+      "minecraft:paper"
+    ],
+    "B": [
+      "tabakmod:heller_tabak_behandelt"
+    ],
+    "H": [
+      "tabakmod:zigarettenfilter"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:zigaretten",
+    "count": 1
+  }
+}

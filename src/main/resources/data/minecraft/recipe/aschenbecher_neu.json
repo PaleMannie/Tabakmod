@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "A A",
+    "AAA"
+  ],
+  "key": {
+    "A": [
+      "minecraft:stone"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:aschenbecher_neu",
+    "count": 1
+  },
+  "show_notification": true
+}

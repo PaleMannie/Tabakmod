@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:trockener_tabak"
+    ],
+    [
+      "tabakmod:zigarettenstummel"
+    ],
+    [
+      "minecraft:paper"
+    ],
+    [
+      "tabakmod:deckblatt"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:zigarette_scheise",
+    "count": 1
+  }
+}

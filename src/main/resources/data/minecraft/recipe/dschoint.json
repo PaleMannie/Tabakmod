@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "SSZ",
+    "AAA"
+  ],
+  "key": {
+    "A": [
+      "minecraft:paper"
+    ],
+    "S": [
+      "minecraft:tall_grass"
+    ],
+    "Z": [
+      "minecraft:cactus"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:dschoint",
+    "count": 1
+  }
+}

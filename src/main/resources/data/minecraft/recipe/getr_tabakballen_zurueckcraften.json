@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:getrockneter_tabakballen"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:tabakblaetter_getrocknet",
+    "count": 9
+  }
+}

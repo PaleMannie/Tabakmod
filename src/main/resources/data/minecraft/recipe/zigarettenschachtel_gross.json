@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:zigarettenschachtel_gross_leer"
+    ],
+    [
+      "tabakmod:zigaretten"
+    ],
+    [
+      "tabakmod:zigaretten"
+    ],
+    [
+      "tabakmod:zigaretten"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:zigarettenschachtel_gross",
+    "count": 1
+  }
+}

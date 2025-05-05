@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "minecraft:coal",
+      "minecraft:charcoal"
+    ],
+    [
+      "minecraft:orange_wool"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:zigarettenfilter",
+    "count": 1
+  }
+}

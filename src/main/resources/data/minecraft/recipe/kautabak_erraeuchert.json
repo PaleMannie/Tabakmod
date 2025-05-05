@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "ingredient": "tabakmod:kautabakmische",
+  "result": {
+    "id": "tabakmod:kautabak"
+  },
+  "experience": 0.5,
+  "cookingtime": 800
+}
