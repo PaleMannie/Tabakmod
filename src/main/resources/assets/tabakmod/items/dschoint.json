@@ -1,28 +1,75 @@
 {
   "model": {
-    "type": "minecraft:condition",
-    "on_false": {
-      "type": "minecraft:model",
-      "model": "tabakmod:item/dschoint"
-    },
-    "on_true": {
-      "type": "minecraft:range_dispatch",
-      "entries": [
-        {
-          "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:damage",
+    "normalize": true,
+    "scale": 1,
+    "entries": [
+      {
+        "threshold": 0.0,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
             "type": "minecraft:model",
-            "model": "tabakmod:item/dschoint_rauchen"
+            "model": "tabakmod:item/dschoint_rauchen1"
           },
-          "threshold": 0.0
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint1"
+          }
         }
-      ],
-      "fallback": {
-        "type": "minecraft:model",
-        "model": "tabakmod:item/dschoint"
       },
-      "property": "minecraft:use_duration",
-      "scale": 1.0
-    },
-    "property": "minecraft:using_item"
-  }
+      {
+        "threshold": 0.25,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint_rauchen2"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint2"
+          }
+        }
+      },
+      {
+        "threshold": 0.5,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint_rauchen3"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint3"
+          }
+        }
+      },
+      {
+        "threshold": 0.75,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint_rauchen4"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/dschoint4"
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "tabakmod:item/dschoint1"
+    }
+  },
+  "hand_animation_on_swap": false
 }

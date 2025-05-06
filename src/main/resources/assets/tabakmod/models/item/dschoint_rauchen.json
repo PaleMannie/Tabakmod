@@ -1,6 +1,0 @@
-{
-  "parent": "tabakmod:item/dschoint",
-  "textures": {
-     "layer0": "tabakmod:item/dschoint_rauchen"
-   }
-}
