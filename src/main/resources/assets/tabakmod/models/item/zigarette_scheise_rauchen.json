@@ -1,6 +1,0 @@
-{
-  "parent": "tabakmod:item/zigarette_scheise",
-  "textures": {
-     "layer0": "tabakmod:item/zigarette_scheise_rauchen"
-   }
-}

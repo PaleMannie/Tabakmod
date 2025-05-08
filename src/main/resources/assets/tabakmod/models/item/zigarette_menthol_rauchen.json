@@ -1,6 +1,0 @@
-{
-  "parent": "tabakmod:item/zigarette_menthol",
-  "textures": {
-     "layer0": "tabakmod:item/zigarette_menthol_rauchen"
-   }
-}
