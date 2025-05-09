@@ -1,7 +1,7 @@
 package mett.palemannie.tabakmod.item.custom;
 
-import mett.palemannie.tabakmod.effect.ModEffects;
 import mett.palemannie.tabakmod.item.ModItems;
+import mett.palemannie.tabakmod.sound.ModSounds;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -20,23 +20,26 @@ import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.common.extensions.IForgeMobEffect;
 
-public class KautabakItem extends Item implements IForgeMobEffect {
+public class TabakEiskremItem extends Item implements IForgeMobEffect {
 
-    public KautabakItem(Properties pProperties) { super(pProperties); }
+    public TabakEiskremItem(Properties pProperties) { super(pProperties); }
 
-////////////////////////////////////////////////////EIGENE METHODEN/////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////EIGENE METHODEN/////////////////////////////////////////////////////
 
     void gibEffekt(Player player, int zeit){
 
-        player.playSound(SoundEvents.SLIME_JUMP, 3f, 1f);
-        player.getFoodData().eat(2, 2);
+        player.playSound(ModSounds.MWTM.get(), 3f, 1f);
+        player.playSound(SoundEvents.PLAYER_BURP, 3f, 1f);
 
-        player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), zeit, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 150, 0));
-        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, zeit, 0));
+        player.getFoodData().eat(8, 1);
+
+        player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 200, 0));
+        player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, zeit, 1));
+        player.addEffect(new MobEffectInstance(MobEffects.SLOWNESS, zeit, 1));
+        player.addEffect(new MobEffectInstance(MobEffects.STRENGTH, zeit, 2));
     }
 
-////////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////NUTZMETHODEN////////////////////////////////////////////////////////
 
     @Override
     public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
@@ -54,8 +57,10 @@ public class KautabakItem extends Item implements IForgeMobEffect {
     @Override
     public void onUseTick(Level pLevel, LivingEntity pEntity, ItemStack pStack, int pRemainingTime) {
 
-        pLevel.addParticle(ParticleTypes.CRIT, pEntity.getEyePosition().x + pEntity.getViewVector(1f).x/3, pEntity.getEyePosition().y-0.2f + pEntity.getViewVector(1f).y/3, pEntity.getEyePosition().z + pEntity.getViewVector(1f).z/3, 0f,0f,0f);
-        if(pRemainingTime % 4 == 0 && pRemainingTime < this.getUseDuration(pStack, pEntity)-5) pLevel.playSound(null, pEntity.getX(), pEntity.getY(), pEntity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 1f, 1f);
+        if(pRemainingTime % 4 == 0 && pRemainingTime < this.getUseDuration(pStack, pEntity)-15) {
+            pLevel.playSound(null, pEntity.getX(), pEntity.getY(), pEntity.getZ(), SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, 1f, 1f);
+            pLevel.addParticle(ParticleTypes.SPIT, pEntity.getEyePosition().x + pEntity.getViewVector(1f).x/3, pEntity.getEyePosition().y-0.2f + pEntity.getViewVector(1f).y/3, pEntity.getEyePosition().z + pEntity.getViewVector(1f).z/3, 0f,0f,0f);
+        }
     }
 
     @Override
@@ -78,11 +83,11 @@ public class KautabakItem extends Item implements IForgeMobEffect {
 
         if (pUser instanceof Player player) {
 
-            player.getCooldowns().addCooldown(ModItems.KAUTABAK.getId(), 2);
+            player.getCooldowns().addCooldown(ModItems.TABAKEISKREM.getId(), 2);
         }
     }
 
-////////////////////////////////////////////////////SONSTIGE METHODEN///////////////////////////////////////////////////
+    ////////////////////////////////////////////////////SONSTIGE METHODEN///////////////////////////////////////////////////
 
     @Override
     public ItemUseAnimation getUseAnimation(ItemStack pStack) {
@@ -105,6 +110,6 @@ public class KautabakItem extends Item implements IForgeMobEffect {
     }
 
     public int getUseDuration(ItemStack pStack, LivingEntity pEntity) {
-        return 49;
+        return 99;
     }
 }

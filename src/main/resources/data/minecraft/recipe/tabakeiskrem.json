@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    [
+      "tabakmod:zigaretten"
+    ],
+    [
+      "minecraft:milk_bucket"
+    ],
+    [
+      "minecraft:ice"
+    ],
+    [
+      "minecraft:blue_ice"
+    ],
+    [
+      "minecraft:packed_ice"
+    ],
+    [
+      "minecraft:paper"
+    ]
+  ],
+  "result": {
+    "id": "tabakmod:tabakeiskrem",
+    "count": 1
+  }
+}

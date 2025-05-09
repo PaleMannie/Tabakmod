@@ -85,6 +85,7 @@ public class TabakMod {
             event.accept(ModBlocks.MITTLERER_TABAKBALLEN);
             event.accept(ModBlocks.DUNKLER_TABAKBALLEN);
 
+            event.accept(ModItems.TABAKEISKREM);
             event.accept(ModItems.KAUTABAK);
             event.accept(ModItems.KAUTABAKMISCHE);
             event.accept(ModBlocks.TABAKKUCHEN);
