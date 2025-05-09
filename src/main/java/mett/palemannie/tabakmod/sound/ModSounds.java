@@ -9,8 +9,11 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class ModSounds {
+
     public static final DeferredRegister<SoundEvent> SOUND_EVENTS = DeferredRegister.create(ForgeRegistries.SOUND_EVENTS, TabakMod.MODID);
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static final RegistryObject<SoundEvent> TABAKPRODUKT_ANZUENDEN = registerSoundEvent("tabakprodukt_anzuenden");
     public static final RegistryObject<SoundEvent> PAFFEN = registerSoundEvent("paffen");
     public static final RegistryObject<SoundEvent> FERTIG_GERAUCHT = registerSoundEvent("fertig_geraucht");
@@ -18,6 +21,9 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> PFEIFE_LADEN = registerSoundEvent("pfeife_laden");
     public static final RegistryObject<SoundEvent> SCHEISE_GERAUCHT = registerSoundEvent("scheise_geraucht");
     public static final RegistryObject<SoundEvent> DSCHOINT = registerSoundEvent("dschoint");
+    public static final RegistryObject<SoundEvent> SLON = registerSoundEvent("slon");
+    public static final RegistryObject<SoundEvent> MWTM = registerSoundEvent("mwtm");
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
