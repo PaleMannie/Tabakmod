@@ -23,6 +23,8 @@ public class ModSounds {
     public static final RegistryObject<SoundEvent> DSCHOINT = registerSoundEvent("dschoint");
     public static final RegistryObject<SoundEvent> SLON = registerSoundEvent("slon");
     public static final RegistryObject<SoundEvent> MWTM = registerSoundEvent("mwtm");
+    public static final RegistryObject<SoundEvent> SCHEISE_ANZUENDEN = registerSoundEvent("scheise_anzuenden");
+    public static final RegistryObject<SoundEvent> SCHEISE_PAFFEN = registerSoundEvent("scheise_paffen");
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

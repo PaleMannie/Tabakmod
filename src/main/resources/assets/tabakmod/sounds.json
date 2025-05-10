@@ -125,6 +125,20 @@
       "tabakmod:slon6",
       "tabakmod:slon6"
     ]
+  },
+
+  "scheise_anzuenden": {
+  "subtitle": "sounds.tabakmod.mwtm",
+  "sounds": [
+    "tabakmod:scheise_anzuenden1"
+    ]
+  },
+
+  "scheise_paffen": {
+    "subtitle": "sounds.tabakmod.mwtm",
+    "sounds": [
+      "tabakmod:scheise_paffen"
+    ]
   }
 
 }

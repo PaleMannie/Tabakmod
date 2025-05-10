@@ -34,9 +34,10 @@ public class ScheisZigarettenItem extends Item {
 
 //////////////////////////////////////////////////EIGENE METHODEN///////////////////////////////////////////////////////
 
-    void paffe(Level level, Player player){
+    void paffe(Level level, Player player, int jetzigeZeit){
 
-        level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.PAFFEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(80, 120)/100);
+        if(jetzigeZeit % 6 == 0) level.playSound(null, player.getX(), player.getY(), player.getZ(), ModSounds.SCHEISE_PAFFEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(80, 120)/100);
+
         Vec3 MausPos = player.getEyePosition();
         Vec3 SchauWinkel = player.getLookAngle();
         level.addParticle(ParticleTypes.CAMPFIRE_SIGNAL_SMOKE,
@@ -99,8 +100,8 @@ public class ScheisZigarettenItem extends Item {
                 || pPlayer.isCreative()
                 || pPlayer.getInventory().hasAnyOf(Set.of(Items.FLINT_AND_STEEL, Items.LAVA_BUCKET, Items.FIRE_CHARGE)))){
 
-            if (pPlayer.isOnFire()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BLAZE_AMBIENT, SoundSource.PLAYERS, 1f, r);
-            if (pPlayer.isCreative()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
+            if (pPlayer.isOnFire()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
+            if (pPlayer.isCreative()) pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
 
             if (!pLevel.isClientSide()) {
 
@@ -115,7 +116,7 @@ public class ScheisZigarettenItem extends Item {
 
                     if (stack.is(Items.FLINT_AND_STEEL)) {
 
-                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.TABAKPRODUKT_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, r);
+                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
                         stack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
                         prio = true;
                         break;
@@ -132,9 +133,9 @@ public class ScheisZigarettenItem extends Item {
 
                             if (lava < 0.10f) {
 
-                                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.LAVA_EXTINGUISH, SoundSource.PLAYERS, 1f, r);
+                                pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
                                 inv.setItem(i, new ItemStack(Items.BUCKET));
-                            } else pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.BUCKET_FILL_LAVA, SoundSource.PLAYERS, 1f, r);
+                            } else pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
 
                             prio = true;
                             break;
@@ -148,7 +149,7 @@ public class ScheisZigarettenItem extends Item {
 
                     if (slot != -1) {
 
-                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.FIRECHARGE_USE, SoundSource.PLAYERS, 1f, r);
+                        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), ModSounds.SCHEISE_ANZUENDEN.get(), SoundSource.PLAYERS, 1f, (float) RandomSource.create().nextInt(90, 110)/100);
                         inv.removeItem(slot, 1);
                     }
                 }
@@ -170,7 +171,7 @@ public class ScheisZigarettenItem extends Item {
 
                 if(pRemainingUseDuration % 5 == 0) exhalatZaehler++;
                 pStack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
-                paffe(pLevel, pPlayer);
+                paffe(pLevel, pPlayer, pRemainingUseDuration);
 
                 ///Überziehen tut weh und macht Rauchprodukt schneller kaputt
                 if(pRemainingUseDuration <= getUseDuration(pStack, pLivingEntity) - ueberzug){
