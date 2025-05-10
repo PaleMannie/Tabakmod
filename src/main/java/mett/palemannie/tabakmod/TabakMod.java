@@ -125,6 +125,7 @@ public class TabakMod {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABAKPFLANZE.get(), RenderType.cutout());
 
             EntityRenderers.register(ModEntities.SPUCKE.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.STUMMEL.get(), ThrownItemRenderer::new);
         }
     }
 }
