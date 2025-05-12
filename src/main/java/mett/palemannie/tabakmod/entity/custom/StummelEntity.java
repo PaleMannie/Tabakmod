@@ -2,7 +2,11 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -13,7 +17,9 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
 
 public class StummelEntity extends ThrowableItemProjectile {
 
@@ -40,6 +46,17 @@ public class StummelEntity extends ThrowableItemProjectile {
     @Override
     public void tick() {
 
+        if(this.isInLava()) {
+
+            this.discard();
+            level().playSound(this, this.blockPosition(), SoundEvents.LAVA_EXTINGUISH, SoundSource.NEUTRAL, 1f, 1f);
+        }
+
+        if(this.isInLiquid()) {
+
+            this.push(0d, 0.1d, 0d);
+        }
+
         super.tick();
         level().addParticle(ParticleTypes.ASH,
                 this.getX() + RandomSource.create().nextFloat() * this.getViewVector(0f).x/4,
@@ -51,14 +68,21 @@ public class StummelEntity extends ThrowableItemProjectile {
     protected void onHitBlock(BlockHitResult pResult) {
 
         this.setPos(this.getX(), this.getY(), this.getZ());
-        this.setDeltaMovement(0d,0d,0d);
+        this.setDeltaMovement(0d,0.0305d,0d);
         super.onHitBlock(pResult);
+    }
+
+    @Override
+    protected void onHitEntity(EntityHitResult pResult) {
+
+        super.onHitEntity(pResult);
     }
 
     @Override
     public void playerTouch(Player pPlayer) {
 
         super.playerTouch(pPlayer);
+
         ItemStack stack = pPlayer.getItemInHand(InteractionHand.MAIN_HAND);
 
         if(stack.is(Items.BRUSH) && pPlayer.isUsingItem()){
@@ -69,9 +93,8 @@ public class StummelEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    public boolean isPushable() {
+    public boolean isPushable() { return true; }
 
-        return true;
-    }
-
+    @Override
+    public boolean canTrample(ServerLevel level, BlockState state, BlockPos pos, double fallDistance) { return true; }
 }
