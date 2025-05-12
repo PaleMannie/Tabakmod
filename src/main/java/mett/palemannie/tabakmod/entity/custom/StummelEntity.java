@@ -2,7 +2,6 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
@@ -32,10 +31,6 @@ public class StummelEntity extends ThrowableItemProjectile {
 
     }
 
-    public StummelEntity( Level pLevel, LivingEntity pLivingEntity) {
-        super(ModEntities.STUMMEL.get(), pLevel);
-    }
-
     @Override
     protected Item getDefaultItem() {
 
@@ -47,9 +42,9 @@ public class StummelEntity extends ThrowableItemProjectile {
 
         super.tick();
         level().addParticle(ParticleTypes.ASH,
-                this.getX() + RandomSource.create().nextFloat() * Minecraft.getInstance().player.getViewVector(0f).x/4,
-                this.getY() + RandomSource.create().nextFloat() * Minecraft.getInstance().player.getViewVector(0f).y/4 + 0.25f,
-                this.getZ() + RandomSource.create().nextFloat() * Minecraft.getInstance().player.getViewVector(0f).z/4, 0d, 1d, 0d);
+                this.getX() + RandomSource.create().nextFloat() * this.getViewVector(0f).x/4,
+                this.getY() + RandomSource.create().nextFloat() * this.getViewVector(0f).y/4 + 0.1f,
+                this.getZ() + RandomSource.create().nextFloat() * this.getViewVector(0f).z/4, 0d, 0d, 0d);
     }
 
     @Override
