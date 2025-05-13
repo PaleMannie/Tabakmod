@@ -1,6 +1,7 @@
 package mett.palemannie.tabakmod.entity;
 
 import mett.palemannie.tabakmod.TabakMod;
+import mett.palemannie.tabakmod.entity.custom.RaketenZigrrEntity;
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
 import mett.palemannie.tabakmod.entity.custom.StummelEntity;
 import net.minecraft.core.registries.Registries;
@@ -27,6 +28,11 @@ public class ModEntities {
             ENTITY_TYPES.register("stummel", () -> build(EntityType.Builder.<StummelEntity>of(StummelEntity::new, MobCategory.MISC)
                     .sized(0.2f, 0.2f)
                     .fireImmune(), "stummel"));
+
+    public static final RegistryObject<EntityType<RaketenZigrrEntity>> RAKETENZIGRR =
+            ENTITY_TYPES.register("raketenzigarre", () -> build(EntityType.Builder.<RaketenZigrrEntity>of(RaketenZigrrEntity::new, MobCategory.MISC)
+                    .sized(0.25f, 0.25f)
+                    .fireImmune(), "raketenzigarre"));
 
     private static <T extends Entity> EntityType<T> build(EntityType.Builder<T> builder, String type) {
         ResourceKey<EntityType<?>> key = ResourceKey.create(Registries.ENTITY_TYPE, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, type));

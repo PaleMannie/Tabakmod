@@ -101,6 +101,7 @@ public class TabakMod {
             event.accept(ModItems.ZIGARETTEN);
             event.accept(ModItems.ZIGARREN);
             event.accept(ModItems.SUIZIDZIGARETTE);
+            event.accept(ModItems.RAKETENZIGARRE);
             event.accept(ModItems.ZIGARETTENFILTER);
             event.accept(ModItems.ZIGARETTENSTUMMEL);
             event.accept(ModItems.ZIGARRENSTUMMEL);
@@ -127,6 +128,7 @@ public class TabakMod {
 
             EntityRenderers.register(ModEntities.SPUCKE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.RAKETENZIGRR.get(), ThrownItemRenderer::new);
         }
     }
 }

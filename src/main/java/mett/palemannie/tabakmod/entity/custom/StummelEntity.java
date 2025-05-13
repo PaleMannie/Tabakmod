@@ -2,9 +2,7 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -17,30 +15,26 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
 public class StummelEntity extends ThrowableItemProjectile {
 
     public StummelEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
+
         super(pEntityType, pLevel);
     }
+
     public StummelEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
+
         this(livingEntity.getX(), livingEntity.getEyeY() - 0.2, livingEntity.getZ(), pLevel, stack);
         this.setOwner(livingEntity);
     }
 
     public StummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
+
         super(ModEntities.STUMMEL.get(), x, y, z, pLevel, stack);
         this.setItem(stack);
-
-    }
-
-    @Override
-    protected Item getDefaultItem() {
-
-        return ModItems.ZIGARETTENSTUMMEL.get();
     }
 
     @Override
@@ -93,8 +87,9 @@ public class StummelEntity extends ThrowableItemProjectile {
     }
 
     @Override
-    public boolean isPushable() { return true; }
+    protected Item getDefaultItem() { return ModItems.ZIGARETTENSTUMMEL.get(); }
 
     @Override
-    public boolean canTrample(ServerLevel level, BlockState state, BlockPos pos, double fallDistance) { return true; }
+    public boolean isPushable() { return true; }
+
 }

@@ -1,6 +1,6 @@
 package mett.palemannie.tabakmod.item.custom;
 
-import mett.palemannie.tabakmod.entity.custom.StummelEntity;
+import mett.palemannie.tabakmod.entity.custom.RaketenZigrrEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
 import net.minecraft.server.level.ServerLevel;
@@ -17,20 +17,21 @@ import net.minecraft.world.item.ProjectileItem;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 
-public class StummelItem extends Item implements ProjectileItem {
-    public StummelItem(Properties pProperties) {
+public class RaketenZigrrItem extends Item implements ProjectileItem {
+
+    public RaketenZigrrItem(Properties pProperties) {
         super(pProperties);
     }
 
     @Override
-    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pUsedHand) {
+    public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pHand) {
 
-        ItemStack itemstack = pPlayer.getItemInHand(pUsedHand);
+        ItemStack itemstack = pPlayer.getItemInHand(pHand);
 
-        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.SNOWBALL_THROW, SoundSource.NEUTRAL, 0.5F, 0.4F / (pLevel.getRandom().nextFloat() * 0.4F + 0.8F));
+        pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.NEUTRAL, 1f, 1f);
 
         if (pLevel instanceof ServerLevel serverlevel) {
-            Projectile.spawnProjectileFromRotation(StummelEntity::new, serverlevel, itemstack, pPlayer, 0f, 0.5f, 10f);
+            Projectile.spawnProjectileFromRotation(RaketenZigrrEntity::new, serverlevel, itemstack, pPlayer, 0f, 1.5f, 1f);
         }
 
         pPlayer.awardStat(Stats.ITEM_USED.get(this));
@@ -39,12 +40,7 @@ public class StummelItem extends Item implements ProjectileItem {
     }
 
     @Override
-    public int getEntityLifespan(ItemStack itemStack, Level level) {
-        return 72000;
-    }
-
-    @Override
-    public @NotNull Projectile asProjectile(Level pLevel, Position pPos, ItemStack pStack, Direction pDirection) {
-        return new StummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);
+    public @NotNull Projectile asProjectile(@NotNull Level pLevel, Position pPos, @NotNull ItemStack pStack, @NotNull Direction pDirection) {
+        return new RaketenZigrrEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);
     }
 }

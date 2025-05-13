@@ -2,13 +2,17 @@ package mett.palemannie.tabakmod.item.custom;
 
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
+import net.minecraft.core.Holder;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -19,12 +23,12 @@ import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
+import javax.annotation.Nullable;
 import java.util.Set;
 
 public class SuizidZigarettenItem extends Item {
 
     public SuizidZigarettenItem(Properties pProperties) { super(pProperties); }
-
 
     @Override
     public InteractionResult use(Level pLevel, Player pPlayer, InteractionHand pHand) {
@@ -111,8 +115,14 @@ public class SuizidZigarettenItem extends Item {
     @Override
     public boolean releaseUsing(ItemStack pStack, Level pLevel, LivingEntity pEntity, int pTimeLeft) {
 
-        ExplosionDamageCalculator expl = new ExplosionDamageCalculator();
-        pLevel.explode(null, pLevel.damageSources().source(ModDamageTypes.SUIZIDZIGARETTE_SCHADEN), expl, pEntity.getX(), pEntity.getEyeY(), pEntity.getZ(), (float) (pStack.getUseDuration(pEntity) - pTimeLeft)/10, false, Level.ExplosionInteraction.TNT);
+        pLevel.explode(null, pLevel.damageSources().source(ModDamageTypes.SUIZIDZIGARETTE_SCHADEN),
+                new ExplosionDamageCalculator(),
+                pEntity.getX(),
+                pEntity.getEyeY(),
+                pEntity.getZ(),
+                (float) (pStack.getUseDuration(pEntity) - pTimeLeft)/10,
+                false,
+                Level.ExplosionInteraction.TNT);
 
         if(pEntity instanceof Player player && !player.isCreative()){
             pStack.shrink(1);
@@ -125,16 +135,20 @@ public class SuizidZigarettenItem extends Item {
             tntschadenzaehler = 0f;
         }
 
-
-
         return false;
     }
 
     @Override
     public ItemStack finishUsingItem(ItemStack pStack, Level pLevel, LivingEntity pLivingEntity) {
 
-        ExplosionDamageCalculator expl = new ExplosionDamageCalculator();
-        pLevel.explode(null, pLevel.damageSources().source(ModDamageTypes.SUIZIDZIGARETTE_SCHADEN), expl, pLivingEntity.getX(), pLivingEntity.getEyeY(), pLivingEntity.getZ(), 8f, false, Level.ExplosionInteraction.TNT);
+        pLevel.explode(null, pLevel.damageSources().source(ModDamageTypes.SUIZIDZIGARETTE_SCHADEN),
+                new ExplosionDamageCalculator(),
+                pLivingEntity.getX(),
+                pLivingEntity.getEyeY(),
+                pLivingEntity.getZ(),
+                8f,
+                false,
+                Level.ExplosionInteraction.TNT);
 
         if(pLivingEntity instanceof Player player && !player.isCreative()){
             pStack.shrink(1);
