@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "PPP",
+    "TTF",
+    "PPP"
+  ],
+  "key": {
+    "P": [
+      "minecraft:paper"
+    ],
+    "T": [
+      "minecraft:tnt"
+    ],
+    "F": [
+      "tabakmod:zigarettenfilter"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:suizidzigarette",
+    "count": 1
+  }
+}

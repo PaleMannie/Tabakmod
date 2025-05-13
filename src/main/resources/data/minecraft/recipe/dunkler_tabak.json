@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
     [
-      "tabakmod:tabakballen"
+      "tabakmod:dunkler_tabakballen"
     ]
   ],
   "result": {

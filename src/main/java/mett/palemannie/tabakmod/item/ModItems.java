@@ -87,6 +87,8 @@ public class ModItems
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "kautabakmische")))));
     public static final RegistryObject<Item> TABAKEISKREM = ITEMS.register("tabakeiskrem",
             () -> new TabakEiskremItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakeiskrem"))).stacksTo(8)));
+    public static final RegistryObject<Item> SUIZIDZIGARETTE = ITEMS.register("suizidzigarette",
+            () -> new SuizidZigarettenItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "suizidzigarette"))).stacksTo(1)));
 
     public static final RegistryObject<Item> SPUCKE = ITEMS.register("spucke",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "spucke")))));

@@ -85,10 +85,10 @@ public class TabakMod {
             event.accept(ModBlocks.MITTLERER_TABAKBALLEN);
             event.accept(ModBlocks.DUNKLER_TABAKBALLEN);
 
-            event.accept(ModItems.TABAKEISKREM);
             event.accept(ModItems.KAUTABAK);
             event.accept(ModItems.KAUTABAKMISCHE);
             event.accept(ModBlocks.TABAKKUCHEN);
+            event.accept(ModItems.TABAKEISKREM);
 
             event.accept(ModItems.ZIGARETTE);
             event.accept(ModItems.ZIGARETTE_MENTHOL);
@@ -100,6 +100,7 @@ public class TabakMod {
             event.accept(ModItems.KAKERLAKE);
             event.accept(ModItems.ZIGARETTEN);
             event.accept(ModItems.ZIGARREN);
+            event.accept(ModItems.SUIZIDZIGARETTE);
             event.accept(ModItems.ZIGARETTENFILTER);
             event.accept(ModItems.ZIGARETTENSTUMMEL);
             event.accept(ModItems.ZIGARRENSTUMMEL);
