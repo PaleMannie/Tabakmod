@@ -4,8 +4,10 @@ import com.mojang.logging.LogUtils;
 import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.effect.ModEffects;
 import mett.palemannie.tabakmod.entity.ModEntities;
+import mett.palemannie.tabakmod.entity.client.RaketenZigrrRenderer;
 import mett.palemannie.tabakmod.item.ModCreativeModeTabs;
 import mett.palemannie.tabakmod.item.ModItems;
+import mett.palemannie.tabakmod.item.custom.RaketenZigrrItem;
 import mett.palemannie.tabakmod.loot.ModLootModifiers;
 import mett.palemannie.tabakmod.networking.ModMessages;
 import mett.palemannie.tabakmod.sound.ModSounds;
@@ -13,6 +15,7 @@ import mett.palemannie.tabakmod.villager.ModVillagers;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.client.renderer.entity.RabbitRenderer;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraft.world.level.block.ComposterBlock;
 import net.minecraftforge.api.distmarker.Dist;
@@ -128,7 +131,7 @@ public class TabakMod {
 
             EntityRenderers.register(ModEntities.SPUCKE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL.get(), ThrownItemRenderer::new);
-            EntityRenderers.register(ModEntities.RAKETENZIGRR.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.RAKETENZIGRR.get(), RaketenZigrrRenderer::new);
         }
     }
 }

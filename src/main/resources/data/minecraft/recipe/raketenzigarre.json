@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " Z ",
+    " P ",
+    "SSS"
+  ],
+  "key": {
+    "Z": [
+      "tabakmod:zigarre"
+    ],
+    "S": [
+      "minecraft:gunpowder"
+    ],
+    "P": [
+      "minecraft:paper"
+    ]
+  },
+  "result": {
+    "id": "tabakmod:raketenzigarre",
+    "count": 1
+  },
+  "show_notification": true
+}

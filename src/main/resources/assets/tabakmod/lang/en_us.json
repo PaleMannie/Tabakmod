@@ -137,8 +137,11 @@
   "death.attack.tabakmod.pfeife_schaden.player": "lmao who did this XDDDD %1$s or %2$s?",
   "death.attack.tabakmod.spuck_schaden": "%1$s drowned in their own spit",
   "death.attack.tabakmod.spuck_schaden.player": "%2$s disrespected %1$s deeply",
-  "death.attack.tabakmod.suizidzigarette_schaden": "%1$s's blew their mind away",
+  "death.attack.tabakmod.suizidzigarette_schaden": "%1$s blew their mind away",
   "death.attack.tabakmod.suizidzigarette_schaden.player": "%2$s blew %1$s's mind away",
+  "death.attack.tabakmod.raketenzigarre_schaden": "%1$s thought it was a cigar",
+  "death.attack.tabakmod.raketenzigarre_schaden.player": "%2$s cigar slipped away and blew up in %1$s's face",
+
 
   "creativemodetab.tabak_tab": "Super Tobacco Mod"
 }

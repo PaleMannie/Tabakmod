@@ -2,16 +2,19 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
+import mett.palemannie.tabakmod.util.ModDamageTypes;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.Vec3;
 
 public class RaketenZigrrEntity extends ThrowableItemProjectile {
 
@@ -41,9 +44,17 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
 
         dauer++;
 
+        level().addParticle(ParticleTypes.FIREWORK,
+                this.getX() + RandomSource.create().nextFloat()/3,
+                this.getY() + RandomSource.create().nextFloat()/3,
+                this.getZ() + RandomSource.create().nextFloat()/3,
+                0d + RandomSource.create().nextInt(-10, 10)/100d,
+                0d + RandomSource.create().nextInt(-10, 10)/100d,
+                0d + RandomSource.create().nextInt(-10, 10)/100d);
+
         if (!this.level().isClientSide) {
 
-            if (this.dauer > 40) {
+            if (this.dauer > 30) {
                 explode();
             }
         }
@@ -69,9 +80,20 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
 
     private void explode() {
 
-        this.level().explode(this, this.getX(), this.getY(), this.getZ(), 1f, Level.ExplosionInteraction.NONE);
+        level().explode(null, level().damageSources().source(ModDamageTypes.RAKETENZIGARRE_SCHADEN),
+                new ExplosionDamageCalculator(),
+                this.getX(),
+                this.getEyeY(),
+                this.getZ(),
+                1f,
+                false,
+                Level.ExplosionInteraction.NONE,
+                ParticleTypes.EXPLOSION_EMITTER,
+                ParticleTypes.EXPLOSION,
+                SoundEvents.GENERIC_EXPLODE);
         this.discard();
     }
+
 
     @Override
     protected Item getDefaultItem() { return ModItems.RAKETENZIGARRE.get(); }
