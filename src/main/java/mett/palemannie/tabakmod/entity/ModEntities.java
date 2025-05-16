@@ -1,9 +1,7 @@
 package mett.palemannie.tabakmod.entity;
 
 import mett.palemannie.tabakmod.TabakMod;
-import mett.palemannie.tabakmod.entity.custom.RaketenZigrrEntity;
-import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
-import mett.palemannie.tabakmod.entity.custom.StummelEntity;
+import mett.palemannie.tabakmod.entity.custom.*;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -24,10 +22,25 @@ public class ModEntities {
                     .sized(0.2f, 0.2f)
                     .fireImmune(), "spucke"));
 
-    public static final RegistryObject<EntityType<StummelEntity>> STUMMEL =
-            ENTITY_TYPES.register("stummel", () -> build(EntityType.Builder.<StummelEntity>of(StummelEntity::new, MobCategory.MISC)
+    public static final RegistryObject<EntityType<ZigStummelEntity>> STUMMEL =
+            ENTITY_TYPES.register("stummel", () -> build(EntityType.Builder.<ZigStummelEntity>of(ZigStummelEntity::new, MobCategory.MISC)
                     .sized(0.2f, 0.2f)
                     .fireImmune(), "stummel"));
+
+    public static final RegistryObject<EntityType<ZigKamelStummelEntity>> STUMMEL_KAMEL =
+            ENTITY_TYPES.register("stummel_kamel", () -> build(EntityType.Builder.<ZigKamelStummelEntity>of(ZigKamelStummelEntity::new, MobCategory.MISC)
+                    .sized(0.2f, 0.2f)
+                    .fireImmune(), "stummel_kamel"));
+
+    public static final RegistryObject<EntityType<ZigMentholStummelEntity>> STUMMEL_MENTHOL =
+            ENTITY_TYPES.register("stummel_menthol", () -> build(EntityType.Builder.<ZigMentholStummelEntity>of(ZigMentholStummelEntity::new, MobCategory.MISC)
+                    .sized(0.2f, 0.2f)
+                    .fireImmune(), "stummel_menthol"));
+
+    public static final RegistryObject<EntityType<ZigrrStummelEntity>> STUMMEL_ZIGRR =
+            ENTITY_TYPES.register("zigarrenstummel", () -> build(EntityType.Builder.<ZigrrStummelEntity>of(ZigrrStummelEntity::new, MobCategory.MISC)
+                    .sized(0.2f, 0.2f)
+                    .fireImmune(), "zigarrenstummel"));
 
     public static final RegistryObject<EntityType<RaketenZigrrEntity>> RAKETENZIGRR =
             ENTITY_TYPES.register("raketenzigarre", () -> build(EntityType.Builder.<RaketenZigrrEntity>of(RaketenZigrrEntity::new, MobCategory.MISC)

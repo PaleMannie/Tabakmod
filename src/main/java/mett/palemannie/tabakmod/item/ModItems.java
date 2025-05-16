@@ -95,6 +95,10 @@ public class ModItems
             () -> new RaketenZigrrItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "raketenzigarre"))).stacksTo(16)));
     public static final RegistryObject<Item> ZIGARETTE_KAMEL = ITEMS.register("zigarette_kamel",
             () -> new KamelZigItem(new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).durability(300).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarette_kamel")))));
+    public static final RegistryObject<Item> STUMMEL_MENTHOL = ITEMS.register("stummel_menthol",
+            () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_menthol")))));
+    public static final RegistryObject<Item> STUMMEL_KAMEL = ITEMS.register("stummel_kamel",
+            () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_kamel")))));
 
     public static final RegistryObject<Item> SPUCKE = ITEMS.register("spucke",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "spucke")))));

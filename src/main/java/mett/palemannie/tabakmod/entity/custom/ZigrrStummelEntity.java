@@ -18,20 +18,20 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
 
-public class StummelEntity extends ThrowableItemProjectile {
+public class ZigrrStummelEntity extends ThrowableItemProjectile {
 
-    public StummelEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
+    public ZigrrStummelEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
     }
 
-    public StummelEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
+    public ZigrrStummelEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
 
         this(livingEntity.getX(), livingEntity.getEyeY() - 0.2, livingEntity.getZ(), pLevel, stack);
         this.setOwner(livingEntity);
     }
 
-    public StummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
+    public ZigrrStummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
 
         super(ModEntities.STUMMEL.get(), x, y, z, pLevel, stack);
         this.setItem(stack);
@@ -81,13 +81,13 @@ public class StummelEntity extends ThrowableItemProjectile {
 
         if(stack.is(Items.BRUSH) && pPlayer.isUsingItem()){
 
-            pPlayer.drop(ModItems.ZIGARETTENSTUMMEL.get().getDefaultInstance(), false);
+            pPlayer.drop(ModItems.ZIGARRENSTUMMEL.get().getDefaultInstance(), false);
             this.discard();
         }
     }
 
     @Override
-    protected Item getDefaultItem() { return ModItems.ZIGARETTENSTUMMEL.get(); }
+    protected Item getDefaultItem() { return ModItems.ZIGARRENSTUMMEL.get(); }
 
     @Override
     public boolean isPushable() { return true; }
