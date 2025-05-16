@@ -1,34 +1,40 @@
 package mett.palemannie.tabakmod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
+import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.entity.custom.RaketenZigrrEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
-import net.minecraft.client.renderer.item.ItemModelResolver;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.resources.ResourceLocation;
 
 public class RaketenZigrrRenderer extends EntityRenderer<RaketenZigrrEntity, RaketenZigrrRenderState> {
 
-    private final ItemModelResolver itemModelResolver;
+    private static final ResourceLocation ZIG_LOCATION = ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/raketenzigarre/raketenzigarre.png");
+    private final RaketenZigrrModel model;
 
-    public RaketenZigrrRenderer(EntityRendererProvider.Context p_174114_) {
-        super(p_174114_);
-        this.itemModelResolver = p_174114_.getItemModelResolver();
+    public RaketenZigrrRenderer(EntityRendererProvider.Context context) {
+        super(context);
+        this.model = new RaketenZigrrModel(context.bakeLayer(RaketenZigrrModel.LAYER_LOCATION));
     }
 
+
     public void render(RaketenZigrrRenderState pRenderState, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight) {
+
         pPoseStack.pushPose();
-        pPoseStack.mulPose(this.entityRenderDispatcher.cameraOrientation());
 
-            pPoseStack.mulPose(Axis.ZP.rotationDegrees(90.0F));
-            pPoseStack.mulPose(Axis.YP.rotationDegrees(-45.0F));
-            pPoseStack.mulPose(Axis.XP.rotationDegrees(270.0F));
+        pPoseStack.translate(0f, 0.4f, 0f);
 
+        pPoseStack.mulPose(Axis.YP.rotationDegrees(pRenderState.yRot));
+        pPoseStack.mulPose(Axis.XP.rotationDegrees(-pRenderState.xRot + 180f));
+        pPoseStack.mulPose(Axis.ZP.rotationDegrees(180f));
 
-        pRenderState.item.render(pPoseStack, pBufferSource, pPackedLight, OverlayTexture.NO_OVERLAY);
+        this.model.setupAnim(pRenderState);
+        VertexConsumer vertexconsumer = pBufferSource.getBuffer(this.model.renderType(ZIG_LOCATION));
+        this.model.renderToBuffer(pPoseStack, vertexconsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
         pPoseStack.popPose();
         super.render(pRenderState, pPoseStack, pBufferSource, pPackedLight);
     }
@@ -37,8 +43,9 @@ public class RaketenZigrrRenderer extends EntityRenderer<RaketenZigrrEntity, Rak
         return new RaketenZigrrRenderState();
     }
 
-    public void extractRenderState(RaketenZigrrEntity p_362725_, RaketenZigrrRenderState p_362243_, float p_362924_) {
-        super.extractRenderState(p_362725_, p_362243_, p_362924_);
-        this.itemModelResolver.updateForNonLiving(p_362243_.item, p_362725_.getItem(), ItemDisplayContext.GROUND, p_362725_);
+    public void extractRenderState(RaketenZigrrEntity pEntity, RaketenZigrrRenderState renderState, float pPartialTick) {
+        super.extractRenderState(pEntity, renderState, pPartialTick);
+        renderState.xRot = pEntity.getXRot(pPartialTick);
+        renderState.yRot = pEntity.getYRot(pPartialTick);
     }
 }

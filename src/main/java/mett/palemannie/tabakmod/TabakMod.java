@@ -132,6 +132,9 @@ public class TabakMod {
 
             EntityRenderers.register(ModEntities.SPUCKE.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.STUMMEL_KAMEL.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.STUMMEL_MENTHOL.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.STUMMEL_ZIGRR.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.RAKETENZIGRR.get(), RaketenZigrrRenderer::new);
         }
     }
