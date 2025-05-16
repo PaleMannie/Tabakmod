@@ -1,0 +1,237 @@
+{
+  "model": {
+    "type": "minecraft:range_dispatch",
+    "property": "minecraft:damage",
+    "normalize": true,
+    "scale": 1,
+    "entries": [
+      {
+        "threshold": 0.0,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen1"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel1"
+          }
+        }
+      },
+      {
+        "threshold": 0.06,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen2"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel2"
+          }
+        }
+      },
+      {
+        "threshold": 0.13,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen3"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel3"
+          }
+        }
+      },
+      {
+        "threshold": 0.2,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen4"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel4"
+          }
+        }
+      },{
+        "threshold": 0.27,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen5"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel5"
+          }
+        }
+      },
+      {
+        "threshold": 0.33,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen6"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel6"
+          }
+        }
+      },
+      {
+        "threshold": 0.4,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen7"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel7"
+          }
+        }
+      },
+      {
+        "threshold": 0.47,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen8"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel8"
+          }
+        }
+      },{
+        "threshold": 0.53,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen9"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel9"
+          }
+        }
+      },
+      {
+        "threshold": 0.6,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen10"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel10"
+          }
+        }
+      },
+      {
+        "threshold": 0.67,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen11"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel11"
+          }
+        }
+      },
+      {
+        "threshold": 0.73,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen12"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel12"
+          }
+        }
+      },{
+        "threshold": 0.8,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen13"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel13"
+          }
+        }
+      },
+      {
+        "threshold": 0.87,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen14"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel14"
+          }
+        }
+      },
+      {
+        "threshold": 0.93,
+        "model": {
+          "type": "minecraft:condition",
+          "property": "minecraft:using_item",
+          "on_true": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel_rauchen15"
+          },
+          "on_false": {
+            "type": "minecraft:model",
+            "model": "tabakmod:item/zigarette_kamel15"
+          }
+        }
+      }
+    ],
+    "fallback": {
+      "type": "minecraft:model",
+      "model": "tabakmod:item/zigarette_kamel1"
+    }
+  },
+  "hand_animation_on_swap": false
+}

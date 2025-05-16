@@ -21,4 +21,6 @@ public class ModDamageTypes {
     public static final ResourceKey<DamageType> SPUCK_SCHADEN =   register("spuck_schaden");
     public static final ResourceKey<DamageType> SUIZIDZIGARETTE_SCHADEN =   register("suizidzigarette_schaden");
     public static final ResourceKey<DamageType> RAKETENZIGARRE_SCHADEN =   register("raketenzigarre_schaden");
+    public static final ResourceKey<DamageType> KAMEL_SCHADEN =   register("kamel_schaden");
+
 }

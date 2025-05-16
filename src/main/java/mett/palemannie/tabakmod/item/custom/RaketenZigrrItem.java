@@ -11,6 +11,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.Item;
@@ -47,7 +48,9 @@ public class RaketenZigrrItem extends Item implements ProjectileItem {
     }
 
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
-        return true;
-    }
+    public boolean isPiglinCurrency(ItemStack stack) { return true; }
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
+    @Override
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
 }

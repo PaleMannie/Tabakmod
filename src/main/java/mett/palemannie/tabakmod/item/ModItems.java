@@ -3,11 +3,13 @@ package mett.palemannie.tabakmod.item;
 import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.item.custom.*;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -46,11 +48,11 @@ public class ModItems
     public static final RegistryObject<Item> ZIGARETTEN = ITEMS.register("zigaretten",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigaretten")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL = ITEMS.register("zigarettenschachtel",
-            () -> new ZigSchachtelItem(new Item.Properties().durability(20).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel")))));
+            () -> new ZigSchachtelItem(new Item.Properties().durability(21).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL_LEER = ITEMS.register("zigarettenschachtel_leer",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_leer")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL_GROSS = ITEMS.register("zigarettenschachtel_gross",
-            () -> new ZigSchachtelItem(new Item.Properties().durability(30).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_gross")))));
+            () -> new ZigSchachtelItem(new Item.Properties().durability(31).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_gross")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL_GROSS_LEER = ITEMS.register("zigarettenschachtel_gross_leer",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_gross_leer")))));
     public static final RegistryObject<Item> ZIGARRE = ITEMS.register("zigarre",
@@ -72,7 +74,7 @@ public class ModItems
     public static final RegistryObject<Item> ZIGARETTE_MENTHOL = ITEMS.register("zigarette_menthol",
             () -> new MenthZigarettenItem(new Item.Properties().durability(200).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarette_menthol")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL_MENTHOL = ITEMS.register("zigarettenschachtel_menthol",
-            () -> new ZigSchachtelItem(new Item.Properties().durability(20).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_menthol")))));
+            () -> new ZigSchachtelItem(new Item.Properties().durability(21).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_menthol")))));
     public static final RegistryObject<Item> ZIGARETTENSCHACHTEL_MENTHOL_LEER = ITEMS.register("zigarettenschachtel_menthol_leer",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarettenschachtel_menthol_leer")))));
     public static final RegistryObject<Item> ZIGARETTE_SCHEISE = ITEMS.register("zigarette_scheise",
@@ -91,6 +93,8 @@ public class ModItems
             () -> new SuizidZigarettenItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "suizidzigarette"))).stacksTo(1)));
     public static final RegistryObject<Item> RAKETENZIGARRE = ITEMS.register("raketenzigarre",
             () -> new RaketenZigrrItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "raketenzigarre"))).stacksTo(16)));
+    public static final RegistryObject<Item> ZIGARETTE_KAMEL = ITEMS.register("zigarette_kamel",
+            () -> new KamelZigItem(new Item.Properties().rarity(Rarity.EPIC).component(DataComponents.ENCHANTMENT_GLINT_OVERRIDE, true).durability(300).setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "zigarette_kamel")))));
 
     public static final RegistryObject<Item> SPUCKE = ITEMS.register("spucke",
             () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "spucke")))));

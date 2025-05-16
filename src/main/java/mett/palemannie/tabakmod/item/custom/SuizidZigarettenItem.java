@@ -166,9 +166,11 @@ public class SuizidZigarettenItem extends Item {
 
 
     @Override
-    public ItemUseAnimation getUseAnimation(ItemStack pStack) {
-        return ItemUseAnimation.BOW;
-    }
+    public boolean isPiglinCurrency(ItemStack stack) { return true; }
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
+    @Override
+    public ItemUseAnimation getUseAnimation(ItemStack pStack) { return ItemUseAnimation.BOW; }
 
     float tntschadenzaehler = 0f;
 

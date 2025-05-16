@@ -85,20 +85,19 @@ public class KautabakItem extends Item implements IForgeMobEffect {
 ////////////////////////////////////////////////////SONSTIGE METHODEN///////////////////////////////////////////////////
 
     @Override
+    public boolean isPiglinCurrency(ItemStack stack) { return true; }
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
+    @Override
     public ItemUseAnimation getUseAnimation(ItemStack pStack) {
         return ItemUseAnimation.EAT;
     }
-
     @Override
-    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
-        return slotChanged;
-    }
-
+    public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) {
         return 72000;
     }
-
     @Override
     public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
         return true;

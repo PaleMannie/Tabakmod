@@ -90,6 +90,10 @@ public class TabakEiskremItem extends Item implements IForgeMobEffect {
     ////////////////////////////////////////////////////SONSTIGE METHODEN///////////////////////////////////////////////////
 
     @Override
+    public boolean isPiglinCurrency(ItemStack stack) { return true; }
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
+    @Override
     public ItemUseAnimation getUseAnimation(ItemStack pStack) {
         return ItemUseAnimation.EAT;
     }

@@ -233,6 +233,10 @@ public class PfeifenItem extends Item {
  /////////////////////////////////////////////////SONSTIGE METHODEN/////////////////////////////////////////////////////
 
     @Override
+     public boolean isPiglinCurrency(ItemStack stack) { return true; }
+    @Override
+    public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
+    @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) {
     return 72000;
     }

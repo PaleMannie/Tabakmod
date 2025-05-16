@@ -8,6 +8,5 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 
 @OnlyIn(Dist.CLIENT)
 public class RaketenZigrrRenderState extends EntityRenderState {
-    public boolean isShotAtAngle = true;
     public final ItemStackRenderState item = new ItemStackRenderState();
 }

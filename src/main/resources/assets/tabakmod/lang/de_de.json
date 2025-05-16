@@ -27,6 +27,7 @@
   "item.tabakmod.tabakeiskrem": "Tabakeiscreme",
   "item.tabakmod.suizidzigarette": "TNT Zigarette",
   "item.tabakmod.raketenzigarre": "Raketenzigarre",
+  "item.tabakmod.zigarette_kamel": "Camel Filterzigarette",
 
   "item.tabakmod.trockener_tabak": "Trockener Tabak",
   "item.tabakmod.heller_tabak": "Heller Tabak",
@@ -141,6 +142,8 @@
   "death.attack.tabakmod.suizidzigarette_schaden.player": "%2$s hat %1$ss Gedanken fortgeblasen",
   "death.attack.tabakmod.raketenzigarre_schaden": "%1$s dachte es war eine Zigarre",
   "death.attack.tabakmod.raketenzigarre_schaden.player": "%2$s's Zigarre rutschte von den Händen und flog in %1$ss Gesicht",
+  "death.attack.tabakmod.kamel_schaden": "%1$s ist eine Meile gelaufen",
+  "death.attack.tabakmod.kamel_schaden.player": "%2$s lief eine Meile um es von %1$s zu stehlen",
 
   "creativemodetab.tabak_tab": "Super Tabakmod"
 }
