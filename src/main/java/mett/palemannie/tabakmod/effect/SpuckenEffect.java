@@ -1,11 +1,14 @@
 package mett.palemannie.tabakmod.effect;
 
 import mett.palemannie.tabakmod.networking.ModMessages;
+import mett.palemannie.tabakmod.networking.packets.KauSoundC2SPacket;
 import mett.palemannie.tabakmod.networking.packets.SpuckenC2SPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.*;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.level.Level;
 
 public class SpuckenEffect extends MobEffect {
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -23,7 +26,7 @@ public class SpuckenEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(ServerLevel sLevel, LivingEntity pLivingEntity, int pAmplifier) {
-        if(pLivingEntity.level().isClientSide()) {
+        if(!pLivingEntity.level().isClientSide()) {
             counter--;
             counter2--;
             if ((counter % basis == 0)) {
@@ -32,7 +35,7 @@ public class SpuckenEffect extends MobEffect {
                 resetCounter(counter);
             }
             if ((counter2 % basis2 == 0)) {
-                pLivingEntity.playSound(SoundEvents.SLIME_JUMP, 0.5f, 1f);
+                ModMessages.sendToServer(new KauSoundC2SPacket());
                 resetCounter2(counter2);
             }
         }

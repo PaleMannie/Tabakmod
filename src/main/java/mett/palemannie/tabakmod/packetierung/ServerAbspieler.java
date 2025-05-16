@@ -12,7 +12,9 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 
 public class ServerAbspieler {
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static void handliereSpucken(ServerPlayer player){
 
         ServerLevel sevel = player.serverLevel();
@@ -49,6 +51,13 @@ public class ServerAbspieler {
         if(lvl instanceof ServerLevel slevel) {
             slevel.sendParticles(ParticleTypes.SPIT, x, y, z, 3, 0d, 0d, 0d,0.15d);
         }
+    }
+
+    public static void SpieleKauSoundsAb(ServerPlayer player){
+
+        Level lvl = player.level();
+
+        lvl.playSound(null, player.getX(), player.getEyeY(), player.getZ(), SoundEvents.SLIME_JUMP, SoundSource.BLOCKS, 0.5f, RandomSource.create().nextInt(8,12)/10f);
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }
