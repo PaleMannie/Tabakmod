@@ -1,0 +1,13 @@
+{
+  "asset_id": "tabakmod:straus",
+  "height": 3,
+  "width": 3,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.straus.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.straus.title"
+  }
+}

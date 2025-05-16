@@ -1,0 +1,13 @@
+{
+  "asset_id": "tabakmod:bomzh",
+  "height": 4,
+  "width": 2,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.bomzh.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.bomzh.title"
+  }
+}

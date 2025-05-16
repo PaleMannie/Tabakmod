@@ -1,0 +1,13 @@
+{
+  "asset_id": "tabakmod:duet_sigaret",
+  "height": 2,
+  "width": 3,
+  "author": {
+    "color": "gray",
+    "translate": "painting.tabakmod.duet_sigaret.author"
+  },
+  "title": {
+    "color": "yellow",
+    "translate": "painting.tabakmod.duet_sigaret.title"
+  }
+}
