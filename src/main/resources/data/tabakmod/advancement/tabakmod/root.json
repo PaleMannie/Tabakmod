@@ -1,0 +1,35 @@
+{
+  "criteria": {
+    "zig": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tabakmod:tabaksamen"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "tabakmod:block/dunkler_tabakballen",
+    "description": {
+      "translate": "advancements.tabakmod.root.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tabakmod:tabakblatt"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.tabakmod.root.title"
+    }
+  },
+  "requirements": [
+    [
+      "zig"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

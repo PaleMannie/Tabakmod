@@ -125,12 +125,14 @@
   "key.category.tabakmod.spucken": "Tabakmod",
   "key.tabakmod.spucken": "Spucken",
 
-  "advancements.tabakmod.root": "Tabakmod",
+  "advancements.tabakmod.root.title": "Tabakmod",
   "advancements.tabakmod.root.desc": "Ich wenn Tabakmod",
-  "advancements.tabakmod.zig": "Was ist das?",
+  "advancements.tabakmod.zig.title": "Was ist das?",
   "advancements.tabakmod.zig.desc": "Es nennt sich 'Zigarette'",
-  "advancements.tabakmod.mehr": "Das fühlt sich ja... wunderbar an",
+  "advancements.tabakmod.mehr.title": "Das fühlt sich ja... wunderbar an",
   "advancements.tabakmod.mehr.desc": "Wir müssen mehr davon haben!",
+  "advancements.tabakmod.lief_eine_meile.title": "Ich würde 'ne Meile fürn Camel laufen",
+  "advancements.tabakmod.lief_eine_meile.desc": "Verwette dein Wohlhaben für eine Camel Zigarette",
 
   "death.attack.tabakmod.zig_schaden": "%1$s rauchte seine Lungen weg",
   "death.attack.tabakmod.zig_schaden.player": "lmao wer war das XDDDD %1$s oder %2$s?",

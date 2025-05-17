@@ -1,0 +1,37 @@
+
+{
+  "parent": "tabakmod:tabakmod/root",
+  "criteria": {
+    "kamel": {
+      "conditions": {
+        "items": [
+          {
+            "items": "tabakmod:zigarette_kamel"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "display": {
+    "announce_to_chat": true,
+    "background": "tabakmod:block/dunkler_tabakballen",
+    "description": {
+      "translate": "advancements.tabakmod.lief_eine_meile.desc"
+    },
+    "icon": {
+      "count": 1,
+      "id": "tabakmod:zigarette_kamel_rauchen5"
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.tabakmod.lief_eine_meile.title"
+    }
+  },
+  "requirements": [
+    [
+      "kamel"
+    ]
+  ],
+  "sends_telemetry_event": true
+}

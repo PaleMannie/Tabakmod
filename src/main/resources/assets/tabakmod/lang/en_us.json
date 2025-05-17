@@ -125,12 +125,14 @@
   "key.category.tabakmod.spucken": "Tobacco Mod",
   "key.tabakmod.spucken": "Spit",
 
-  "advancements.tabakmod.root": "Tabakmod",
+  "advancements.tabakmod.root.title": "Tabakmod",
   "advancements.tabakmod.root.desc": "me when tabakmod",
-  "advancements.tabakmod.zig": "What is it?",
+  "advancements.tabakmod.zig.title": "What is it?",
   "advancements.tabakmod.zig.desc": "It is called a cigarette",
-  "advancements.tabakmod.mehr": "The sensation is wonderful",
+  "advancements.tabakmod.mehr.title": "The sensation is wonderful",
   "advancements.tabakmod.mehr.desc": "We need some more",
+  "advancements.tabakmod.lief_eine_meile.title": "I'd walk a mile for a Camel",
+  "advancements.tabakmod.lief_eine_meile.desc": "Gamble your fortune away for a Camel cigarette",
 
   "death.attack.tabakmod.zig_schaden": "%1$s smoked their lungs away",
   "death.attack.tabakmod.zig_schaden.player": "lmao who did this XDDDD %1$s or %2$s?",
