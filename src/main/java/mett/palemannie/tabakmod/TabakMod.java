@@ -5,6 +5,7 @@ import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.effect.ModEffects;
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.entity.client.RaketenZigrrRenderer;
+import mett.palemannie.tabakmod.entity.client.SpuckeRenderer;
 import mett.palemannie.tabakmod.item.ModCreativeModeTabs;
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.loot.ModLootModifiers;
@@ -130,7 +131,7 @@ public class TabakMod {
         public static void onClientSetup(FMLClientSetupEvent event) {
             ItemBlockRenderTypes.setRenderLayer(ModBlocks.TABAKPFLANZE.get(), RenderType.cutout());
 
-            EntityRenderers.register(ModEntities.SPUCKE.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.SPUCKE.get(), SpuckeRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL_KAMEL.get(), ThrownItemRenderer::new);
             EntityRenderers.register(ModEntities.STUMMEL_MENTHOL.get(), ThrownItemRenderer::new);

@@ -34,7 +34,7 @@ public class RaketenZigrrItem extends Item implements ProjectileItem {
         pLevel.playSound(null, pPlayer.getX(), pPlayer.getY(), pPlayer.getZ(), SoundEvents.FIREWORK_ROCKET_LAUNCH, SoundSource.NEUTRAL, 1f, 1f);
 
         if (pLevel instanceof ServerLevel serverlevel) {
-            Projectile.spawnProjectileFromRotation(RaketenZigrrEntity::new, serverlevel, itemstack, pPlayer, 0f, 1.5f, 1f);
+            Projectile.spawnProjectileFromRotation(RaketenZigrrEntity::new, serverlevel, itemstack, pPlayer, 0f, 1.0f, 1f);
         }
 
         pPlayer.awardStat(Stats.ITEM_USED.get(this));
