@@ -304,6 +304,17 @@ public class ModEvents {
 
         }
 
+//////////////////////////////////////////////////////FISCHER///////////////////////////////////////////////////////////
+
+        if(event.getType() == VillagerProfession.FISHERMAN) {
+            var trades = event.getTrades();
+
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 10),
+                    new ItemStack(ModItems.KAUTABAK.get(), 1), 6, 4, 0.05f));
+
+        }
+
     }
 
 }
