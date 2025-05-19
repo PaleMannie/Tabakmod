@@ -5,7 +5,10 @@
       "tabakmod:trockener_tabak"
     ],
     [
-      "tabakmod:zigarettenstummel"
+      "tabakmod:zigarettenstummel",
+      "tabakmod:zigarrenstummel",
+      "tabakmod:stummel_menthol",
+      "tabakmod:stummel_kamel"
     ],
     [
       "minecraft:paper"
