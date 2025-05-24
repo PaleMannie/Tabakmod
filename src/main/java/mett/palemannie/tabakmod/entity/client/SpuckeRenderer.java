@@ -4,7 +4,6 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import mett.palemannie.tabakmod.TabakMod;
-import mett.palemannie.tabakmod.entity.custom.RaketenZigrrEntity;
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRenderer;
@@ -28,11 +27,10 @@ public class SpuckeRenderer extends EntityRenderer<SpuckeEntity, LlamaSpitRender
 
         pPoseStack.pushPose();
 
-        pPoseStack.translate(0f, 0.3f, 0f);
+        pPoseStack.translate(0f, 0.1f, 0f);
 
         pPoseStack.mulPose(Axis.YP.rotationDegrees(pRenderState.yRot));
         pPoseStack.mulPose(Axis.XP.rotationDegrees(-pRenderState.xRot + 180f));
-        pPoseStack.mulPose(Axis.ZP.rotationDegrees(180f));
 
         this.model.setupAnim(pRenderState);
         VertexConsumer vertexconsumer = pBufferSource.getBuffer(this.model.renderType(ZIG_LOCATION));

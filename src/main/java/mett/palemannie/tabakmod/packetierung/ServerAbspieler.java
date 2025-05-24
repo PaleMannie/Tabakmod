@@ -1,7 +1,6 @@
 package mett.palemannie.tabakmod.packetierung;
 
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
-import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -19,10 +18,11 @@ public class ServerAbspieler {
 
         ServerLevel sevel = player.serverLevel();
         RandomSource rdm = RandomSource.create();
+        Level lvl = player.level();
 
         //Entität
-        SpuckeEntity spucke = new SpuckeEntity(sevel, player, ModItems.SPUCKE.get().getDefaultInstance());
-        float re = (float)rdm.nextInt(4500,5000)/10000;
+        SpuckeEntity spucke = new SpuckeEntity(lvl, player);
+        float re = rdm.nextInt(4500,5000)/10000f;
         float ye = player.getYRot();
         float xe = player.getXRot();
         float ze = 0f;
@@ -30,7 +30,6 @@ public class ServerAbspieler {
         sevel.addFreshEntity(spucke);
 
         //Ton
-        Level lvl = player.level();
 
         double posX = player.getX();
         double posY = player.getY();
@@ -42,7 +41,6 @@ public class ServerAbspieler {
         //Partikel
         Vec3 vec3 = player.getViewVector(1f);
         Vec3 MausPos = player.getEyePosition();
-        Vec3 SchauWinkel = player.getLookAngle();
 
         double x = player.getX() + vec3.x/4;
         double y = MausPos.y + vec3.y/4;

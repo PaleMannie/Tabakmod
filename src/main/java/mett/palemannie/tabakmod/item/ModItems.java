@@ -100,8 +100,6 @@ public class ModItems
     public static final RegistryObject<Item> STUMMEL_KAMEL = ITEMS.register("stummel_kamel",
             () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_kamel")))));
 
-    public static final RegistryObject<Item> SPUCKE = ITEMS.register("spucke",
-            () -> new Item(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "spucke")))));
 
     public static void register(IEventBus eventBus)
     {
