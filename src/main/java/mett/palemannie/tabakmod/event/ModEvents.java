@@ -68,11 +68,27 @@ public class ModEvents {
                     new ItemStack(ModItems.ZIGARETTE_SCHEISE.get(), 1), 100, 1, 0.05f));
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.KAUTABAKMISCHE.get(), 1),
+                    new ItemStack(Items.EMERALD, 1), 4, 2, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 4),
                     new ItemStack(ModItems.DECKBLATT.get(), 6), 10, 1, 0.05f));
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
-                    new ItemCost(ModItems.ZIGARETTENSTUMMEL.orElse(ModItems.ZIGARRENSTUMMEL.get()), 8),
+                    new ItemCost(ModItems.ZIGARETTENSTUMMEL.get(), 6),
+                    new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.ZIGARRENSTUMMEL.get(), 6),
+                    new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.STUMMEL_KAMEL.get(), 6),
+                    new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.STUMMEL_MENTHOL.get(), 6),
                     new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
@@ -89,17 +105,37 @@ public class ModEvents {
                     new ItemCost(Items.EMERALD, 2),
                     new ItemStack(ModItems.ZIGARETTENFILTER.get(), 1), 10, 1, 0.05f));
 
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.HELLER_TABAK.get(), 8),
+                    Optional.of(new ItemCost(Items.EMERALD, 1)),
+                    new ItemStack(ModItems.HELLER_TABAK_BEHANDELT.get(), 8), 1, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.MITTLERER_TABAK.get(), 8),
+                    Optional.of(new ItemCost(Items.EMERALD, 1)),
+                    new ItemStack(ModItems.MITTLERER_TABAK_BEHANDELT.get(), 8), 1, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.DUNKLER_TABAK.get(), 8),
+                    Optional.of(new ItemCost(Items.EMERALD, 1)),
+                    new ItemStack(ModItems.DUNKLER_TABAK_BEHANDELT.get(), 8), 1, 1, 0.05f));
+
             ///LEHRLING
 
             trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.ZIGARETTENSTUMMEL.get(), 1),
-                    Optional.of(new ItemCost(Items.EMERALD, 2)),
+                    Optional.of(new ItemCost(Items.EMERALD, 1)),
                     new ItemStack(ModItems.ZIGARETTE.get(), 1), 10, 2, 0.05f));
 
             trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.ZIGARRENSTUMMEL.get(), 1),
-                    Optional.of(new ItemCost(Items.EMERALD, 7)),
+                    Optional.of(new ItemCost(Items.EMERALD, 13)),
                     new ItemStack(ModItems.ZIGARRE.get(), 1), 6, 2, 0.05f));
+
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.STUMMEL_MENTHOL.get(), 1),
+                    Optional.of(new ItemCost(Items.EMERALD, 7)),
+                    new ItemStack(ModItems.ZIGARETTE_MENTHOL.get(), 1), 6, 2, 0.05f));
 
             trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 18),
@@ -151,11 +187,28 @@ public class ModEvents {
                     new ItemCost(Items.EMERALD, 28),
                     new ItemStack(ModItems.PFEIFE_LEER.get(), 1), 2, 12, 0.05f));
 
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.STUMMEL_KAMEL.get(), 1),
+                    Optional.of(new ItemCost(Items.EMERALD, 64)),
+                    new ItemStack(ModItems.ZIGARETTE_KAMEL.get(), 1), 1, 20, 0.05f));
+
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 16),
+                    new ItemStack(ModItems.RAKETENZIGARRE.get(), 1), 4, 12, 0.05f));
+
+            trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 16),
+                    new ItemStack(ModItems.SUIZIDZIGARETTE.get(), 1), 1, 12, 0.05f));
+
             ///EXPERTE
 
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 64),
                     new ItemStack(ModItems.ZIGARETTENSCHACHTEL.get(), 1), 2, 18, 0.05f));
+
+            trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 12),
+                    new ItemStack(ModItems.KAUTABAK.get(), 1), 5, 10, 0.05f));
 
             trades.get(4).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 64),
@@ -182,8 +235,12 @@ public class ModEvents {
 
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 64),
-                    Optional.of(new ItemCost(Items.EMERALD, 32)),
+                    Optional.of(new ItemCost(Items.EMERALD, 63)),
                     new ItemStack(ModItems.ZIGARETTENSCHACHTEL_GROSS.get(), 1), 1, 30, 0.05f));
+
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.KAUTABAK.get(), 1),
+                    new ItemStack(Items.EMERALD, 2), 8, 8, 0.05f));
 
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.ZIGARETTENSCHACHTEL_GROSS_LEER.get(), 1),
@@ -197,6 +254,12 @@ public class ModEvents {
             trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 63),
                     new ItemStack(ModItems.ZIGARETTENSCHACHTEL_MENTHOL.get(), 1), 2, 60, 0.05f));
+
+            trades.get(5).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.KAUTABAKMISCHE.get(), 1),
+                    Optional.of(new ItemCost(Items.EMERALD, 1)),
+                    new ItemStack(ModItems.KAUTABAK.get(), 1), 10, 10, 0.05f));
+
         }
 
 //////////////////////////////////////////////////////MAURER////////////////////////////////////////////////////////////
@@ -238,6 +301,17 @@ public class ModEvents {
             trades.get(3).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.TABAKSAMEN.get(), 4),
                     new ItemStack(Items.EMERALD, 1), 1, 12, 0.05f));
+
+        }
+
+//////////////////////////////////////////////////////FISCHER///////////////////////////////////////////////////////////
+
+        if(event.getType() == VillagerProfession.FISHERMAN) {
+            var trades = event.getTrades();
+
+            trades.get(2).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(Items.EMERALD, 10),
+                    new ItemStack(ModItems.KAUTABAK.get(), 1), 6, 4, 0.05f));
 
         }
 
