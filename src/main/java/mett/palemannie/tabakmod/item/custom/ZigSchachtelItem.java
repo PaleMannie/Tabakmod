@@ -1,6 +1,10 @@
 package mett.palemannie.tabakmod.item.custom;
 
 import mett.palemannie.tabakmod.item.ModItems;
+import net.minecraft.ChatFormatting;
+import net.minecraft.client.Minecraft;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -32,6 +36,8 @@ public class ZigSchachtelItem extends Item {
         float r = pLevel.getRandom().nextFloat();
 
         boolean used = false;
+
+        if(!(pPlayer.getInventory().getFreeSlot() == -1)){
 
         if(!pLevel.isClientSide) {
 
@@ -75,6 +81,12 @@ public class ZigSchachtelItem extends Item {
                 return ItemUtils.startUsingInstantly(pLevel, pPlayer, pHand);
             }
 
+            }
+        } else {
+
+            var msg = MutableComponent.create(new TranslatableContents("tabakmod.iteminteraction.schachtel", null, new Object[0])).withStyle(ChatFormatting.GOLD);
+            pPlayer.displayClientMessage(msg, true);
+            return InteractionResult.FAIL; 
         }
 
         return InteractionResult.PASS;

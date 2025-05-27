@@ -8,6 +8,7 @@
   "item.tabakmod.zigarrenstummel": "Zigarrenstummel",
   "item.tabakmod.stummel_menthol": "Mentholstummel",
   "item.tabakmod.stummel_kamel": "Camelstummel",
+  "item.tabakmod.stummel_scheise": "Scheißstummel",
   "item.tabakmod.zigaretten": "Zigaretten",
   "item.tabakmod.zigarren": "Zigarren",
   "item.tabakmod.zigarettenschachtel": "Zigarettenschachtel",
@@ -57,6 +58,8 @@
   "item.tabakmod.aschenbecher_gross": "Großer Aschenbecher",
 
   "item.tabakmod.tabakkuchen": "Tabakkuchen",
+
+  "tabakmod.iteminteraction.schachtel": "Inventar voll",
 
   "entity.minecraft.villager.tabakmod.tabakhaendler": "Tabakhändler",
 

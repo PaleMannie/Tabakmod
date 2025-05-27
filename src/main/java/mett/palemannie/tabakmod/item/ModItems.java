@@ -99,6 +99,9 @@ public class ModItems
             () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_menthol")))));
     public static final RegistryObject<Item> STUMMEL_KAMEL = ITEMS.register("stummel_kamel",
             () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_kamel")))));
+    public static final RegistryObject<Item> STUMMEL_SCHEISE = ITEMS.register("stummel_scheise",
+            () -> new StummelItem(new Item.Properties().setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "stummel_scheise")))));
+
 
 
     public static void register(IEventBus eventBus)

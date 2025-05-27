@@ -109,6 +109,7 @@ public class TabakMod {
             event.accept(ModItems.ZIGARETTENSTUMMEL);
             event.accept(ModItems.STUMMEL_MENTHOL);
             event.accept(ModItems.STUMMEL_KAMEL);
+            event.accept(ModItems.STUMMEL_SCHEISE);
             event.accept(ModItems.ZIGARRENSTUMMEL);
             event.accept(ModItems.ZIGARETTENSCHACHTEL);
             event.accept(ModItems.ZIGARETTENSCHACHTEL_LEER);

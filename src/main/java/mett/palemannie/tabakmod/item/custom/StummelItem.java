@@ -1,9 +1,6 @@
 package mett.palemannie.tabakmod.item.custom;
 
-import mett.palemannie.tabakmod.entity.custom.ZigKamelStummelEntity;
-import mett.palemannie.tabakmod.entity.custom.ZigMentholStummelEntity;
-import mett.palemannie.tabakmod.entity.custom.ZigStummelEntity;
-import mett.palemannie.tabakmod.entity.custom.ZigrrStummelEntity;
+import mett.palemannie.tabakmod.entity.custom.*;
 import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Position;
@@ -39,6 +36,7 @@ public class StummelItem extends Item implements ProjectileItem {
             if(this == ModItems.STUMMEL_KAMEL.get()){ Projectile.spawnProjectileFromRotation(ZigKamelStummelEntity::new, serverlevel, itemstack, pPlayer, 0f, 0.5f, 10f); }
             if(this == ModItems.ZIGARRENSTUMMEL.get()){ Projectile.spawnProjectileFromRotation(ZigrrStummelEntity::new, serverlevel, itemstack, pPlayer, 0f, 0.5f, 10f); }
             if(this == ModItems.ZIGARETTENSTUMMEL.get()){ Projectile.spawnProjectileFromRotation(ZigStummelEntity::new, serverlevel, itemstack, pPlayer, 0f, 0.5f, 10f); }
+            if(this == ModItems.STUMMEL_SCHEISE.get()){ Projectile.spawnProjectileFromRotation(ZigScheiseStummelEntity::new, serverlevel, itemstack, pPlayer, 0f, 0.5f, 10f); }
 
 
         }
@@ -56,10 +54,11 @@ public class StummelItem extends Item implements ProjectileItem {
     @Override
     public @NotNull Projectile asProjectile(Level pLevel, Position pPos, ItemStack pStack, Direction pDirection) {
 
-        if(this == ModItems.STUMMEL_MENTHOL.get()){return new ZigMentholStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);}
-        if(this == ModItems.STUMMEL_KAMEL.get()){return new ZigKamelStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);}
-        if(this == ModItems.ZIGARRENSTUMMEL.get()){return new ZigrrStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);}
-        if(this == ModItems.ZIGARETTENSTUMMEL.get()){return new ZigStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);}
+        if(this == ModItems.STUMMEL_MENTHOL.get()){ return new ZigMentholStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack); }
+        if(this == ModItems.STUMMEL_KAMEL.get()){ return new ZigKamelStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack); }
+        if(this == ModItems.ZIGARRENSTUMMEL.get()){ return new ZigrrStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack); }
+        if(this == ModItems.ZIGARETTENSTUMMEL.get()){ return new ZigStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack); }
+        if(this == ModItems.STUMMEL_SCHEISE.get()){ return new ZigScheiseStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack); }
 
         else return new ZigStummelEntity(pPos.x(), pPos.y(), pPos.z(), pLevel, pStack);
     }

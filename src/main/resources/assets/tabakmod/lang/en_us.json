@@ -7,6 +7,7 @@
   "item.tabakmod.zigarettenstummel": "Cigarette Butt",
   "item.tabakmod.stummel_menthol": "Menthol Cigarette Butt",
   "item.tabakmod.stummel_kamel": "Camel Cigarette Butt",
+  "item.tabakmod.stummel_scheise": "Shit Cigarette Butt",
   "item.tabakmod.zigarrenstummel": "Cigar Butt",
   "item.tabakmod.zigaretten": "Cigarettes",
   "item.tabakmod.zigarren": "Cigars",
@@ -55,6 +56,8 @@
 
   "item.tabakmod.aschenbecher_neu": "Ash Tray",
   "item.tabakmod.aschenbecher_gross": "Big Ash Tray",
+
+  "tabakmod.iteminteraction.schachtel": "Inventory full",
 
   "item.tabakmod.tabakkuchen": "Tobacco Cake",
 
