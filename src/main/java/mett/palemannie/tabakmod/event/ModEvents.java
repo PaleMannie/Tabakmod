@@ -29,9 +29,9 @@ public class ModEvents {
 
     @SubscribeEvent
     public static void onChat(ServerChatEvent event) {
-        String slon = event.getMessage().getString().toLowerCase(Locale.ROOT);
+        String chat = event.getMessage().getString().toLowerCase(Locale.ROOT);
 
-        if (slon.contains("slon")) {
+        if (chat.contains("slon")) {
             MinecraftServer server = event.getPlayer().getServer();
 
             if (server == null) return;
@@ -41,7 +41,7 @@ public class ModEvents {
                         (float) RandomSource.create().nextInt(8,12)/10, (float) RandomSource.create().nextInt(8,12)/10);
             }
         }
-        if (slon.contains("me when tabakmod")) {
+        if (chat.contains("me when tabakmod")) {
             MinecraftServer server = event.getPlayer().getServer();
 
             if (server == null) return;
@@ -89,6 +89,10 @@ public class ModEvents {
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
                     new ItemCost(ModItems.STUMMEL_MENTHOL.get(), 6),
+                    new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
+
+            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+                    new ItemCost(ModItems.STUMMEL_SCHEISE.get(), 1),
                     new ItemStack(Items.EMERALD, 1), 10, 1, 0.05f));
 
             trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(

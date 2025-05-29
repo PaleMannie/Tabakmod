@@ -3,7 +3,8 @@
   "ingredients": [
     [
       "minecraft:coal",
-      "minecraft:charcoal"
+      "minecraft:charcoal",
+      "tabakmod:stummel_scheise"
     ],
     [
       "minecraft:orange_wool"
