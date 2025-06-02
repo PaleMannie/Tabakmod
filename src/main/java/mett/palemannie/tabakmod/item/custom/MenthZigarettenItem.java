@@ -1,5 +1,6 @@
 package mett.palemannie.tabakmod.item.custom;
 
+import mett.palemannie.tabakmod.entity.custom.ZigMentholStummelEntity;
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.sound.ModSounds;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
@@ -181,7 +183,9 @@ public class MenthZigarettenItem extends Item {
 
                     gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.FERTIG_GERAUCHT.get(), SoundSource.PLAYERS, 1f, (float)RandomSource.create().nextInt(8, 12)/10);
-                    pPlayer.drop(new ItemStack(ModItems.STUMMEL_MENTHOL.get()), false);
+                    if(pLevel instanceof ServerLevel serverlevel) {
+                        Projectile.spawnProjectileFromRotation(ZigMentholStummelEntity::new, serverlevel, ModItems.STUMMEL_MENTHOL.get().getDefaultInstance(), pPlayer, 0f, 0.5f, 10f);
+                    }
                     releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);
                 }
 

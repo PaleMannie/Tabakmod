@@ -186,7 +186,8 @@ public class PfeifenItem extends Item {
 
                     gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.FERTIG_GERAUCHT.get(), SoundSource.PLAYERS, 1f, (float)RandomSource.create().nextInt(8, 12)/10);
-                    pPlayer.drop(new ItemStack(ModItems.PFEIFE_LEER.get()), false);
+                    pPlayer.addItem(ModItems.PFEIFE_LEER.get().getDefaultInstance());
+                    //pPlayer.drop(new ItemStack(ModItems.PFEIFE_LEER.get()), false);
                     releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);
                 }
 
