@@ -3,6 +3,7 @@ package mett.palemannie.tabakmod.entity.custom;
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
@@ -93,5 +94,20 @@ public class SpuckeEntity extends Projectile {
     @Override
     protected double getDefaultGravity() {
         return 0.05f;
+    }
+
+    @Override
+    public void recreateFromPacket(ClientboundAddEntityPacket p_150162_) {
+        super.recreateFromPacket(p_150162_);
+        double d0 = p_150162_.getXa();
+        double d1 = p_150162_.getYa();
+        double d2 = p_150162_.getZa();
+
+        for (int i = 0; i < 3; i++) {
+            double d3 = 0.4 + 0.1 * i;
+            this.level().addParticle(ParticleTypes.SPIT, this.getX(), this.getY(), this.getZ(), d0 * d3, d1, d2 * d3);
+        }
+
+        this.setDeltaMovement(d0, d1, d2);
     }
 }

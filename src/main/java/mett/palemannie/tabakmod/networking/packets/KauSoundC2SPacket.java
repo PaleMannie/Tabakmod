@@ -21,7 +21,7 @@ public class KauSoundC2SPacket {
             if(player == null) return;
             if(player.isSpectator()) return;
 
-            ServerAbspieler.SpieleKauSoundsAb(player);
+            ServerAbspieler.spieleKauSoundsAb(player);
 
         });
         return true;

@@ -1,14 +1,12 @@
 package mett.palemannie.tabakmod.packetierung;
 
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.phys.Vec3;
 
 public class ServerAbspieler {
 
@@ -30,28 +28,14 @@ public class ServerAbspieler {
         sevel.addFreshEntity(spucke);
 
         //Ton
-
         double posX = player.getX();
         double posY = player.getY();
         double posZ = player.getZ();
         float r = 0.8f + lvl.random.nextFloat() * 0.3f;
-
         lvl.playSound(null, posX, posY, posZ, SoundEvents.LLAMA_SPIT, SoundSource.BLOCKS, 1f, r);
-
-        //Partikel
-        Vec3 vec3 = player.getViewVector(1f);
-        Vec3 MausPos = player.getEyePosition();
-
-        double x = player.getX() + vec3.x/4;
-        double y = MausPos.y + vec3.y/4;
-        double z = player.getZ() + vec3.z/4;
-
-        if(lvl instanceof ServerLevel slevel) {
-            slevel.sendParticles(ParticleTypes.SPIT, x, y, z, 3, 0d, 0d, 0d,0.15d);
-        }
     }
 
-    public static void SpieleKauSoundsAb(ServerPlayer player){
+    public static void spieleKauSoundsAb(ServerPlayer player){
 
         Level lvl = player.level();
 
