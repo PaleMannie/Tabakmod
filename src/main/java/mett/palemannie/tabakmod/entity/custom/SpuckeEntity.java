@@ -2,10 +2,13 @@ package mett.palemannie.tabakmod.entity.custom;
 
 import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
+import mett.palemannie.tabakmod.util.TabakmodConfig;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -83,9 +86,15 @@ public class SpuckeEntity extends Projectile {
 
             if (level instanceof ServerLevel serverlevel) {
 
-                entity.hurtServer(serverlevel, level.damageSources().source(ModDamageTypes.SPUCK_SCHADEN), 1f);
+                float damage = TabakmodConfig.COMMON.spitDamage.get().floatValue();
+                DamageSource source = level.damageSources().source(ModDamageTypes.SPUCK_SCHADEN, null, null);
+                DamageSource source2 = level.damageSources().source(DamageTypes.PLAYER_ATTACK, this.getOwner(), this.getOwner());
+
+                if(entity != this.getOwner() ){ entity.hurtServer(serverlevel, source2, 0.000000001f); }
+                entity.hurtServer(serverlevel, source, damage);
             }
         }
+        this.discard();
     }
 
     @Override
