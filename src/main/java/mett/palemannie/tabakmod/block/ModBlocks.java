@@ -7,13 +7,12 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.PushReaction;
-import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
@@ -83,7 +82,7 @@ public class ModBlocks {
              .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, name)))));
     }
 
-    public static void register(IEventBus eventBus) {
+    public static void register(BusGroup eventBus) {
         BLOCKS.register(eventBus);
     }
 

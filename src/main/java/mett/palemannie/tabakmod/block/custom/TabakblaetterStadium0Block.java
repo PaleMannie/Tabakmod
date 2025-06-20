@@ -67,7 +67,7 @@ public class TabakblaetterStadium0Block extends Block {
         float chance = 0.05f;
         if(chance >= pRandom.nextFloat() && pLevel.isBrightOutside() && pLevel.canSeeSky(pPos) && !pLevel.isRaining()){
             pLevel.setBlockAndUpdate(pPos, ModBlocks.TABAKBLAETTER_TEIL_GETROCKNET.get().defaultBlockState());
-            pLevel.playSound(null, pPos, SoundEvents.LEASH_KNOT_BREAK, SoundSource.BLOCKS,1f,1f);
+            pLevel.playSound(null, pPos, SoundEvents.f_399752_, SoundSource.BLOCKS,1f,1f);
         }
         super.randomTick(pState, pLevel, pPos, pRandom);
     }

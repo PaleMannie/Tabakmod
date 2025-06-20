@@ -39,7 +39,6 @@ public class SpuckenEffect extends MobEffect {
                 resetCounter2(counter2);
             }
         }
-        //super.applyEffectTick(sLevel, pLivingEntity, pAmplifier);
         return true;
     }
 

@@ -4,7 +4,7 @@ import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.entity.client.RaketenZigrrModel;
 import mett.palemannie.tabakmod.entity.client.SpuckeModel;
 import net.minecraftforge.client.event.EntityRenderersEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = TabakMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)

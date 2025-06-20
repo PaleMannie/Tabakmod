@@ -9,7 +9,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.HashMap;
@@ -22,7 +22,6 @@ public class ClientEvents {
     private static final long COOLDOWN_TIME = 150;
 
     @Mod.EventBusSubscriber(modid = TabakMod.MODID, value = Dist.CLIENT)
-
     public static class ClientForgeEvents {
 
         @SubscribeEvent
@@ -39,15 +38,16 @@ public class ClientEvents {
                 if (!cooldownMap.containsKey(playerId) || (currentTime - cooldownMap.get(playerId) >= COOLDOWN_TIME)){
                     ModMessages.sendToServer(new SpuckenC2SPacket());
                     cooldownMap.put(playerId, currentTime);
+                }
             }
         }
-    }
-    @Mod.EventBusSubscriber(modid = TabakMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
-    public static class ClientModBusEvents {
-        @SubscribeEvent
-        public static void onKeyRegister(RegisterKeyMappingsEvent event){
+
+        @Mod.EventBusSubscriber(modid = TabakMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+        public static class ClientModBusEvents {
+            @SubscribeEvent
+            public static void onKeyRegister(RegisterKeyMappingsEvent event){
             event.register(KeyBinding.SPUCKTASTE);
-        }
+            }
         }
     }
 }
