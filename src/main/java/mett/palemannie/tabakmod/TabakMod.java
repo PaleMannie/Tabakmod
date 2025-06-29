@@ -34,11 +34,6 @@ public class TabakMod {
 
     public TabakMod(FMLJavaModLoadingContext context) {
 
-        /*IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        modEventBus.addListener(this::commonSetup);
-        MinecraftForge.EVENT_BUS.register(this);
-        modEventBus.addListener(this::addCreative);*/
-
         var modBusGroup = context.getModBusGroup();
         FMLCommonSetupEvent.getBus(modBusGroup).addListener(TabakMod::commonSetup);
 
