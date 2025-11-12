@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.Locale;
 import java.util.Optional;
 
-@Mod.EventBusSubscriber(modid = TabakMod.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = TabakMod.MODID/*, bus = Mod.EventBusSubscriber.Bus.FORGE*/)
 public class ModEvents {
 
     @SubscribeEvent
@@ -31,7 +31,7 @@ public class ModEvents {
         String chat = event.getMessage().getString().toLowerCase(Locale.ROOT);
 
         if (chat.contains("slon")) {
-            MinecraftServer server = event.getPlayer().getServer();
+            MinecraftServer server = event.getPlayer().level().getServer();
 
             if (server == null) return;
 
@@ -41,7 +41,7 @@ public class ModEvents {
             }
         }
         if (chat.contains("me when tabakmod")) {
-            MinecraftServer server = event.getPlayer().getServer();
+            MinecraftServer server = event.getPlayer().level().getServer();
 
             if (server == null) return;
 

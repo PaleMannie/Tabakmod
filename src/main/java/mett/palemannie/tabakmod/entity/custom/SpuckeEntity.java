@@ -66,7 +66,7 @@ public class SpuckeEntity extends Projectile {
 
     @Override
     protected void onHitBlock(BlockHitResult pResult) {
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
             this.level().broadcastEntityEvent(this, (byte)3);
             this.discard();
         }
@@ -106,11 +106,11 @@ public class SpuckeEntity extends Projectile {
     }
 
     @Override
-    public void recreateFromPacket(ClientboundAddEntityPacket p_150162_) {
-        super.recreateFromPacket(p_150162_);
-        double d0 = p_150162_.getXa();
-        double d1 = p_150162_.getYa();
-        double d2 = p_150162_.getZa();
+    public void recreateFromPacket(ClientboundAddEntityPacket packet) {
+        super.recreateFromPacket(packet);
+        double d0 = packet.getMovement().x;
+        double d1 = packet.getMovement().y;
+        double d2 = packet.getMovement().z;
 
         for (int i = 0; i < 3; i++) {
             double d3 = 0.4 + 0.1 * i;

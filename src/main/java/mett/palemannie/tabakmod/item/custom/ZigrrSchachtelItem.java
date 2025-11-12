@@ -29,7 +29,7 @@ public class ZigrrSchachtelItem extends Item {
 
         if(!(pPlayer.getInventory().getFreeSlot() == -1)) {
 
-            if(!pLevel.isClientSide) {
+            if(!pLevel.isClientSide()) {
 
                 stack.hurtAndBreak(1, pPlayer, EquipmentSlot.MAINHAND);
 

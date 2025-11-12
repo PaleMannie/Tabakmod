@@ -14,7 +14,7 @@ public class ServerAbspieler {
 
     public static void handliereSpucken(ServerPlayer player){
 
-        ServerLevel sevel = player.getServer().getLevel(player.getServer().overworld().dimension());
+        ServerLevel sevel = player.level();
         RandomSource rdm = RandomSource.create();
         Level lvl = player.level();
 

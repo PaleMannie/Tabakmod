@@ -7,15 +7,18 @@ import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
 import mett.palemannie.tabakmod.util.TabakmodConfig;
 import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
+import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
+import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 
 public class SpuckeRenderer extends EntityRenderer<SpuckeEntity, LlamaSpitRenderState> {
 
-    private static final ResourceLocation ZIG_LOCATION = ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/spucke/spucke.png");
+    private static final ResourceLocation SPUCKE_LOCATION = ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/spucke/spucke.png");
     private final SpuckeModel model;
 
     public SpuckeRenderer(EntityRendererProvider.Context context) {
@@ -23,23 +26,19 @@ public class SpuckeRenderer extends EntityRenderer<SpuckeEntity, LlamaSpitRender
         this.model = new SpuckeModel(context.bakeLayer(SpuckeModel.LAYER_LOCATION));
     }
 
+    @Override
+    public void submit(LlamaSpitRenderState renderState, PoseStack poseStack, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
 
-    public void render(LlamaSpitRenderState pRenderState, PoseStack pPoseStack, MultiBufferSource pBufferSource, int pPackedLight) {
+        poseStack.pushPose();
+        poseStack.translate(0f, 0.1f, 0f);
+        poseStack.mulPose(Axis.YP.rotationDegrees(renderState.yRot));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-renderState.xRot + 180f));
 
-        if(TabakmodConfig.COMMON.spitModel.get()) {
-            pPoseStack.pushPose();
+        nodeCollector.submitModel(this.model, renderState, poseStack, this.model.renderType(SPUCKE_LOCATION), renderState.lightCoords, OverlayTexture.NO_OVERLAY, renderState.outlineColor, (ModelFeatureRenderer.CrumblingOverlay) null);
+        poseStack.popPose();
+        super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
 
-            pPoseStack.translate(0f, 0.1f, 0f);
-
-            pPoseStack.mulPose(Axis.YP.rotationDegrees(pRenderState.yRot));
-            pPoseStack.mulPose(Axis.XP.rotationDegrees(-pRenderState.xRot + 180f));
-
-            this.model.setupAnim(pRenderState);
-            VertexConsumer vertexconsumer = pBufferSource.getBuffer(this.model.renderType(ZIG_LOCATION));
-            this.model.renderToBuffer(pPoseStack, vertexconsumer, pPackedLight, OverlayTexture.NO_OVERLAY);
-            pPoseStack.popPose();
-            super.render(pRenderState, pPoseStack, pBufferSource, pPackedLight);
-        }
+        super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
     }
 
     public LlamaSpitRenderState createRenderState() {

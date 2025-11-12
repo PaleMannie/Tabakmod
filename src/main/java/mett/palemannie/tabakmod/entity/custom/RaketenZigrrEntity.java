@@ -52,7 +52,7 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
                 0d + RandomSource.create().nextInt(-10, 10)/100d,
                 0d + RandomSource.create().nextInt(-10, 10)/100d);
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
 
             if (this.dauer > 30) {
                 explode();
@@ -63,7 +63,7 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitEntity(EntityHitResult result) {
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
 
             explode();
         }
@@ -72,7 +72,7 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
     @Override
     protected void onHitBlock(BlockHitResult result) {
 
-        if (!this.level().isClientSide) {
+        if (!this.level().isClientSide()) {
 
             explode();
         }
@@ -87,10 +87,8 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
                 this.getZ(),
                 1f,
                 false,
-                Level.ExplosionInteraction.NONE,
-                ParticleTypes.EXPLOSION_EMITTER,
-                ParticleTypes.EXPLOSION,
-                SoundEvents.GENERIC_EXPLODE);
+                Level.ExplosionInteraction.NONE
+        );
         this.discard();
     }
 

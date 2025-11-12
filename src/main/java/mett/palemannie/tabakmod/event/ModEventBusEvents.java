@@ -7,7 +7,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = TabakMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = TabakMod.MODID/*, bus = Mod.EventBusSubscriber.Bus.MOD*/)
 public class ModEventBusEvents {
 
     @SubscribeEvent

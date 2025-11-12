@@ -61,7 +61,7 @@ public class ModBlocks {
 
     public static final RegistryObject<Block> TABAKPFLANZE = BLOCKS.register("tabakpflanze",
             () -> new TabakPflanzenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "tabakpflanze")))
-                    .randomTicks().noCollission().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY)));
+                    .randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.DESTROY)));
     public static final RegistryObject<Block> ASCHENBECHER = registerBlock("aschenbecher_neu",
             () -> new AschenbecherBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "aschenbecher_neu")))
                     .instabreak().noOcclusion().pushReaction(PushReaction.DESTROY).sound(SoundType.STONE)));

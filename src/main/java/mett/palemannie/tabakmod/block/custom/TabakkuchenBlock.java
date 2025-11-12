@@ -65,7 +65,7 @@ public class TabakkuchenBlock extends Block {
 
     @Override
     protected InteractionResult useWithoutItem(BlockState pState, Level pLevel, BlockPos pPos, Player pPlayer, BlockHitResult pHitResult) {
-        if (pLevel.isClientSide) {
+        if (pLevel.isClientSide()) {
             if (eat(pLevel, pPos, pState, pPlayer, pPlayer.getUsedItemHand()).consumesAction()) {
                 return InteractionResult.SUCCESS;
             }

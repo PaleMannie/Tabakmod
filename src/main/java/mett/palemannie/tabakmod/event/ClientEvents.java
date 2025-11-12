@@ -42,7 +42,7 @@ public class ClientEvents {
             }
         }
 
-        @Mod.EventBusSubscriber(modid = TabakMod.MODID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+        @Mod.EventBusSubscriber(modid = TabakMod.MODID, value = Dist.CLIENT/*, bus = Mod.EventBusSubscriber.Bus.MOD*/)
         public static class ClientModBusEvents {
             @SubscribeEvent
             public static void onKeyRegister(RegisterKeyMappingsEvent event){
