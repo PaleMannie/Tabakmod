@@ -13,11 +13,11 @@ import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class RaketenZigrrRenderer extends EntityRenderer<RaketenZigrrEntity, LlamaSpitRenderState> {
 
-    private static final ResourceLocation ZIG_LOCATION = ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/raketenzigarre/raketenzigarre.png");
+    private static final Identifier ZIG_LOCATION = Identifier.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/raketenzigarre/raketenzigarre.png");
     private final RaketenZigrrModel model;
 
     public RaketenZigrrRenderer(EntityRendererProvider.Context context) {

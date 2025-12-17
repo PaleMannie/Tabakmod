@@ -6,7 +6,7 @@ import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.sound.ModSounds;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.entity.ai.village.poi.PoiType;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraftforge.eventbus.api.bus.BusGroup;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;

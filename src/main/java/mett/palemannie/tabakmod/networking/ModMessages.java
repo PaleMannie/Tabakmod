@@ -3,7 +3,7 @@ package mett.palemannie.tabakmod.networking;
 import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.networking.packets.KauSoundC2SPacket;
 import mett.palemannie.tabakmod.networking.packets.SpuckenC2SPacket;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 import net.minecraftforge.network.*;
 
 public class ModMessages {
@@ -13,7 +13,7 @@ public class ModMessages {
     }
     final static int version = 1;
 
-    private static final SimpleChannel INSTANCE = ChannelBuilder.named(ResourceLocation.fromNamespaceAndPath(TabakMod.MODID, "messages"))
+    private static final SimpleChannel INSTANCE = ChannelBuilder.named(Identifier.fromNamespaceAndPath(TabakMod.MODID, "messages"))
             .networkProtocolVersion(version)
             .clientAcceptedVersions(((status, version1) -> true))
             .serverAcceptedVersions(((status, version1) -> true))

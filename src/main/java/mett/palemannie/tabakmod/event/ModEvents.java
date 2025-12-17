@@ -10,7 +10,7 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
-import net.minecraft.world.entity.npc.VillagerProfession;
+import net.minecraft.world.entity.npc.villager.VillagerProfession;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.trading.ItemCost;
@@ -62,7 +62,7 @@ public class ModEvents {
 
             ///NEULING
 
-            trades.get(1).add((pTrader, pRandom) -> new MerchantOffer(
+            trades.get(1).add((pTrader,pRandom) -> new MerchantOffer(
                     new ItemCost(Items.EMERALD, 1),
                     new ItemStack(ModItems.ZIGARETTE_SCHEISE.get(), 1), 100, 1, 0.05f));
 

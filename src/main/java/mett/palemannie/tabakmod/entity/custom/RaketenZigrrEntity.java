@@ -8,7 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.projectile.ThrowableItemProjectile;
+import net.minecraft.world.entity.projectile.throwableitemprojectile.ThrowableItemProjectile;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ExplosionDamageCalculator;
@@ -23,6 +23,11 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
     public RaketenZigrrEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
+    }
+
+    @Override
+    protected Item m_439752_() {
+        return null;
     }
 
     public RaketenZigrrEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {

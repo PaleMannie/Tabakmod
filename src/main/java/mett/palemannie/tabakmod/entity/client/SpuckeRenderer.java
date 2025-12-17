@@ -14,11 +14,11 @@ import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
 import net.minecraft.client.renderer.state.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
 
 public class SpuckeRenderer extends EntityRenderer<SpuckeEntity, LlamaSpitRenderState> {
 
-    private static final ResourceLocation SPUCKE_LOCATION = ResourceLocation.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/spucke/spucke.png");
+    private static final Identifier SPUCKE_LOCATION = Identifier.fromNamespaceAndPath(TabakMod.MODID,"textures/entity/spucke/spucke.png");
     private final SpuckeModel model;
 
     public SpuckeRenderer(EntityRendererProvider.Context context) {
