@@ -25,11 +25,6 @@ public class ZigMentholStummelEntity extends ThrowableItemProjectile {
         super(pEntityType, pLevel);
     }
 
-    @Override
-    protected Item m_439752_() {
-        return null;
-    }
-
     public ZigMentholStummelEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
 
         this(livingEntity.getX(), livingEntity.getEyeY() - 0.2, livingEntity.getZ(), pLevel, stack);

@@ -1,12 +1,9 @@
 package mett.palemannie.tabakmod.entity.client;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Axis;
 import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
-import mett.palemannie.tabakmod.util.TabakmodConfig;
-import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.SubmitNodeCollector;
 import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;

@@ -4,7 +4,6 @@ import mett.palemannie.tabakmod.entity.ModEntities;
 import mett.palemannie.tabakmod.item.ModItems;
 import mett.palemannie.tabakmod.util.ModDamageTypes;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -23,11 +22,6 @@ public class RaketenZigrrEntity extends ThrowableItemProjectile {
     public RaketenZigrrEntity(EntityType<? extends ThrowableItemProjectile> pEntityType, Level pLevel) {
 
         super(pEntityType, pLevel);
-    }
-
-    @Override
-    protected Item m_439752_() {
-        return null;
     }
 
     public RaketenZigrrEntity(Level pLevel, LivingEntity livingEntity, ItemStack stack) {
