@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "tabakmod:tabakhaendler/leere_mentholschachtel_plus_40_emerald_for_mentholschachtel",
+    "tabakmod:tabakhaendler/15_emerald_for_aschenbecher",
+    "tabakmod:tabakhaendler/getrockneter_ballen_plus_6_emerald_for_heller_ballen",
+    "tabakmod:tabakhaendler/getrockneter_ballen_plus_12_emerald_for_mittlerer_ballen",
+    "tabakmod:tabakhaendler/getrockneter_ballen_plus_18_emerald_for_dunkler_ballen",
+    "tabakmod:tabakhaendler/28_emerald_for_pfeife_leer",
+    "tabakmod:tabakhaendler/stummel_kamel_plus_64_emerald_for_zigarette_kamel",
+    "tabakmod:tabakhaendler/16_emerald_for_raketenzigarre",
+    "tabakmod:tabakhaendler/16_emerald_for_suizidzigarette"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "wants": { "id": "tabakmod:tabakblaetter_getrocknet", "count": 4 },
+  "gives": { "id": "minecraft:emerald", "count": 3 },
+  "max_uses": 6,
+  "xp": 4,
+  "reputation_discount": 0.05
+}

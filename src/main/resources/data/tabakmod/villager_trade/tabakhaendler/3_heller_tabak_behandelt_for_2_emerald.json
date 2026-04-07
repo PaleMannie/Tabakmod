@@ -1,0 +1,7 @@
+{
+  "wants": { "id": "tabakmod:heller_tabak_behandelt", "count": 3 },
+  "gives": { "id": "minecraft:emerald", "count": 2 },
+  "max_uses": 10,
+  "xp": 5,
+  "reputation_discount": 0.05
+}

@@ -1,0 +1,19 @@
+{
+  "replace": false,
+  "values": [
+    "tabakmod:tabakhaendler/1_emerald_for_zigarette_scheise",
+    "tabakmod:tabakhaendler/kautabakmische_for_1_emerald",
+    "tabakmod:tabakhaendler/4_emerald_for_6_deckblatt",
+    "tabakmod:tabakhaendler/6_zigarettenstummel_for_1_emerald",
+    "tabakmod:tabakhaendler/6_zigarrenstummel_for_1_emerald",
+    "tabakmod:tabakhaendler/6_stummel_kamel_for_1_emerald",
+    "tabakmod:tabakhaendler/6_stummel_menthol_for_1_emerald",
+    "tabakmod:tabakhaendler/1_stummel_scheise_for_1_emerald",
+    "tabakmod:tabakhaendler/leere_zigarettenschachtel_plus_25_emerald_for_zigarettenschachtel",
+    "tabakmod:tabakhaendler/leere_zigarrenschachtel_plus_40_emerald_for_zigarrenschachtel",
+    "tabakmod:tabakhaendler/2_emerald_for_filter",
+    "tabakmod:tabakhaendler/heller_tabak_plus_1_emerald_for_heller_tabak_behandelt",
+    "tabakmod:tabakhaendler/mittlerer_tabak_plus_1_emerald_for_mittlerer_tabak_behandelt",
+    "tabakmod:tabakhaendler/dunkler_tabak_plus_1_emerald_for_dunkler_tabak_behandelt"
+  ]
+}

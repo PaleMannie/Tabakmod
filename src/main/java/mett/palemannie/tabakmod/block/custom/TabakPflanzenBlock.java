@@ -108,7 +108,7 @@ public class TabakPflanzenBlock extends VegetationBlock implements BonemealableB
     public BlockState getStateForAge(int pAge) { return this.defaultBlockState().setValue(this.getAgeProperty(), pAge); }
 
     protected int getBonemealAgeIncrease(Level pLevel) {
-        return Mth.nextInt(pLevel.random, 1, 3);
+        return Mth.nextInt(pLevel.getRandom(), 1, 3);
     }
 
     private int getAge(BlockState pState) { return pState.getValue(this.getAgeProperty()); }

@@ -1,0 +1,6 @@
+{
+  "trades": "#minecraft:farmer/level_3",
+  "amount": 2.0,
+  "allow_duplicates": false,
+  "random_sequence": "minecraft:trade_set/farmer/level_3"
+}

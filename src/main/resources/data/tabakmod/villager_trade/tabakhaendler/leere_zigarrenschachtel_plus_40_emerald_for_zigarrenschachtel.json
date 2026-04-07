@@ -1,0 +1,8 @@
+{
+  "wants": { "id": "tabakmod:zigarrenschachtel_leer", "count": 1 },
+  "additional_wants": { "id": "minecraft:emerald", "count": 40 },
+  "gives": { "id": "tabakmod:zigarrenschachtel", "count": 1 },
+  "max_uses": 1,
+  "xp": 5,
+  "reputation_discount": 0.05
+}

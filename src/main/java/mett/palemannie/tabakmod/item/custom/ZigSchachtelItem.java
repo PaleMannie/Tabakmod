@@ -5,6 +5,7 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.contents.TranslatableContents;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -85,7 +86,12 @@ public class ZigSchachtelItem extends Item {
         } else {
 
             var msg = MutableComponent.create(new TranslatableContents("tabakmod.iteminteraction.schachtel", null, new Object[0])).withStyle(ChatFormatting.GOLD);
-            pPlayer.displayClientMessage(msg, true);
+
+            if(pPlayer instanceof ServerPlayer serverPlayer){
+
+                serverPlayer.sendSystemMessage(msg, true);
+            }
+
             return InteractionResult.FAIL; 
         }
 

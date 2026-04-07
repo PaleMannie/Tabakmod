@@ -1,0 +1,6 @@
+{
+  "trades": "#minecraft:mason/level_5",
+  "amount": 2.0,
+  "allow_duplicates": false,
+  "random_sequence": "minecraft:trade_set/mason/level_5"
+}

@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "tabakmod:tabakhaendler/64_emerald_for_zigarettenschachtel",
+    "tabakmod:tabakhaendler/12_emerald_for_kautabak",
+    "tabakmod:tabakhaendler/64_plus_64_emerald_for_zigarrenschachtel",
+    "tabakmod:tabakhaendler/3_heller_tabak_behandelt_for_2_emerald",
+    "tabakmod:tabakhaendler/3_mittlerer_tabak_behandelt_for_3_emerald",
+    "tabakmod:tabakhaendler/3_dunkler_tabak_behandelt_for_4_emerald",
+    "tabakmod:tabakhaendler/4_emerald_for_zigarette_menthol"
+  ]
+}

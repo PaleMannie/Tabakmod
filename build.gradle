@@ -1,81 +1,99 @@
 plugins {
-    id 'eclipse'
+    id 'java'
     id 'idea'
+    id 'eclipse'
     id 'maven-publish'
-    id 'net.minecraftforge.gradle' version '[6.0.36,6.2)'
-    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
+    id 'net.minecraftforge.gradle' version '[7.0.17,8)'
+    id 'net.minecraftforge.jarjar' version '0.2.3'
 }
 
 version = mod_version
 group = mod_group_id
+base.archivesName = mod_id
 
-base {
-    archivesName = mod_id
-}
+java.toolchain.languageVersion = JavaLanguageVersion.of(25)
 
-java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+println "Java: ${providers.systemProperty('java.version').get()}, " +
+        "JVM: ${providers.systemProperty('java.vm.version').get()} (${providers.systemProperty('java.vendor').get()}), " +
+        "Arch: ${providers.systemProperty('os.arch').get()}"
 
-println "Java: ${System.getProperty 'java.version'}, JVM: ${System.getProperty 'java.vm.version'} (${System.getProperty 'java.vendor'}), Arch: ${System.getProperty 'os.arch'}"
 minecraft {
     mappings channel: mapping_channel, version: mapping_version
-    reobf = false
-    copyIdeResources = true
-    accessTransformer = file('src/main/resources/META-INF/accesstransformer.cfg')
+
+    accessTransformer = true
 
     runs {
         configureEach {
-            workingDirectory project.file('run')
-            property 'forge.logging.markers', 'REGISTRIES'
-            property 'forge.logging.console.level', 'debug'
-            property 'eventbus.api.strictRuntimeChecks', 'true'
+            workingDir.convention layout.projectDirectory.dir('run')
 
+            //systemProperty 'forge.logging.markers', 'REGISTRIES'
+
+            systemProperty 'forge.logging.console.level', 'debug'
+
+            systemProperty 'eventbus.api.strictRuntimeChecks', 'true'
+
+            systemProperty 'forge.enabledGameTestNamespaces', 'spittingimage'
+
+            //args "-mixin.config=${mod_id}.mixins.json"
         }
 
-        client {
-            property 'forge.enabledGameTestNamespaces', mod_id
-
+        register('client') {
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
         }
 
-        server {
-            property 'forge.enabledGameTestNamespaces', mod_id
-            args '--nogui'
-
+        register('server') {
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
+            //args '--nogui'
         }
 
-        gameTestServer {
-            property 'forge.enabledGameTestNamespaces', mod_id
-
+        register('gameTestServer') {
+            systemProperty 'forge.enabledGameTestNamespaces', mod_id
         }
 
-        data {
-            workingDirectory project.file('run-data')
-            args '--mod', mod_id, '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+        register('data') {
+            workingDir = layout.projectDirectory.dir('run-data')
 
+            args '--mod', mod_id, '--all', '--output', layout.projectDirectory.dir('src/generated/resources'), '--existing', layout.projectDirectory.dir('src/main/resources')
         }
     }
 }
 
-sourceSets.main.resources { srcDir 'src/generated/resources' }
+sourceSets.main.resources { srcDir layout.projectDirectory.dir('src/generated/resources') }
+
+jarJar.register() {
+    archiveClassifier = null
+}
 
 repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = 'Sponge'
+                url = 'https://repo.spongepowered.org/repository/maven-public'
+            }
+        }
+        filter {
+            includeGroupAndSubgroups('org.spongepowered')
+        }
+    }
     mavenCentral()
-    maven {
-        name = 'Forge'
-        url = 'https://maven.minecraftforge.net'
-    }
-    maven {
-        name = 'Minecraft libraries'
-        url = 'https://libraries.minecraft.net'
-    }
+    mavenLocal()
 }
 
 dependencies {
-    minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
-    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0-beta.7'
 
+    implementation minecraft.dependency("net.minecraftforge:forge:$minecraft_version-$forge_version")
+    annotationProcessor 'net.minecraftforge:eventbus-validator:7.0.1'
 }
 
-tasks.named('processResources', ProcessResources).configure {
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('processResources', ProcessResources) {
     var replaceProperties = [
             minecraft_version: minecraft_version, minecraft_version_range: minecraft_version_range,
             forge_version: forge_version, forge_version_range: forge_version_range,
@@ -83,14 +101,14 @@ tasks.named('processResources', ProcessResources).configure {
             mod_id: mod_id, mod_name: mod_name, mod_license: mod_license, mod_version: mod_version,
             mod_authors: mod_authors, mod_description: mod_description,
     ]
-    inputs.properties replaceProperties
+    inputs.property('replaceProperties', replaceProperties)
 
     filesMatching(['META-INF/mods.toml', 'pack.mcmeta']) {
-        expand replaceProperties + [project: project]
+        expand replaceProperties
     }
 }
 
-tasks.named('jar', Jar).configure {
+tasks.named('jar', Jar) {
     manifest {
         attributes([
                 'Specification-Title'     : mod_id,
@@ -100,31 +118,24 @@ tasks.named('jar', Jar).configure {
                 'Implementation-Version'  : project.jar.archiveVersion,
                 'Implementation-Vendor'   : mod_authors
         ])
+        //attributes['MixinConfigs'] = "${mod_id}.mixins.json"
     }
+
+    archiveClassifier = 'slim'
 }
 
 publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
     repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
+        maven { url = project.layout.projectDirectory.dir('mcmodsrepo').asFile.toURL() }
     }
-}
 
-tasks.withType(JavaCompile).configureEach {
-    options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+    publications.register('mavenJava', MavenPublication) {
+        artifact tasks.named("jar")
+        artifact tasks.named("jarJar")
+    }
 }
 
 idea.module { downloadJavadoc = downloadSources = true }
-
-eclipse {
-    synchronizationTasks 'genEclipseRuns'
-}
 
 sourceSets.each {
     def dir = layout.buildDirectory.dir("sourcesSets/$it.name")

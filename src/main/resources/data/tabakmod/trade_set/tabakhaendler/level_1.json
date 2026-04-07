@@ -1,0 +1,6 @@
+{
+  "trades": "#tabakmod:tabakhaendler/level_1",
+  "amount": 2.0,
+  "allow_duplicates": false,
+  "random_sequence": "tabakmod:trade_set/tabakhaendler/level_1"
+}

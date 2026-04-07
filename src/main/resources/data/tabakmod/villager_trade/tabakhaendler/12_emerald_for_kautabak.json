@@ -1,0 +1,7 @@
+{
+  "wants": { "id": "minecraft:emerald", "count": 12 },
+  "gives": { "id": "tabakmod:kautabak", "count": 1 },
+  "max_uses": 5,
+  "xp": 10,
+  "reputation_discount": 0.05
+}

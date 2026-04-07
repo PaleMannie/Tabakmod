@@ -1,0 +1,13 @@
+{
+  "replace": false,
+  "values": [
+    "tabakmod:tabakhaendler/zigarettenstummel_plus_1_emerald_for_zigarette",
+    "tabakmod:tabakhaendler/zigarrenstummel_plus_13_emerald_for_zigarre",
+    "tabakmod:tabakhaendler/stummel_menthol_plus_7_emerald_for_zigarette_menthol",
+    "tabakmod:tabakhaendler/18_emerald_for_zigaretten",
+    "tabakmod:tabakhaendler/36_emerald_for_zigarren",
+    "tabakmod:tabakhaendler/8_heller_tabak_for_2_emerald",
+    "tabakmod:tabakhaendler/8_mittlerer_tabak_for_3_emerald",
+    "tabakmod:tabakhaendler/8_dunkler_tabak_for_4_emerald"
+  ]
+}
