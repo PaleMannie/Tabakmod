@@ -33,7 +33,7 @@ public class ZigrrStummelEntity extends ThrowableItemProjectile {
 
     public ZigrrStummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
 
-        super(ModEntities.STUMMEL.get(), x, y, z, pLevel, stack);
+        super(ModEntities.STUMMEL_ZIGRR.get(), x, y, z, pLevel, stack);
         this.setItem(stack);
     }
 

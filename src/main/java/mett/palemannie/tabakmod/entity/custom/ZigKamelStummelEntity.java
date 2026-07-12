@@ -32,7 +32,7 @@ public class ZigKamelStummelEntity extends ThrowableItemProjectile {
 
     public ZigKamelStummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
 
-        super(ModEntities.STUMMEL.get(), x, y, z, pLevel, stack);
+        super(ModEntities.STUMMEL_KAMEL.get(), x, y, z, pLevel, stack);
         this.setItem(stack);
     }
 

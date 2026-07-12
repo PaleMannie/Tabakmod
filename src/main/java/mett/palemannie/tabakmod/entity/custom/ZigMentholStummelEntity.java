@@ -33,7 +33,7 @@ public class ZigMentholStummelEntity extends ThrowableItemProjectile {
 
     public ZigMentholStummelEntity(double x, double y, double z, Level pLevel, ItemStack stack) {
 
-        super(ModEntities.STUMMEL.get(), x, y, z, pLevel, stack);
+        super(ModEntities.STUMMEL_MENTHOL.get(), x, y, z, pLevel, stack);
         this.setItem(stack);
     }
 
