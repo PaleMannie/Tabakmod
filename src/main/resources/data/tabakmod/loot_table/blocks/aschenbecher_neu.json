@@ -8,18 +8,21 @@
           "name": "tabakmod:zigarette"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:block_state_property",
-          "block": "tabakmod:aschenbecher_neu",
-          "properties": {
-            "welchezig": "1"
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:match_block",
+            "blocks": "tabakmod:aschenbecher_neu",
+            "state": {
+              "welchezig": "1"
+            }
+          },
+          {
+            "type": "minecraft:survives_explosion"
           }
-        },
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ]
+        ]
+      }
     },
     {
       "rolls": 1,
@@ -27,18 +30,21 @@
         {
           "type": "minecraft:item",
           "name": "tabakmod:zigarre",
-          "conditions": [
-            {
-              "condition": "minecraft:block_state_property",
-              "block": "tabakmod:aschenbecher_neu",
-              "properties": {
-                "welchezig": "2"
+          "condition": {
+            "type": "minecraft:all_of",
+            "terms": [
+              {
+                "type": "minecraft:match_block",
+                "blocks": "tabakmod:aschenbecher_neu",
+                "state": {
+                  "welchezig": "2"
+                }
+              },
+              {
+                "type": "minecraft:survives_explosion"
               }
-            },
-            {
-              "condition": "minecraft:survives_explosion"
-            }
-          ]
+            ]
+          }
         }
       ]
     },
@@ -48,11 +54,9 @@
         {
           "type": "minecraft:item",
           "name": "tabakmod:aschenbecher_neu",
-          "conditions": [
-            {
-              "condition": "minecraft:survives_explosion"
-            }
-          ]
+          "condition": {
+            "type": "minecraft:survives_explosion"
+          }
         }
       ]
     }

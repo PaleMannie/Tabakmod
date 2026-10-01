@@ -18,7 +18,6 @@ public class ModDamageTypes {
     public static final ResourceKey<DamageType> ZIG_MENTH_SCHADEN =   register("zig_menth_schaden");
     public static final ResourceKey<DamageType> DSCHOINT_SCHADEN =   register("dschoint_schaden");
     public static final ResourceKey<DamageType> PFEIFE_SCHADEN =   register("pfeife_schaden");
-    public static final ResourceKey<DamageType> SPUCK_SCHADEN =   register("spuck_schaden");
     public static final ResourceKey<DamageType> SUIZIDZIGARETTE_SCHADEN =   register("suizidzigarette_schaden");
     public static final ResourceKey<DamageType> RAKETENZIGARRE_SCHADEN =   register("raketenzigarre_schaden");
     public static final ResourceKey<DamageType> KAMEL_SCHADEN =   register("kamel_schaden");

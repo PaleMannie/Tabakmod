@@ -1,29 +1,24 @@
 package mett.palemannie.tabakmod.networking.packets;
 
+import io.netty.buffer.ByteBuf;
+import mett.palemannie.tabakmod.TabakMod;
 import mett.palemannie.tabakmod.packetierung.ServerAbspieler;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.Identifier;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraftforge.event.network.CustomPayloadEvent;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
 
-public class KauSoundC2SPacket {
+public record KauSoundC2SPacket() implements CustomPacketPayload {
+    public static final Type<KauSoundC2SPacket> TYPE = new Type<>(Identifier.fromNamespaceAndPath(TabakMod.MODID, "kau_sound"));
+    public static final StreamCodec<ByteBuf, KauSoundC2SPacket> STREAM_CODEC = StreamCodec.unit(new KauSoundC2SPacket());
 
-    public KauSoundC2SPacket(){
-    }
-    public KauSoundC2SPacket(FriendlyByteBuf buf){
-    }
-    public void encode(FriendlyByteBuf buf){
-    }
+    @Override
+    public Type<KauSoundC2SPacket> type() { return TYPE; }
 
-    public boolean handle(CustomPayloadEvent.Context context){
-        context.enqueueWork(()-> {
-            ServerPlayer player = context.getSender();
-
-            if(player == null) return;
-            if(player.isSpectator()) return;
-
+    public static void handle(KauSoundC2SPacket payload, IPayloadContext context) {
+        if (context.player() instanceof ServerPlayer player && !player.isSpectator()) {
             ServerAbspieler.spieleKauSoundsAb(player);
-
-        });
-        return true;
+        }
     }
 }

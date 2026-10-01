@@ -1,0 +1,17 @@
+{
+  "wants": {
+    "id": "tabakmod:zigarettenschachtel_leer",
+    "count": 1
+  },
+  "gives": {
+    "id": "tabakmod:zigarettenschachtel",
+    "count": 1
+  },
+  "max_uses": 1,
+  "xp": 2,
+  "reputation_discount": 0.05,
+  "additional_wants": {
+    "id": "minecraft:emerald",
+    "count": 25
+  }
+}

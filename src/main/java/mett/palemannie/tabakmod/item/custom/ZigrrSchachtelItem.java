@@ -49,7 +49,7 @@ public class ZigrrSchachtelItem extends Item {
         } else {
 
             var msg = MutableComponent.create(new TranslatableContents("tabakmod.iteminteraction.schachtel", null, new Object[0])).withStyle(ChatFormatting.GOLD);
-            pPlayer.displayClientMessage(msg, true);
+            pPlayer.sendOverlayMessage(msg);
             return InteractionResult.FAIL;
         }
 

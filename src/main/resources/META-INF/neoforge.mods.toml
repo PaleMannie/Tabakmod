@@ -1,0 +1,30 @@
+license="${mod_license}"
+[[mods]] #mandatory
+modId="${mod_id}" #mandatory
+version="${mod_version}" #mandatory
+displayName="${mod_name}" #mandatory
+#updateJSONURL="https://change.me.example.invalid/updates.json" #optional
+#displayURL="https://change.me.to.your.mods.homepage.example.invalid/" #optional
+iconFile="tabakmod.png" #optional
+credits="Ich weil ich cool bin" #optional
+authors="${mod_authors}" #optional
+description='''${mod_description}'''
+[[dependencies.${mod_id}]] #optional
+modId="neoforge" #mandatory
+type="required" #mandatory
+versionRange="[${neo_version},)" #mandatory
+ordering="NONE"
+side="BOTH"
+[[dependencies.${mod_id}]]
+modId="minecraft"
+type="required"
+versionRange="${minecraft_version_range}"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.${mod_id}]]
+modId="spittingimage"
+type="required"
+versionRange="[5v-26.3-neoforge,)"
+ordering="AFTER"
+side="BOTH"

@@ -1,6 +1,5 @@
 package mett.palemannie.tabakmod.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -9,12 +8,13 @@ import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.BonemealSource;
+import net.minecraft.world.level.block.BonemealableBlock;
+import net.minecraft.world.level.block.VegetationBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -25,13 +25,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 public class TabakPflanzenBlock extends VegetationBlock implements BonemealableBlock {
 
     public TabakPflanzenBlock(Properties pProperties) { super(pProperties); }
-
-    @Override
-    protected MapCodec<? extends VegetationBlock> codec() {
-        return CODEC;
-    }
-
-    public static final MapCodec<TabakPflanzenBlock> CODEC = simpleCodec(TabakPflanzenBlock::new);
 
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(5.0D, 0.0D, 5.0D, 11.0D, 4.0D, 11.0D),
@@ -46,11 +39,11 @@ public class TabakPflanzenBlock extends VegetationBlock implements BonemealableB
     @Override
     protected void randomTick(BlockState pState, ServerLevel serverLevel, BlockPos pPos, RandomSource pRandom) {
         int i = pState.getValue(AGE);
-        if (i < MAX_AGE && serverLevel.getRawBrightness(pPos.above(), 0) >= 9 && net.minecraftforge.common.ForgeHooks.onCropsGrowPre(serverLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
+        if (i < MAX_AGE && serverLevel.getRawBrightness(pPos.above(), 0) >= 9 && net.neoforged.neoforge.common.CommonHooks.canCropGrow(serverLevel, pPos, pState, pRandom.nextInt(5) == 0)) {
             BlockState blockstate = pState.setValue(AGE, i + 1);
             serverLevel.setBlock(pPos, blockstate, 2);
             serverLevel.gameEvent(GameEvent.BLOCK_CHANGE, pPos, GameEvent.Context.of(blockstate));
-            net.minecraftforge.common.ForgeHooks.onCropsGrowPost(serverLevel, pPos, pState);
+            net.neoforged.neoforge.common.CommonHooks.fireCropGrowPost(serverLevel, pPos, pState);
         }
     }
 
@@ -75,7 +68,7 @@ public class TabakPflanzenBlock extends VegetationBlock implements BonemealableB
 
     @Override
     protected boolean mayPlaceOn(BlockState pState, BlockGetter pLevel, BlockPos pPos) {
-        return pState.is(BlockTags.DIRT) || pState.is(Blocks.FARMLAND);
+        return pState.is(BlockTags.SUPPORTS_VEGETATION);
     }
 
     @Override
@@ -93,22 +86,10 @@ public class TabakPflanzenBlock extends VegetationBlock implements BonemealableB
         return 80;
     }
 
-    @Override
-    public boolean isValidBonemealTarget(LevelReader pLevel, BlockPos pPos, BlockState pState) { return pState.getValue(AGE) < MAX_AGE; }
-
-    @Override
-    public void performBonemeal(ServerLevel pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) {
-        int i = Math.min(this.getMaxAge(), this.getAge(pState) + this.getBonemealAgeIncrease(pLevel));
-        pLevel.setBlock(pPos, this.getStateForAge(i), 2);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level pLevel, RandomSource pRandom, BlockPos pPos, BlockState pState) { return true; }
-
     public BlockState getStateForAge(int pAge) { return this.defaultBlockState().setValue(this.getAgeProperty(), pAge); }
 
     protected int getBonemealAgeIncrease(Level pLevel) {
-        return Mth.nextInt(pLevel.random, 1, 3);
+        return Mth.nextInt(pLevel.getRandom(), 1, 3);
     }
 
     private int getAge(BlockState pState) { return pState.getValue(this.getAgeProperty()); }
@@ -120,5 +101,19 @@ public class TabakPflanzenBlock extends VegetationBlock implements BonemealableB
     @Override
     protected boolean isRandomlyTicking(BlockState pState) {
         return true;
+    }
+
+    @Override
+    public boolean isValidBonemealTarget(LevelReader levelReader, BlockPos blockPos, BlockState blockState, BonemealSource bonemealSource) { return blockState.getValue(AGE) < MAX_AGE; }
+
+    @Override
+    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState, BonemealSource bonemealSource) {
+        return true;
+    }
+
+    @Override
+    public void performBonemeal(ServerLevel serverLevel, RandomSource randomSource, BlockPos blockPos, BlockState blockState, BonemealSource bonemealSource) {
+        int i = Math.min(this.getMaxAge(), this.getAge(blockState) + this.getBonemealAgeIncrease(serverLevel));
+        serverLevel.setBlock(blockPos, this.getStateForAge(i), 2);
     }
 }

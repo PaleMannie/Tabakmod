@@ -1,0 +1,17 @@
+{
+  "wants": {
+    "id": "tabakmod:getrockneter_tabakballen",
+    "count": 1
+  },
+  "gives": {
+    "id": "tabakmod:heller_tabakballen",
+    "count": 1
+  },
+  "max_uses": 10,
+  "xp": 4,
+  "reputation_discount": 0.05,
+  "additional_wants": {
+    "id": "minecraft:emerald",
+    "count": 6
+  }
+}

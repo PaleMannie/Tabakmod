@@ -77,7 +77,7 @@ public class LeerePfeifenItem extends Item {
     @Override
     public int getEntityLifespan(ItemStack itemStack, Level level) { return 72000; }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 }

@@ -25,7 +25,7 @@ import net.minecraft.world.entity.projectile.Projectile;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.common.Mod;
+import net.neoforged.fml.common.Mod;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Set;
@@ -256,7 +256,7 @@ public class ScheisZigarettenItem extends Item {
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
     int ueberzug = 59;
     int exhalatZaehler = 0;
 

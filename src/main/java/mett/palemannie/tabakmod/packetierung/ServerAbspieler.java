@@ -1,6 +1,5 @@
 package mett.palemannie.tabakmod.packetierung;
 
-import mett.palemannie.tabakmod.entity.custom.SpuckeEntity;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -12,7 +11,7 @@ public class ServerAbspieler {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static void handliereSpucken(ServerPlayer player){
+    /*public static void handliereSpucken(ServerPlayer player){
 
         ServerLevel sevel = player.level();
         RandomSource rdm = RandomSource.create();
@@ -31,9 +30,9 @@ public class ServerAbspieler {
         double posX = player.getX();
         double posY = player.getY();
         double posZ = player.getZ();
-        float r = 0.8f + lvl.random.nextFloat() * 0.3f;
+        float r = 0.8f + lvl.getRandom().nextFloat() * 0.3f;
         lvl.playSound(null, posX, posY, posZ, SoundEvents.LLAMA_SPIT, SoundSource.BLOCKS, 1f, r);
-    }
+    }*/
 
     public static void spieleKauSoundsAb(ServerPlayer player){
 

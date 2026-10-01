@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.state.LlamaSpitRenderState;
 import net.minecraft.client.renderer.feature.ModelFeatureRenderer;
-import net.minecraft.client.renderer.state.CameraRenderState;
+import net.minecraft.client.renderer.state.level.CameraRenderState;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.Identifier;
 
@@ -27,11 +27,10 @@ public class RaketenZigrrRenderer extends EntityRenderer<RaketenZigrrEntity, Lla
     public void submit(LlamaSpitRenderState renderState, PoseStack poseStack, SubmitNodeCollector nodeCollector, CameraRenderState cameraRenderState) {
 
         poseStack.pushPose();
-        poseStack.mulPose(Axis.YP.rotationDegrees(renderState.yRot));
-        poseStack.mulPose(Axis.XP.rotationDegrees(-renderState.xRot + 180f));
-        poseStack.mulPose(Axis.ZP.rotationDegrees(180f));
-
-        nodeCollector.submitModel(this.model, renderState, poseStack, this.model.renderType(ZIG_LOCATION), renderState.lightCoords, OverlayTexture.NO_OVERLAY, renderState.outlineColor, (ModelFeatureRenderer.CrumblingOverlay) null);
+        poseStack.rotateDegrees(Axis.YP, renderState.yRot);
+        poseStack.rotateDegrees(Axis.XP, -renderState.xRot - 180f);
+        poseStack.rotateDegrees(Axis.ZP, 180f);
+        nodeCollector.submitModel(this.model, renderState, poseStack, this.model.renderType(ZIG_LOCATION), renderState.lightCoords, OverlayTexture.NO_OVERLAY, renderState.outlineColor);
         poseStack.popPose();
         super.submit(renderState, poseStack, nodeCollector, cameraRenderState);
     }

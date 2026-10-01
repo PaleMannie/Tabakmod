@@ -5,6 +5,7 @@ import mett.palemannie.tabakmod.item.ModItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
@@ -81,7 +82,7 @@ public class ZigrrStummelEntity extends ThrowableItemProjectile {
 
         if(stack.is(Items.BRUSH) && pPlayer.isUsingItem()){
 
-            pPlayer.drop(ModItems.ZIGARRENSTUMMEL.get().getDefaultInstance(), false);
+            pPlayer.drop(ModItems.ZIGARRENSTUMMEL.get().getDefaultInstance(), false, Prediction.PREDICTED);
             this.discard();
         }
     }

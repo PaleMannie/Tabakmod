@@ -52,5 +52,5 @@ public class RaketenZigrrItem extends Item implements ProjectileItem {
     @Override
     public boolean makesPiglinsNeutral(ItemStack stack, LivingEntity wearer) { return true; }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
 }

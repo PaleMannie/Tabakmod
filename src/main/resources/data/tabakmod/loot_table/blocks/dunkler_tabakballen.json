@@ -7,16 +7,14 @@
         {
           "type": "minecraft:item",
           "name": "tabakmod:dunkler_tabak",
-          "conditions": [
-            {
-              "condition": "minecraft:match_tool",
-              "predicate": {
-                "items": [
-                  "minecraft:shears"
-                ]
-              }
+          "condition": {
+            "type": "minecraft:match_tool",
+            "predicate": {
+              "items": [
+                "minecraft:shears"
+              ]
             }
-          ]
+          }
         }
       ]
     },
@@ -29,28 +27,31 @@
           "name": "tabakmod:dunkler_tabakballen"
         }
       ],
-      "conditions": [
-        {
-          "condition": "minecraft:inverted",
-          "term": {
-            "condition": "minecraft:entity_properties",
-            "entity": "this",
-            "predicate": {
-              "type": "minecraft:player",
-              "equipment": {
-                "mainhand": {
-                  "items": [
-                    "minecraft:shears"
-                  ]
+      "condition": {
+        "type": "minecraft:all_of",
+        "terms": [
+          {
+            "type": "minecraft:inverted",
+            "term": {
+              "type": "minecraft:entity_properties",
+              "entity": "this",
+              "predicate": {
+                "minecraft:entity_type": "minecraft:player",
+                "equipment": {
+                  "mainhand": {
+                    "items": [
+                      "minecraft:shears"
+                    ]
+                  }
                 }
               }
             }
+          },
+          {
+            "type": "minecraft:survives_explosion"
           }
-        },
-        {
-          "condition": "minecraft:survives_explosion"
-        }
-      ]
+        ]
+      }
     }
   ]
 }

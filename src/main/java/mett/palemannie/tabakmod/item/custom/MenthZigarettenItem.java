@@ -248,7 +248,7 @@ public class MenthZigarettenItem extends Item {
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
     int ueberzug = 79;
     int exhalatZaehler = 0;
 

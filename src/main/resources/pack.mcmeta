@@ -1,9 +1,10 @@
 {
   "pack": {
-    "description": {
-      "text": "examplemod resources"
-    },
-    "forge:server_data_pack_format": 12,
-    "pack_format": 13
+    "description": "Super Tabakmod resources",
+    "min_format": [
+      97,
+      1
+    ],
+    "max_format": 121
   }
 }

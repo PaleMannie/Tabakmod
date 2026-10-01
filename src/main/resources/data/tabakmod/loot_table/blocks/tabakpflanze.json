@@ -1,10 +1,5 @@
 {
   "type": "minecraft:block",
-  "functions": [
-    {
-      "function": "minecraft:explosion_decay"
-    }
-  ],
   "pools": [
     {
       "bonus_rolls": 0.0,
@@ -18,58 +13,53 @@
     },
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "block": "tabakmod:tabakpflanze",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "6"
-          }
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
-          "functions": [
-            {
-              "enchantment": "minecraft:fortune",
-              "formula": "minecraft:binomial_with_bonus_count",
-              "function": "minecraft:apply_bonus",
-              "parameters": {
-                "extra": 3,
-                "probability": 0.35
-              }
+          "name": "tabakmod:tabakblatt",
+          "modifier": {
+            "type": "minecraft:apply_bonus",
+            "enchantment": "minecraft:fortune",
+            "formula": "minecraft:binomial_with_bonus_count",
+            "parameters": {
+              "extra": 3,
+              "probability": 0.35
             }
-          ],
-          "name": "tabakmod:tabakblatt"
+          }
         }
       ],
-      "rolls": 1.0
+      "rolls": 1.0,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "tabakmod:tabakpflanze",
+        "state": {
+          "age": "6"
+        }
+      }
     },
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "block": "tabakmod:tabakpflanze",
-          "condition": "minecraft:block_state_property",
-          "properties": {
-            "age": "6"
-          }
-        }
-      ],
       "entries": [
         {
           "type": "minecraft:item",
-          "conditions": [
-            {
-              "chance": 0.1,
-              "condition": "minecraft:random_chance"
-            }
-          ],
-          "name": "tabakmod:tabaksamen"
+          "name": "tabakmod:tabaksamen",
+          "condition": {
+            "type": "minecraft:random_chance",
+            "chance": 0.1
+          }
         }
       ],
-      "rolls": 1.0
+      "rolls": 1.0,
+      "condition": {
+        "type": "minecraft:match_block",
+        "blocks": "tabakmod:tabakpflanze",
+        "state": {
+          "age": "6"
+        }
+      }
     }
-  ]
+  ],
+  "modifier": {
+    "type": "minecraft:explosion_decay"
+  }
 }

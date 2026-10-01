@@ -175,7 +175,7 @@ public class SuizidZigarettenItem extends Item {
     float tntschadenzaehler = 0f;
 
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
 
     @Override
     public int getUseDuration(ItemStack pStack, LivingEntity pEntity) { return 80; }

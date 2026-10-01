@@ -7,6 +7,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Prediction;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -184,7 +185,7 @@ public class DschointItem extends Item {
                     gibRauchStandardEffekte(pPlayer, pStack, pRemainingUseDuration);
                     pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.ZU_LANGE_GEZOGEN.get(), SoundSource.PLAYERS, 1f, (float)RandomSource.create().nextInt(8, 12)/10);
                     pLevel.playSound(null, pLivingEntity.getX(), pLivingEntity.getY(), pLivingEntity.getZ(), ModSounds.DSCHOINT.get(), SoundSource.PLAYERS, 1f, (float)RandomSource.create().nextInt(8, 12)/10);
-                    pPlayer.drop(new ItemStack(ModItems.KAKERLAKE.get()), false);
+                    pPlayer.drop(new ItemStack(ModItems.KAKERLAKE.get()), false, Prediction.PREDICTED);
                     releaseUsing(pStack, pLevel, pLivingEntity, pRemainingUseDuration);
                 }
 
@@ -247,7 +248,7 @@ public class DschointItem extends Item {
     @Override
     public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) { return slotChanged; }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) { return true; }
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) { return true; }
     int ueberzug = 59;
     int exhalatZaehler = 0;
 

@@ -18,9 +18,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ItemUseAnimation;
 import net.minecraft.world.item.ItemUtils;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.common.extensions.IForgeMobEffect;
 
-public class KautabakItem extends Item implements IForgeMobEffect {
+public class KautabakItem extends Item {
 
     public KautabakItem(Properties pProperties) { super(pProperties); }
 
@@ -31,7 +30,7 @@ public class KautabakItem extends Item implements IForgeMobEffect {
         player.playSound(SoundEvents.SLIME_JUMP, 3f, 1f);
         player.getFoodData().eat(2, 2);
 
-        player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), zeit, 0));
+        player.addEffect(new MobEffectInstance(ModEffects.SPUCKEN, zeit, 0));
         player.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 150, 0));
         player.addEffect(new MobEffectInstance(MobEffects.MINING_FATIGUE, zeit, 0));
     }
@@ -99,7 +98,7 @@ public class KautabakItem extends Item implements IForgeMobEffect {
         return 72000;
     }
     @Override
-    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, Entity entity) {
+    public boolean canEquip(ItemStack stack, EquipmentSlot armorType, LivingEntity entity) {
         return true;
     }
 

@@ -1,4 +1,3 @@
-
 {
   "parent": "tabakmod:tabakmod/root",
   "criteria": {
@@ -14,23 +13,22 @@
     }
   },
   "display": {
-  "announce_to_chat": true,
-  "background": "tabakmod:block/dunkler_tabakballen",
-  "description": {
-  "translate": "advancements.tabakmod.zig.desc"
-  },
-  "icon": {
-    "count": 1,
+    "announce_to_chat": true,
+    "description": {
+      "translate": "advancements.tabakmod.zig.desc"
+    },
+    "icon": {
+      "count": 1,
       "id": "tabakmod:zigaretten"
-  },
-  "show_toast": false,
-  "title": {
-    "translate": "advancements.tabakmod.zig.title"
-  }
+    },
+    "show_toast": false,
+    "title": {
+      "translate": "advancements.tabakmod.zig.title"
+    }
   },
   "requirements": [
     [
-    "zig"
+      "zig"
     ]
   ],
   "sends_telemetry_event": true

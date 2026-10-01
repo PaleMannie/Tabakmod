@@ -1,14 +1,17 @@
 {
   "type": "tabakmod:add_item",
-  "conditions": [
-    {
-      "condition": "block_state_property",
-      "block": "minecraft:short_grass"
-    },
-    {
-      "chance": 0.001,
-      "condition": "minecraft:random_chance"
-    }
-  ],
-  "item": "tabakmod:tabaksamen"
+  "item": "tabakmod:tabaksamen",
+  "condition": {
+    "type": "minecraft:all_of",
+    "terms": [
+      {
+        "type": "minecraft:match_block",
+        "blocks": "minecraft:short_grass"
+      },
+      {
+        "type": "minecraft:random_chance",
+        "chance": 0.001
+      }
+    ]
+  }
 }

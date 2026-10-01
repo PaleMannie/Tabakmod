@@ -1,4 +1,3 @@
-
 {
   "parent": "tabakmod:tabakmod/root",
   "criteria": {
@@ -15,13 +14,12 @@
   },
   "display": {
     "announce_to_chat": true,
-    "background": "tabakmod:block/dunkler_tabakballen",
     "description": {
       "translate": "advancements.tabakmod.lief_eine_meile.desc"
     },
     "icon": {
       "count": 1,
-      "id": "tabakmod:zigarette_kamel_rauchen5"
+      "id": "tabakmod:zigarette_kamel"
     },
     "show_toast": false,
     "title": {

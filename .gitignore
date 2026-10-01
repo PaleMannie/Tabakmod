@@ -23,3 +23,9 @@ run
 
 # Files from Forge MDK
 forge*changelog.txt
+
+run-neoforge
+tabakmod-forge-1.21.11-before-neoforge.zip
+
+compile-neoforge.log
+build-neoforge.log

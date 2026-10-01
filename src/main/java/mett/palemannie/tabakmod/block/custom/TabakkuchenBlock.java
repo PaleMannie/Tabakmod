@@ -1,6 +1,5 @@
 package mett.palemannie.tabakmod.block.custom;
 
-import com.mojang.serialization.MapCodec;
 import mett.palemannie.tabakmod.block.ModBlocks;
 import mett.palemannie.tabakmod.effect.ModEffects;
 import mett.palemannie.tabakmod.item.ModItems;
@@ -33,18 +32,14 @@ import static mett.palemannie.tabakmod.block.custom.TabakkuchenZigBlock.LIT;
 public class TabakkuchenBlock extends Block {
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    public static final MapCodec<TabakkuchenBlock> CODEC = simpleCodec(TabakkuchenBlock::new);
 
     public TabakkuchenBlock(Properties pProperties) {
         super(pProperties);
     }
     public static final int MAX_BISSE = 13;
-    public static final IntegerProperty BISSE = /*BlockStateProperties.BITES; */ IntegerProperty.create("bisse", 0, MAX_BISSE);
+    public static final IntegerProperty BISSE = IntegerProperty.create("bisse", 0, MAX_BISSE);
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder) {
         pBuilder.add(BISSE);
-    }
-    public MapCodec<TabakkuchenBlock> codec() {
-        return CODEC;
     }
 
     /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -92,7 +87,7 @@ public class TabakkuchenBlock extends Block {
                 pLevel.removeBlock(pPos, false);
                 pLevel.gameEvent(pPlayer, GameEvent.BLOCK_DESTROY, pPos);
             }
-            pPlayer.addEffect(new MobEffectInstance(ModEffects.SPUCKEN.getHolder().get(), 400, 0));
+            pPlayer.addEffect(new MobEffectInstance(ModEffects.SPUCKEN, 400, 0));
             pPlayer.addEffect(new MobEffectInstance(MobEffects.HASTE, 400, 0));
             pPlayer.addEffect(new MobEffectInstance(MobEffects.NAUSEA, 150, 0));
             return InteractionResult.SUCCESS;
