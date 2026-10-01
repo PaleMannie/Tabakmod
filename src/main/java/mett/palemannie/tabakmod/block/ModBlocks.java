@@ -28,40 +28,50 @@ public class ModBlocks {
         registerBlockItem(name, toReturn);
         return toReturn;
     }
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static final DeferredHolder<Block, Block> TABAKBLAETTER_GETROCKNET = registerBlock("tabakblaetter_getrocknet",
             () -> new TabakblaetterStadium4Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_getrocknet")))
                     .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava().pushReaction(PushReaction.POPPED)));
+
     public static final DeferredHolder<Block, Block> TABAKBLAETTER_FAST_GETROCKNET = registerBlock("tabakblaetter_fast_getrocknet",
             () -> new TabakblaetterStadium3Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_fast_getrocknet")))
                     .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava().pushReaction(PushReaction.POPPED)));
+
     public static final DeferredHolder<Block, Block> TABAKBLAETTER_HALB_GETROCKNET = registerBlock("tabakblaetter_halb_getrocknet",
             () -> new TabakblaetterStadium2Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_halb_getrocknet")))
                     .friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava().pushReaction(PushReaction.POPPED)));
+
     public static final DeferredHolder<Block, Block> TABAKBLAETTER_TEIL_GETROCKNET = registerBlock("tabakblaetter_teil_getrocknet",
             () -> new TabakblaetterStadium1Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter_teil_getrocknet"))).
                     friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava().pushReaction(PushReaction.POPPED)));
+
     public static final DeferredHolder<Block, Block> TABAKBLAETTER = registerBlock("tabakblaetter",
             () -> new TabakblaetterStadium0Block(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakblaetter"))).
                     friction(1f).sound(SoundType.VINE).instabreak().noOcclusion().ignitedByLava().pushReaction(PushReaction.POPPED)));
 
+
     public static final DeferredHolder<Block, Block> GETROCKNETER_TABAKBALLEN = registerBlock("getrockneter_tabakballen",
             () -> new TabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "getrockneter_tabakballen")))
                     .strength(0.5F).sound(SoundType.GRASS)));
+
     public static final DeferredHolder<Block, Block> HELLER_TABAKBALLEN = registerBlock("heller_tabakballen",
             () -> new HellerTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "heller_tabakballen")))
                     .strength(0.5F).sound(SoundType.GRASS)));
+
     public static final DeferredHolder<Block, Block> MITTLERER_TABAKBALLEN = registerBlock("mittlerer_tabakballen",
             () -> new MittlererTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "mittlerer_tabakballen")))
                     .strength(0.5F).sound(SoundType.GRASS)));
+
     public static final DeferredHolder<Block, Block> DUNKLER_TABAKBALLEN = registerBlock("dunkler_tabakballen",
             () -> new DunklerTabakBallenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "dunkler_tabakballen")))
@@ -71,14 +81,18 @@ public class ModBlocks {
             () -> new TabakPflanzenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "tabakpflanze")))
                     .randomTicks().noCollision().sound(SoundType.SWEET_BERRY_BUSH).pushReaction(PushReaction.POPPED)));
+
+
     public static final DeferredHolder<Block, Block> ASCHENBECHER = registerBlock("aschenbecher_neu",
             () -> new AschenbecherBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "aschenbecher_neu")))
                     .instabreak().noOcclusion().pushReaction(PushReaction.POPPED).sound(SoundType.STONE)));
+
     public static final DeferredHolder<Block, Block> ASCHENBECHER_GROSS = registerBlock("aschenbecher_gross",
             () -> new AschenbecherGrossBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
                             Identifier.fromNamespaceAndPath(TabakMod.MODID, "aschenbecher_gross")))
                     .instabreak().noOcclusion().pushReaction(PushReaction.POPPED).sound(SoundType.STONE)));
+
 
     public static final DeferredHolder<Block, Block> TABAKKUCHEN = registerBlock("tabakkuchen",
             () -> new TabakkuchenBlock(BlockBehaviour.Properties.of().setId(ResourceKey.create(Registries.BLOCK,
@@ -90,6 +104,7 @@ public class ModBlocks {
                     .forceSolidOn().strength(0.5F).sound(SoundType.SLIME_BLOCK).pushReaction(PushReaction.POPPED).noOcclusion()));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
     private static <T extends Block> void registerBlockItem(String name, DeferredHolder<Block, T> block) {
         ModItems.ITEMS.register(name, () -> new BlockItem(block.get(), new Item.Properties()
              .setId(ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(TabakMod.MODID, name)))));

@@ -15,8 +15,8 @@ public class SpuckenEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(ServerLevel level, LivingEntity entity, int amplifier) {
+
         if (entity instanceof ServerPlayer player) {
-            // MobEffect instances are shared: keep the cadence individual to each player.
             if (player.tickCount % 80 == 0) {
                 ServerPlayHandler.handleSpitting(player);
             }
